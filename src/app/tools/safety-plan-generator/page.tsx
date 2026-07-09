@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SafetyPlanGenerator } from "@/features/safety-plan-generator/safety-plan-generator";
+import { createToolJsonLd } from "@/lib/seo/json-ld";
+
+const toolJsonLd = createToolJsonLd({
+  name: "Safety Plan Generator",
+  description:
+    "Create a contractor safety plan outline for construction jobsites, trades, hazards, PPE, emergency procedures, and documentation.",
+  url: "/tools/safety-plan-generator",
+  keywords: ['safety plan generator', 'contractor safety plan', 'construction safety plan template'],
+});
 
 export const metadata: Metadata = {
   title: "Safety Plan Generator",
@@ -14,6 +23,10 @@ export const metadata: Metadata = {
 export default function SafetyPlanGeneratorPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">
           ← Back to tools

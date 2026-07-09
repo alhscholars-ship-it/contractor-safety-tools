@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PpeChecklistGenerator } from "@/features/ppe-checklist-generator/ppe-checklist-generator";
+import { createToolJsonLd } from "@/lib/seo/json-ld";
+
+const toolJsonLd = createToolJsonLd({
+  name: "PPE Checklist Generator",
+  description:
+    "Create a contractor PPE checklist for construction tasks, trades, hazards, pre-use inspections, and jobsite safety documentation.",
+  url: "/tools/ppe-checklist-generator",
+  keywords: ['PPE checklist generator', 'construction PPE checklist', 'jobsite PPE form'],
+});
 
 export const metadata: Metadata = {
   title: "PPE Checklist Generator",
@@ -14,6 +23,10 @@ export const metadata: Metadata = {
 export default function PpeChecklistGeneratorPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">
           ← Back to tools

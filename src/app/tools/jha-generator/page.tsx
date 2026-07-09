@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JhaGenerator } from "@/features/jha-generator/jha-generator";
+import { createToolJsonLd } from "@/lib/seo/json-ld";
+
+const toolJsonLd = createToolJsonLd({
+  name: "JHA Generator",
+  description:
+    "Create a job hazard analysis outline for construction tasks, hazards, controls, PPE, and supervisor review documentation.",
+  url: "/tools/jha-generator",
+  keywords: ['JHA generator', 'job hazard analysis template', 'construction JHA'],
+});
 
 export const metadata: Metadata = {
   title: "JHA Generator",
@@ -14,6 +23,10 @@ export const metadata: Metadata = {
 export default function JhaGeneratorPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">
           ← Back to tools

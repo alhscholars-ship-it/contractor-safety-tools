@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ToolboxTalkGenerator } from "@/features/toolbox-talk-generator/toolbox-talk-generator";
+import { createToolJsonLd } from "@/lib/seo/json-ld";
+
+const toolJsonLd = createToolJsonLd({
+  name: "Toolbox Talk Generator",
+  description:
+    "Generate contractor toolbox talk outlines for construction safety meetings, jobsite hazards, crew reminders, and attendance documentation.",
+  url: "/tools/toolbox-talk-generator",
+  keywords: ['toolbox talk generator', 'construction toolbox talks', 'safety meeting template'],
+});
 
 export const metadata: Metadata = {
   title: "Toolbox Talk Generator",
@@ -14,6 +23,10 @@ export const metadata: Metadata = {
 export default function ToolboxTalkGeneratorPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">
           ← Back to tools

@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { IncidentReportGenerator } from "@/features/incident-report-generator/incident-report-generator";
+import { createToolJsonLd } from "@/lib/seo/json-ld";
+
+const toolJsonLd = createToolJsonLd({
+  name: "Incident Report Generator",
+  description:
+    "Create a structured construction incident report draft with event details, injury notes, witnesses, corrective actions, and documentation reminders.",
+  url: "/tools/incident-report-generator",
+  keywords: ['incident report generator', 'construction incident report', 'jobsite incident report form'],
+});
 
 export const metadata: Metadata = {
   title: "Incident Report Generator",
@@ -14,6 +23,10 @@ export const metadata: Metadata = {
 export default function IncidentReportGeneratorPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">
           ← Back to tools
