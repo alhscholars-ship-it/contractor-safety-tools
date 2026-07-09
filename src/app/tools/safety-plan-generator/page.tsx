@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SafetyPlanGenerator } from "@/features/safety-plan-generator/safety-plan-generator";
 
 export const metadata: Metadata = {
   title: "Safety Plan Generator",
@@ -32,12 +33,8 @@ export default function SafetyPlanGeneratorPage() {
           </p>
         </div>
 
-        <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-          <h2 className="text-2xl font-black">Generator coming next</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-            In the next step, this page will become an interactive form that creates
-            a contractor-specific safety plan draft.
-          </p>
+        <div className="mt-12">
+          <SafetyPlanGenerator />
         </div>
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">
