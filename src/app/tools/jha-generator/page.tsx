@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JhaGenerator } from "@/features/jha-generator/jha-generator";
 
 export const metadata: Metadata = {
   title: "JHA Generator",
@@ -31,12 +32,8 @@ export default function JhaGeneratorPage() {
           </p>
         </div>
 
-        <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-          <h2 className="text-2xl font-black">Interactive generator coming next</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-            In the next step, this page will become an interactive JHA generator
-            for contractor safety planning and documentation.
-          </p>
+        <div className="mt-12">
+          <JhaGenerator />
         </div>
       </section>
     </main>
