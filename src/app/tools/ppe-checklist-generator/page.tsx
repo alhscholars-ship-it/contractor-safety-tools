@@ -1,12 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { PpeChecklistGenerator } from "@/features/ppe-checklist-generator/ppe-checklist-generator";
 
-export const metadata = {
-  title: "PPE Checklist Generator | Contractor Safety Form Tools",
+export const metadata: Metadata = {
+  title: "PPE Checklist Generator",
   description:
-    "Create a contractor PPE checklist for construction tasks, trades, hazards, and jobsite safety documentation.",
+    "Create a contractor PPE checklist for construction tasks, trades, hazards, pre-use inspections, and jobsite safety documentation.",
   alternates: {
-    canonical:
-      "https://contractorsafetytools.com/tools/ppe-checklist-generator",
+    canonical: "/tools/ppe-checklist-generator",
   },
 };
 
@@ -29,17 +30,12 @@ export default function PpeChecklistGeneratorPage() {
 
           <p className="mt-6 text-lg leading-8 text-slate-300">
             Create professional PPE checklists for construction trades,
-            hazards, inspections, and compliance documentation.
+            hazards, pre-use inspections, and compliance documentation.
           </p>
         </div>
 
-        <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-          <h2 className="text-2xl font-black">Interactive generator coming next</h2>
-
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-            The next step will replace this placeholder with the complete
-            interactive PPE Checklist Generator.
-          </p>
+        <div className="mt-12">
+          <PpeChecklistGenerator />
         </div>
       </section>
     </main>
