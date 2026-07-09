@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ToolboxTalkGenerator } from "@/features/toolbox-talk-generator/toolbox-talk-generator";
 
 export const metadata: Metadata = {
   title: "Toolbox Talk Generator",
@@ -31,12 +32,8 @@ export default function ToolboxTalkGeneratorPage() {
           </p>
         </div>
 
-        <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-          <h2 className="text-2xl font-black">Interactive generator coming next</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-            In the next step, this page will become an interactive toolbox talk generator
-            with structured talking points and meeting notes.
-          </p>
+        <div className="mt-12">
+          <ToolboxTalkGenerator />
         </div>
       </section>
     </main>
