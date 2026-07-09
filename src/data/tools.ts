@@ -57,4 +57,18 @@ export const tools: ToolDefinition[] = [
       "near miss report template",
     ],
   },
+  {
+    slug: "jha-generator",
+    name: "JHA Generator",
+    shortDescription:
+      "Create a job hazard analysis outline with task steps, hazards, controls, PPE, and review notes.",
+    category: "Job Hazard Analysis",
+    href: "/tools/jha-generator",
+    keywords: [
+      "JHA generator",
+      "job hazard analysis template",
+      "construction JHA",
+      "job safety analysis generator",
+    ],
+  },
 ];
