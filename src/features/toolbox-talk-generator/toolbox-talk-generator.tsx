@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { ExportTextButton } from "@/components/export/export-text-button";
 import {
   generateToolboxTalk,
   type ToolboxTalkResult,
@@ -160,9 +161,29 @@ export function ToolboxTalkGenerator() {
               </ul>
             </div>
 
-            <p className="rounded-2xl border border-amber-300/20 bg-amber-300/10 p-4 text-xs leading-5 text-amber-100">
-              {result.disclaimer}
-            </p>
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300/20 bg-amber-300/10 p-4">
+              <p className="text-xs leading-5 text-amber-100">{result.disclaimer}</p>
+              <ExportTextButton
+                fileName="toolbox-talk.txt"
+                title={result.title}
+                summary={result.opening}
+                sections={[
+                  {
+                    title: "Discussion Points",
+                    items: result.discussionPoints,
+                  },
+                  {
+                    title: "Crew Questions",
+                    items: result.crewQuestions,
+                  },
+                  {
+                    title: "Documentation Notes",
+                    items: result.documentationNotes,
+                  },
+                ]}
+                disclaimer={result.disclaimer}
+              />
+            </div>
           </div>
         ) : (
           <p className="mt-4 text-sm leading-6 text-slate-300">
