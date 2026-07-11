@@ -2,6 +2,7 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import { ExportTextButton } from "@/components/export/export-text-button";
+import { ExportPdfButton } from "@/components/export/export-pdf-button";
 import {
   generateToolboxTalk,
   type ToolboxTalkResult,
@@ -163,11 +164,12 @@ export function ToolboxTalkGenerator() {
 
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300/20 bg-amber-300/10 p-4">
               <p className="text-xs leading-5 text-amber-100">{result.disclaimer}</p>
-              <ExportTextButton
-                fileName="toolbox-talk.txt"
-                title={result.title}
-                summary={result.opening}
-                sections={[
+              <div className="flex flex-wrap gap-2">
+                <ExportTextButton
+                  fileName="toolbox-talk.txt"
+                  title={result.title}
+                  summary={result.opening}
+                  sections={[
                   {
                     title: "Discussion Points",
                     items: result.discussionPoints,
@@ -181,8 +183,29 @@ export function ToolboxTalkGenerator() {
                     items: result.documentationNotes,
                   },
                 ]}
-                disclaimer={result.disclaimer}
-              />
+                  disclaimer={result.disclaimer}
+                />
+                <ExportPdfButton
+                  fileName="toolbox-talk.pdf"
+                  title={result.title}
+                  summary={result.opening}
+                  sections={[
+                  {
+                    title: "Discussion Points",
+                    items: result.discussionPoints,
+                  },
+                  {
+                    title: "Crew Questions",
+                    items: result.crewQuestions,
+                  },
+                  {
+                    title: "Documentation Notes",
+                    items: result.documentationNotes,
+                  },
+                ]}
+                  disclaimer={result.disclaimer}
+                />
+              </div>
             </div>
           </div>
         ) : (
