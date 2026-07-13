@@ -34,6 +34,19 @@ const faqs = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
@@ -46,6 +59,10 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <section className="mx-auto w-full max-w-4xl px-6 py-20">
         <Link href="/" className="text-sm font-semibold text-emerald-300">
           ← Back to home
