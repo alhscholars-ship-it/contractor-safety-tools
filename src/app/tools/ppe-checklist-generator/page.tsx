@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PpeChecklistGenerator } from "@/features/ppe-checklist-generator/ppe-checklist-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
+import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "PPE Checklist Generator",
@@ -10,6 +11,13 @@ const toolJsonLd = createToolJsonLd({
   url: "/tools/ppe-checklist-generator",
   keywords: ['PPE checklist generator', 'construction PPE checklist', 'jobsite PPE form'],
 });
+
+
+const breadcrumbJsonLd = createBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Tools", path: "/tools" },
+  { name: "PPE Checklist Generator", path: "/tools/ppe-checklist-generator" },
+]);
 
 export const metadata: Metadata = {
   title: "PPE Checklist Generator",
@@ -26,6 +34,12 @@ export default function PpeChecklistGeneratorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">

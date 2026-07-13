@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { IncidentReportGenerator } from "@/features/incident-report-generator/incident-report-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
+import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "Incident Report Generator",
@@ -10,6 +11,13 @@ const toolJsonLd = createToolJsonLd({
   url: "/tools/incident-report-generator",
   keywords: ['incident report generator', 'construction incident report', 'jobsite incident report form'],
 });
+
+
+const breadcrumbJsonLd = createBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Tools", path: "/tools" },
+  { name: "Incident Report Generator", path: "/tools/incident-report-generator" },
+]);
 
 export const metadata: Metadata = {
   title: "Incident Report Generator",
@@ -26,6 +34,12 @@ export default function IncidentReportGeneratorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">

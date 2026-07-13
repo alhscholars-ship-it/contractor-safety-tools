@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ToolboxTalkGenerator } from "@/features/toolbox-talk-generator/toolbox-talk-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
+import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "Toolbox Talk Generator",
@@ -10,6 +11,13 @@ const toolJsonLd = createToolJsonLd({
   url: "/tools/toolbox-talk-generator",
   keywords: ['toolbox talk generator', 'construction toolbox talks', 'safety meeting template'],
 });
+
+
+const breadcrumbJsonLd = createBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Tools", path: "/tools" },
+  { name: "Toolbox Talk Generator", path: "/tools/toolbox-talk-generator" },
+]);
 
 export const metadata: Metadata = {
   title: "Toolbox Talk Generator",
@@ -26,6 +34,12 @@ export default function ToolboxTalkGeneratorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JhaGenerator } from "@/features/jha-generator/jha-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
+import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "JHA Generator",
@@ -10,6 +11,13 @@ const toolJsonLd = createToolJsonLd({
   url: "/tools/jha-generator",
   keywords: ['JHA generator', 'job hazard analysis template', 'construction JHA'],
 });
+
+
+const breadcrumbJsonLd = createBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Tools", path: "/tools" },
+  { name: "JHA Generator", path: "/tools/jha-generator" },
+]);
 
 export const metadata: Metadata = {
   title: "JHA Generator",
@@ -26,6 +34,12 @@ export default function JhaGeneratorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">

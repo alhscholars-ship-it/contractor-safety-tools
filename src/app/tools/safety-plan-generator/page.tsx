@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SafetyPlanGenerator } from "@/features/safety-plan-generator/safety-plan-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
+import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "Safety Plan Generator",
@@ -10,6 +11,13 @@ const toolJsonLd = createToolJsonLd({
   url: "/tools/safety-plan-generator",
   keywords: ['safety plan generator', 'contractor safety plan', 'construction safety plan template'],
 });
+
+
+const breadcrumbJsonLd = createBreadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Tools", path: "/tools" },
+  { name: "Safety Plan Generator", path: "/tools/safety-plan-generator" },
+]);
 
 export const metadata: Metadata = {
   title: "Safety Plan Generator",
@@ -26,6 +34,12 @@ export default function SafetyPlanGeneratorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <Link href="/tools" className="text-sm font-semibold text-emerald-300">
