@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IncidentReportGenerator } from "@/features/incident-report-generator/incident-report-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
+import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "Incident Report Generator",
@@ -18,6 +19,31 @@ const breadcrumbJsonLd = createBreadcrumbJsonLd([
   { name: "Tools", path: "/tools" },
   { name: "Incident Report Generator", path: "/tools/incident-report-generator" },
 ]);
+
+const incidentReportFaqs = [
+  {
+    question: "Is the incident report generator free?",
+    answer:
+      "Yes. It is free to use and supports downloadable TXT and PDF exports.",
+  },
+  {
+    question: "Should near misses be documented?",
+    answer:
+      "Near-miss documentation is commonly useful because it can reveal hazards and control failures before an injury or major loss occurs.",
+  },
+  {
+    question: "Does this tool determine OSHA recordability?",
+    answer:
+      "No. Recordability and reporting decisions require review of current regulatory criteria and the specific facts of the case.",
+  },
+  {
+    question: "Can an incident report be edited after it is created?",
+    answer:
+      "Yes. The generated content is a draft. Review and revise it as verified information, witness statements, investigation findings, and corrective actions become available.",
+  },
+];
+
+const faqJsonLd = createFaqJsonLd(incidentReportFaqs);
 
 export const metadata: Metadata = {
   title: "Incident Report Generator",
@@ -39,6 +65,12 @@ export default function IncidentReportGeneratorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd),
         }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
@@ -224,28 +256,7 @@ export default function IncidentReportGeneratorPage() {
           </h2>
 
           <div className="mt-8 space-y-5">
-            {[
-              {
-                question: "Is the incident report generator free?",
-                answer:
-                  "Yes. It is free to use and supports downloadable TXT and PDF exports.",
-              },
-              {
-                question: "Should near misses be documented?",
-                answer:
-                  "Near-miss documentation is commonly useful because it can reveal hazards and control failures before an injury or major loss occurs.",
-              },
-              {
-                question: "Does this tool determine OSHA recordability?",
-                answer:
-                  "No. Recordability and reporting decisions require review of current regulatory criteria and the specific facts of the case.",
-              },
-              {
-                question: "Can an incident report be edited after it is created?",
-                answer:
-                  "Yes. The generated content is a draft. Review and revise it as verified information, witness statements, investigation findings, and corrective actions become available.",
-              },
-            ].map((faq) => (
+            {incidentReportFaqs.map((faq) => (
               <article
                 key={faq.question}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
