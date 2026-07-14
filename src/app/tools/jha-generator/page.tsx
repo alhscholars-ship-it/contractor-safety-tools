@@ -3,6 +3,7 @@ import Link from "next/link";
 import { JhaGenerator } from "@/features/jha-generator/jha-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
+import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "JHA Generator",
@@ -18,6 +19,31 @@ const breadcrumbJsonLd = createBreadcrumbJsonLd([
   { name: "Tools", path: "/tools" },
   { name: "JHA Generator", path: "/tools/jha-generator" },
 ]);
+
+const jhaFaqs = [
+  {
+    question: "Is the JHA generator free?",
+    answer:
+      "Yes. It is free to use and supports downloadable TXT and PDF exports.",
+  },
+  {
+    question: "What is the difference between a JHA and a safety plan?",
+    answer:
+      "A JHA focuses on the steps, hazards, and controls for a specific task. A safety plan usually covers broader project responsibilities, procedures, hazards, and emergency arrangements.",
+  },
+  {
+    question: "Should workers participate in the JHA?",
+    answer:
+      "Worker participation is valuable because employees performing the task can identify practical hazards, workflow details, and control problems that may otherwise be missed.",
+  },
+  {
+    question: "Does this generator create an OSHA-approved JHA?",
+    answer:
+      "No. The generated document is a draft and must be reviewed against actual conditions and applicable requirements before use.",
+  },
+];
+
+const faqJsonLd = createFaqJsonLd(jhaFaqs);
 
 export const metadata: Metadata = {
   title: "JHA Generator",
@@ -39,6 +65,12 @@ export default function JhaGeneratorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd),
         }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
@@ -223,28 +255,7 @@ export default function JhaGeneratorPage() {
           </h2>
 
           <div className="mt-8 space-y-5">
-            {[
-              {
-                question: "Is the JHA generator free?",
-                answer:
-                  "Yes. It is free to use and supports downloadable TXT and PDF exports.",
-              },
-              {
-                question: "What is the difference between a JHA and a safety plan?",
-                answer:
-                  "A JHA focuses on the steps, hazards, and controls for a specific task. A safety plan usually covers broader project responsibilities, procedures, hazards, and emergency arrangements.",
-              },
-              {
-                question: "Should workers participate in the JHA?",
-                answer:
-                  "Worker participation is valuable because employees performing the task can identify practical hazards, workflow details, and control problems that may otherwise be missed.",
-              },
-              {
-                question: "Does this generator create an OSHA-approved JHA?",
-                answer:
-                  "No. The generated document is a draft and must be reviewed against actual conditions and applicable requirements before use.",
-              },
-            ].map((faq) => (
+            {jhaFaqs.map((faq) => (
               <article
                 key={faq.question}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
