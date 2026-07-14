@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SafetyPlanGenerator } from "@/features/safety-plan-generator/safety-plan-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
+import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "Safety Plan Generator",
@@ -18,6 +19,31 @@ const breadcrumbJsonLd = createBreadcrumbJsonLd([
   { name: "Tools", path: "/tools" },
   { name: "Safety Plan Generator", path: "/tools/safety-plan-generator" },
 ]);
+
+const safetyPlanFaqs = [
+  {
+    question: "Is this safety plan generator free?",
+    answer:
+      "Yes. The generator is free to use and currently supports TXT and PDF exports.",
+  },
+  {
+    question: "Does this generator create an OSHA-approved safety plan?",
+    answer:
+      "No. OSHA does not approve documents created by this website. The generated plan is a draft that must be reviewed against current requirements and actual jobsite conditions.",
+  },
+  {
+    question: "Can subcontractors use the generated plan?",
+    answer:
+      "Yes, but each contractor and subcontractor should review responsibilities, hazards, controls, training, and project-specific requirements before relying on it.",
+  },
+  {
+    question: "Should one safety plan be used for every project?",
+    answer:
+      "No. A plan should be tailored to the project, trade, site conditions, workforce, equipment, hazards, and applicable requirements.",
+  },
+];
+
+const faqJsonLd = createFaqJsonLd(safetyPlanFaqs);
 
 export const metadata: Metadata = {
   title: "Safety Plan Generator",
@@ -39,6 +65,12 @@ export default function SafetyPlanGeneratorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd),
         }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
@@ -223,28 +255,7 @@ export default function SafetyPlanGeneratorPage() {
           </h2>
 
           <div className="mt-8 space-y-5">
-            {[
-              {
-                question: "Is this safety plan generator free?",
-                answer:
-                  "Yes. The generator is free to use and currently supports TXT and PDF exports.",
-              },
-              {
-                question: "Does this generator create an OSHA-approved safety plan?",
-                answer:
-                  "No. OSHA does not approve documents created by this website. The generated plan is a draft that must be reviewed against current requirements and actual jobsite conditions.",
-              },
-              {
-                question: "Can subcontractors use the generated plan?",
-                answer:
-                  "Yes, but each contractor and subcontractor should review responsibilities, hazards, controls, training, and project-specific requirements before relying on it.",
-              },
-              {
-                question: "Should one safety plan be used for every project?",
-                answer:
-                  "No. A plan should be tailored to the project, trade, site conditions, workforce, equipment, hazards, and applicable requirements.",
-              },
-            ].map((faq) => (
+            {safetyPlanFaqs.map((faq) => (
               <article
                 key={faq.question}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
