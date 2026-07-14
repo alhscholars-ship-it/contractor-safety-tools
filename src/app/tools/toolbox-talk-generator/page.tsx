@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ToolboxTalkGenerator } from "@/features/toolbox-talk-generator/toolbox-talk-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
+import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "Toolbox Talk Generator",
@@ -18,6 +19,31 @@ const breadcrumbJsonLd = createBreadcrumbJsonLd([
   { name: "Tools", path: "/tools" },
   { name: "Toolbox Talk Generator", path: "/tools/toolbox-talk-generator" },
 ]);
+
+const toolboxTalkFaqs = [
+  {
+    question: "Is the toolbox talk generator free?",
+    answer:
+      "Yes. It is free to use and supports TXT and PDF exports.",
+  },
+  {
+    question: "How long should a toolbox talk be?",
+    answer:
+      "There is no universal duration. It should be long enough to explain the hazard, controls, worker responsibilities, and questions without becoming unfocused.",
+  },
+  {
+    question: "Does a toolbox talk count as required training?",
+    answer:
+      "Not automatically. Required training must meet the applicable standard, employer program, subject-matter, documentation, and competency requirements.",
+  },
+  {
+    question: "Should toolbox talks be documented?",
+    answer:
+      "Documentation is commonly useful for recording the topic, date, leader, attendees, questions, and follow-up actions, subject to company and project requirements.",
+  },
+];
+
+const faqJsonLd = createFaqJsonLd(toolboxTalkFaqs);
 
 export const metadata: Metadata = {
   title: "Toolbox Talk Generator",
@@ -39,6 +65,12 @@ export default function ToolboxTalkGeneratorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd),
         }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
@@ -222,28 +254,7 @@ export default function ToolboxTalkGeneratorPage() {
           </h2>
 
           <div className="mt-8 space-y-5">
-            {[
-              {
-                question: "Is the toolbox talk generator free?",
-                answer:
-                  "Yes. It is free to use and supports TXT and PDF exports.",
-              },
-              {
-                question: "How long should a toolbox talk be?",
-                answer:
-                  "There is no universal duration. It should be long enough to explain the hazard, controls, worker responsibilities, and questions without becoming unfocused.",
-              },
-              {
-                question: "Does a toolbox talk count as required training?",
-                answer:
-                  "Not automatically. Required training must meet the applicable standard, employer program, subject-matter, documentation, and competency requirements.",
-              },
-              {
-                question: "Should toolbox talks be documented?",
-                answer:
-                  "Documentation is commonly useful for recording the topic, date, leader, attendees, questions, and follow-up actions, subject to company and project requirements.",
-              },
-            ].map((faq) => (
+            {toolboxTalkFaqs.map((faq) => (
               <article
                 key={faq.question}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
