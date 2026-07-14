@@ -71,4 +71,18 @@ export const tools: ToolDefinition[] = [
       "job safety analysis generator",
     ],
   },
+  {
+    slug: "ppe-checklist-generator",
+    name: "PPE Checklist Generator",
+    shortDescription:
+      "Create task-specific PPE checklists with hazards, required equipment, and pre-use inspection items.",
+    category: "Inspections",
+    href: "/tools/ppe-checklist-generator",
+    keywords: [
+      "PPE checklist generator",
+      "construction PPE checklist",
+      "jobsite PPE inspection",
+      "personal protective equipment checklist",
+    ],
+  },
 ];
