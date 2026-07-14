@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PpeChecklistGenerator } from "@/features/ppe-checklist-generator/ppe-checklist-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
+import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
 
 const toolJsonLd = createToolJsonLd({
   name: "PPE Checklist Generator",
@@ -18,6 +19,31 @@ const breadcrumbJsonLd = createBreadcrumbJsonLd([
   { name: "Tools", path: "/tools" },
   { name: "PPE Checklist Generator", path: "/tools/ppe-checklist-generator" },
 ]);
+
+const ppeChecklistFaqs = [
+  {
+    question: "Is the PPE checklist generator free?",
+    answer:
+      "Yes. It is free to use and supports downloadable TXT and PDF exports.",
+  },
+  {
+    question: "Does this tool determine which PPE is required?",
+    answer:
+      "No. PPE selection should follow a proper hazard assessment, applicable standards, manufacturer instructions, and qualified review.",
+  },
+  {
+    question: "Should damaged PPE be used temporarily?",
+    answer:
+      "Damaged, defective, contaminated, expired, or otherwise unsuitable PPE should be removed from service according to employer and manufacturer requirements.",
+  },
+  {
+    question: "Can one PPE checklist be used for every task?",
+    answer:
+      "No. PPE requirements and inspection criteria should be tailored to the task, hazards, work environment, equipment, and workforce.",
+  },
+];
+
+const faqJsonLd = createFaqJsonLd(ppeChecklistFaqs);
 
 export const metadata: Metadata = {
   title: "PPE Checklist Generator",
@@ -39,6 +65,12 @@ export default function PpeChecklistGeneratorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd),
         }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
@@ -225,28 +257,7 @@ export default function PpeChecklistGeneratorPage() {
           </h2>
 
           <div className="mt-8 space-y-5">
-            {[
-              {
-                question: "Is the PPE checklist generator free?",
-                answer:
-                  "Yes. It is free to use and supports downloadable TXT and PDF exports.",
-              },
-              {
-                question: "Does this tool determine which PPE is required?",
-                answer:
-                  "No. PPE selection should follow a proper hazard assessment, applicable standards, manufacturer instructions, and qualified review.",
-              },
-              {
-                question: "Should damaged PPE be used temporarily?",
-                answer:
-                  "Damaged, defective, contaminated, expired, or otherwise unsuitable PPE should be removed from service according to employer and manufacturer requirements.",
-              },
-              {
-                question: "Can one PPE checklist be used for every task?",
-                answer:
-                  "No. PPE requirements and inspection criteria should be tailored to the task, hazards, work environment, equipment, and workforce.",
-              },
-            ].map((faq) => (
+            {ppeChecklistFaqs.map((faq) => (
               <article
                 key={faq.question}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
