@@ -58,6 +58,20 @@ export const tools: ToolDefinition[] = [
     ],
   },
   {
+    slug: "near-miss-report-generator",
+    name: "Near Miss Report Generator",
+    shortDescription:
+      "Create a structured jobsite near-miss report with potential outcomes, contributing factors, corrective actions, and follow-up ownership.",
+    category: "Incident Reports",
+    href: "/tools/near-miss-report-generator",
+    keywords: [
+      "near miss report generator",
+      "near miss report template",
+      "construction near miss form",
+      "jobsite near miss report",
+    ],
+  },
+  {
     slug: "jha-generator",
     name: "JHA Generator",
     shortDescription:
