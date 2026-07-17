@@ -23,7 +23,7 @@ export function SiteFooter() {
             incident reports, job hazard analyses, and PPE checklists.
           </p>
 
-          <p className="mt-4 max-w-xl text-xs leading-5 text-slate-500">
+          <p className="mt-4 max-w-xl text-xs leading-5 text-slate-400">
             Generated documents are informational drafts only and do not replace
             qualified safety, legal, regulatory, medical, or project-specific
             guidance.
@@ -51,7 +51,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} Contractor Safety Form Tools.
           </p>

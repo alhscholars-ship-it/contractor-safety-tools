@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "node --import tsx --test scripts/tests/*.test.mjs",
-    "check": "pnpm test && pnpm lint && pnpm exec tsc --noEmit && pnpm build"
+    "check": "pnpm test && pnpm lint && pnpm exec tsc --noEmit && pnpm build",
+    "audit:a11y": "node scripts/audits/accessibility-audit.mjs"
   },
   "dependencies": {
     "jspdf": "^4.2.1",
