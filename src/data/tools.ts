@@ -157,6 +157,20 @@ export const tools: ToolDefinition[] = [
     ],
   },
   {
+    slug: "scaffold-inspection-generator",
+    name: "Scaffold Inspection Checklist Generator",
+    shortDescription:
+      "Create a scaffold inspection record covering foundations, frames, bracing, platforms, access, guardrails, fall protection, loading, defects, and corrective actions.",
+    category: "Inspections",
+    href: "/tools/scaffold-inspection-generator",
+    keywords: [
+      "scaffold inspection checklist",
+      "scaffolding safety inspection form",
+      "construction scaffold inspection checklist",
+      "scaffold competent person inspection",
+    ],
+  },
+  {
     slug: "ppe-checklist-generator",
     name: "PPE Checklist Generator",
     shortDescription:
