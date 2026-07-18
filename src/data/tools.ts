@@ -129,6 +129,20 @@ export const tools: ToolDefinition[] = [
     ],
   },
   {
+    slug: "first-aid-kit-inspection-generator",
+    name: "First Aid Kit Inspection Checklist Generator",
+    shortDescription:
+      "Create a workplace first aid kit inspection record covering accessibility, condition, inventory, expiration dates, deficiencies, and corrective actions.",
+    category: "Inspections",
+    href: "/tools/first-aid-kit-inspection-generator",
+    keywords: [
+      "first aid kit inspection checklist",
+      "workplace first aid kit checklist",
+      "first aid kit inspection form",
+      "construction first aid kit inspection",
+    ],
+  },
+  {
     slug: "ppe-checklist-generator",
     name: "PPE Checklist Generator",
     shortDescription:
