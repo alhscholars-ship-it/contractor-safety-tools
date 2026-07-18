@@ -2,6 +2,7 @@ export type ToolCategory =
   | "Safety Plans"
   | "Toolbox Talks"
   | "Inspections"
+  | "Energy Control"
   | "Incident Reports"
   | "Job Hazard Analysis";
 
@@ -83,6 +84,20 @@ export const tools: ToolDefinition[] = [
       "job hazard analysis template",
       "construction JHA",
       "job safety analysis generator",
+    ],
+  },
+  {
+    slug: "lockout-tagout-checklist-generator",
+    name: "Lockout Tagout Checklist Generator",
+    shortDescription:
+      "Create an equipment-specific LOTO checklist with energy sources, isolation points, shutdown, verification, and restoration steps.",
+    category: "Energy Control",
+    href: "/tools/lockout-tagout-checklist-generator",
+    keywords: [
+      "lockout tagout checklist generator",
+      "LOTO checklist template",
+      "energy isolation checklist",
+      "construction lockout tagout form",
     ],
   },
   {
