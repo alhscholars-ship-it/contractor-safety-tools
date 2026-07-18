@@ -115,6 +115,20 @@ export const tools: ToolDefinition[] = [
     ],
   },
   {
+    slug: "fire-extinguisher-inspection-generator",
+    name: "Fire Extinguisher Inspection Checklist Generator",
+    shortDescription:
+      "Create a portable fire extinguisher inspection record covering accessibility, pressure, safety components, physical condition, findings, and corrective actions.",
+    category: "Inspections",
+    href: "/tools/fire-extinguisher-inspection-generator",
+    keywords: [
+      "fire extinguisher inspection checklist",
+      "monthly fire extinguisher inspection form",
+      "fire extinguisher checklist generator",
+      "portable fire extinguisher inspection",
+    ],
+  },
+  {
     slug: "ppe-checklist-generator",
     name: "PPE Checklist Generator",
     shortDescription:
