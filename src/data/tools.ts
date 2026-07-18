@@ -101,6 +101,20 @@ export const tools: ToolDefinition[] = [
     ],
   },
   {
+    slug: "daily-jobsite-safety-inspection-generator",
+    name: "Daily Jobsite Safety Inspection Generator",
+    shortDescription:
+      "Create a daily construction safety inspection with work areas, observed hazards, corrective actions, responsible persons, and follow-up dates.",
+    category: "Inspections",
+    href: "/tools/daily-jobsite-safety-inspection-generator",
+    keywords: [
+      "daily jobsite safety inspection checklist",
+      "construction site inspection checklist",
+      "jobsite safety inspection form",
+      "daily construction safety checklist",
+    ],
+  },
+  {
     slug: "ppe-checklist-generator",
     name: "PPE Checklist Generator",
     shortDescription:
