@@ -143,6 +143,20 @@ export const tools: ToolDefinition[] = [
     ],
   },
   {
+    slug: "ladder-inspection-generator",
+    name: "Ladder Inspection Checklist Generator",
+    shortDescription:
+      "Create a ladder inspection record covering identification, duty rating, rails, rungs, feet, hardware, labels, setup, defects, and corrective actions.",
+    category: "Inspections",
+    href: "/tools/ladder-inspection-generator",
+    keywords: [
+      "ladder inspection checklist",
+      "ladder safety inspection form",
+      "construction ladder inspection checklist",
+      "portable ladder inspection form",
+    ],
+  },
+  {
     slug: "ppe-checklist-generator",
     name: "PPE Checklist Generator",
     shortDescription:
