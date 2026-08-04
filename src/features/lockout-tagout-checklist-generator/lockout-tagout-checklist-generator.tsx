@@ -291,8 +291,8 @@ export function LockoutTagoutChecklistGenerator() {
           </div>
         ) : (
           <p className="mt-4 text-sm leading-6 text-slate-300">
-            Form complete karke checklist generate karein. Generated result
-            yahan display hoga.
+            Complete the form and generate the checklist. The finished
+            lockout/tagout checklist will appear here.
           </p>
         )}
       </section>

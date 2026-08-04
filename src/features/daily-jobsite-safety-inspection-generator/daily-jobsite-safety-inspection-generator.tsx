@@ -296,8 +296,8 @@ export function DailyJobsiteSafetyInspectionGenerator() {
           </div>
         ) : (
           <p className="mt-4 text-sm leading-6 text-slate-300">
-            Form complete karke daily inspection generate karein. Generated
-            result yahan display hoga.
+            Complete the form and generate the inspection. The finished
+            daily jobsite inspection record will appear here.
           </p>
         )}
       </section>

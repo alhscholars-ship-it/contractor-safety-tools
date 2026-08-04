@@ -348,8 +348,8 @@ export function FirstAidKitInspectionGenerator() {
           </div>
         ) : (
           <p className="mt-4 text-sm leading-6 text-slate-300">
-            Form complete karke inspection generate karein. Generated result
-            yahan display hoga.
+            Complete the form and generate the inspection. The finished
+            first aid kit inspection record will appear here.
           </p>
         )}
       </section>
