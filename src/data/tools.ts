@@ -157,6 +157,20 @@ export const tools: ToolDefinition[] = [
     ],
   },
   {
+    slug: "excavation-inspection-generator",
+    name: "Excavation Inspection Checklist Generator",
+    shortDescription:
+      "Create an excavation inspection record covering soil classification, protective systems, access, utilities, water, atmospheric conditions, edge protection, findings, and corrective actions.",
+    category: "Inspections",
+    href: "/tools/excavation-inspection-generator",
+    keywords: [
+      "excavation inspection checklist",
+      "trench inspection checklist",
+      "construction excavation inspection form",
+      "excavation safety checklist generator",
+    ],
+  },
+  {
     slug: "scaffold-inspection-generator",
     name: "Scaffold Inspection Checklist Generator",
     shortDescription:

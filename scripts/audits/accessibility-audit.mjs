@@ -1,26 +1,80 @@
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
+import { readdir } from "node:fs/promises";
+import path from "node:path";
 
 const baseUrl = process.env.AUDIT_BASE_URL ?? "http://127.0.0.1:3000";
+const appDirectory = path.join(process.cwd(), "src/app");
+
+async function collectPageRoutes(directory, segments = []) {
+  const entries = await readdir(directory, {
+    withFileTypes: true,
+  });
+  const routes = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) {
+      if (
+        entry.name === "page.tsx" &&
+        segments.every(
+          (segment) =>
+            !segment.startsWith("[") &&
+            !segment.startsWith("@") &&
+            !segment.startsWith("_"),
+        )
+      ) {
+        routes.push(
+          segments.length === 0 ? "/" : `/${segments.join("/")}`,
+        );
+      }
+
+      continue;
+    }
+
+    if (
+      entry.name.startsWith("@") ||
+      entry.name.startsWith("_")
+    ) {
+      continue;
+    }
+
+    const nextSegments =
+      entry.name.startsWith("(") && entry.name.endsWith(")")
+        ? segments
+        : [...segments, entry.name];
+
+    routes.push(
+      ...(await collectPageRoutes(
+        path.join(directory, entry.name),
+        nextSegments,
+      )),
+    );
+  }
+
+  return routes;
+}
 
 const routes = [
-  "/",
-  "/tools",
-  "/about",
-  "/contact",
-  "/faq",
-  "/disclaimer",
-  "/privacy",
-  "/terms",
-  "/tools/safety-plan-generator",
-  "/tools/toolbox-talk-generator",
-  "/tools/incident-report-generator",
-  "/tools/jha-generator",
-  "/tools/ppe-checklist-generator",
-];
+  ...new Set(await collectPageRoutes(appDirectory)),
+].sort((left, right) => {
+  if (left === "/") {
+    return -1;
+  }
+
+  if (right === "/") {
+    return 1;
+  }
+
+  return left.localeCompare(right);
+});
+
+if (routes.length === 0) {
+  throw new Error("No physical application routes were found.");
+}
+
+console.log(`Auditing ${routes.length} physical routes.`);
 
 const browser = await chromium.launch({ headless: true });
-
 let failed = false;
 
 try {
@@ -40,14 +94,16 @@ try {
       timeout: 30000,
     });
 
-      await page.locator("body").waitFor({
-        state: "visible",
-        timeout: 10000,
-      });
+    await page.locator("body").waitFor({
+      state: "visible",
+      timeout: 10000,
+    });
 
     if (!response || !response.ok()) {
       failed = true;
-      console.error(`FAIL: ${route} returned ${response?.status() ?? "no response"}`);
+      console.error(
+        `FAIL: ${route} returned ${response?.status() ?? "no response"}`,
+      );
       await page.close();
       continue;
     }
@@ -69,7 +125,9 @@ try {
 
         for (const node of violation.nodes) {
           console.error(`    Target: ${node.target.join(", ")}`);
-          console.error(`    Summary: ${node.failureSummary ?? "No summary"}`);
+          console.error(
+            `    Summary: ${node.failureSummary ?? "No summary"}`,
+          );
         }
       }
     }

@@ -4,9 +4,9 @@ import { FormEvent, useMemo, useState } from "react";
 import { ExportPdfButton } from "@/components/export/export-pdf-button";
 import { ExportTextButton } from "@/components/export/export-text-button";
 import {
-  generateScaffoldInspection,
-  type ScaffoldInspectionResult,
-} from "./generate-scaffold-inspection";
+  generateExcavationInspection,
+  type ExcavationInspectionResult,
+} from "./generate-excavation-inspection";
 
 const splitLines = (value: string) =>
   value
@@ -14,80 +14,85 @@ const splitLines = (value: string) =>
     .map((item) => item.trim())
     .filter(Boolean);
 
-export function ScaffoldInspectionGenerator() {
+export function ExcavationInspectionGenerator() {
   const [companyName, setCompanyName] = useState("Summit Contractors");
   const [projectName, setProjectName] = useState(
-    "Central Tower Renovation",
+    "Central Utility Upgrade",
   );
-  const [inspectionDate, setInspectionDate] = useState("2026-07-17");
+  const [inspectionDate, setInspectionDate] = useState("2026-07-18");
   const [inspectorName, setInspectorName] = useState("Jordan Lee");
-  const [scaffoldId, setScaffoldId] = useState("SCF-018");
-  const [scaffoldType, setScaffoldType] = useState(
-    "Supported frame scaffold",
+  const [excavationId, setExcavationId] = useState("EXC-021");
+  const [excavationLocation, setExcavationLocation] = useState(
+    "North service corridor",
   );
-  const [scaffoldLocation, setScaffoldLocation] = useState(
-    "Building A east elevation",
-  );
+  const [excavationDepth, setExcavationDepth] = useState("8 feet");
+  const [soilClassification, setSoilClassification] =
+    useState("Type C soil");
   const [competentPerson, setCompetentPerson] =
     useState("Morgan Reed");
-  const [foundationCondition, setFoundationCondition] = useState(
-    "Base plates and mudsills are level, stable, and fully supported",
-  );
-  const [frameCondition, setFrameCondition] = useState(
-    "Frames, posts, uprights, and coupling pins are straight and secure",
-  );
-  const [bracingCondition, setBracingCondition] = useState(
-    "Cross braces and diagonal braces are installed and secured",
-  );
-  const [platformCondition, setPlatformCondition] = useState(
-    "Platforms are fully planked, secured, and free from damage",
-  );
-  const [accessCondition, setAccessCondition] = useState(
-    "Access ladder is secured and extends to the platform landing",
-  );
-  const [guardrailCondition, setGuardrailCondition] = useState(
-    "Toprails, midrails, and toeboards are installed where required",
-  );
-  const [fallProtectionCondition, setFallProtectionCondition] =
+  const [protectiveSystemCondition, setProtectiveSystemCondition] =
     useState(
-      "Required fall protection systems are available and properly configured",
+      "Trench shield is properly installed and suitable for the excavation depth",
     );
-  const [tieInCondition, setTieInCondition] = useState(
-    "Tie-ins and anchorage points are installed at required locations",
+  const [accessEgressCondition, setAccessEgressCondition] = useState(
+    "Secured ladder is positioned within the required travel distance",
   );
-  const [loadCondition, setLoadCondition] = useState(
-    "Materials remain within the scaffold load rating and are evenly distributed",
+  const [spoilPileCondition, setSpoilPileCondition] = useState(
+    "Spoil piles and materials are maintained at least two feet from the edge",
   );
   const [
-    electricalClearanceCondition,
-    setElectricalClearanceCondition,
+    undergroundUtilityCondition,
+    setUndergroundUtilityCondition,
   ] = useState(
-    "Required clearance from energized electrical conductors is maintained",
+    "Known utilities are identified, marked, exposed safely, and protected",
+  );
+  const [
+    waterAccumulationCondition,
+    setWaterAccumulationCondition,
+  ] = useState(
+    "No hazardous water accumulation is present and drainage controls are operational",
+  );
+  const [atmosphericCondition, setAtmosphericCondition] = useState(
+    "Atmospheric testing completed with acceptable readings before entry",
+  );
+  const [adjacentStructureCondition, setAdjacentStructureCondition] =
+    useState(
+      "Nearby foundations and structures show no evidence of instability",
+    );
+  const [mobileEquipmentCondition, setMobileEquipmentCondition] =
+    useState(
+      "Traffic controls and warning systems protect employees from mobile equipment",
+    );
+  const [barricadeCondition, setBarricadeCondition] = useState(
+    "Barricades and warning markers are installed around exposed excavation edges",
   );
   const [weatherCondition, setWeatherCondition] = useState(
-    "Weather and surface conditions are suitable for scaffold use",
+    "Weather and soil conditions remain suitable for continued work",
   );
   const [inspectionFindings, setInspectionFindings] = useState(
     [
-      "Remove loose material from the second-level platform",
-      "Replace one damaged access ladder rung",
+      "Replace one damaged barricade panel",
+      "Remove loose material from the trench shield access point",
     ].join("\n"),
   );
   const [correctiveActions, setCorrectiveActions] = useState(
     [
-      "Remove loose material before work resumes",
-      "Restrict access until the damaged rung is replaced",
+      "Replace the damaged barricade before work continues",
+      "Clear the access point and verify safe ladder access",
     ].join("\n"),
   );
   const [responsiblePersons, setResponsiblePersons] = useState(
-    ["Site superintendent", "Scaffold competent person"].join("\n"),
+    [
+      "Site superintendent",
+      "Excavation competent person",
+    ].join("\n"),
   );
   const [nextInspectionDate, setNextInspectionDate] =
-    useState("2026-07-18");
+    useState("2026-07-19");
 
   const [error, setError] = useState("");
   const [result, setResult] =
-    useState<ScaffoldInspectionResult | null>(null);
+    useState<ExcavationInspectionResult | null>(null);
 
   const previewInput = useMemo(
     () => ({
@@ -95,20 +100,20 @@ export function ScaffoldInspectionGenerator() {
       projectName,
       inspectionDate,
       inspectorName,
-      scaffoldId,
-      scaffoldType,
-      scaffoldLocation,
+      excavationId,
+      excavationLocation,
+      excavationDepth,
+      soilClassification,
       competentPerson,
-      foundationCondition,
-      frameCondition,
-      bracingCondition,
-      platformCondition,
-      accessCondition,
-      guardrailCondition,
-      fallProtectionCondition,
-      tieInCondition,
-      loadCondition,
-      electricalClearanceCondition,
+      protectiveSystemCondition,
+      accessEgressCondition,
+      spoilPileCondition,
+      undergroundUtilityCondition,
+      waterAccumulationCondition,
+      atmosphericCondition,
+      adjacentStructureCondition,
+      mobileEquipmentCondition,
+      barricadeCondition,
       weatherCondition,
       inspectionFindings: splitLines(inspectionFindings),
       correctiveActions: splitLines(correctiveActions),
@@ -116,28 +121,28 @@ export function ScaffoldInspectionGenerator() {
       nextInspectionDate,
     }),
     [
-      accessCondition,
-      bracingCondition,
+      accessEgressCondition,
+      adjacentStructureCondition,
+      atmosphericCondition,
+      barricadeCondition,
       companyName,
       competentPerson,
       correctiveActions,
-      electricalClearanceCondition,
-      fallProtectionCondition,
-      foundationCondition,
-      frameCondition,
-      guardrailCondition,
+      excavationDepth,
+      excavationId,
+      excavationLocation,
       inspectionDate,
       inspectionFindings,
       inspectorName,
-      loadCondition,
+      mobileEquipmentCondition,
       nextInspectionDate,
-      platformCondition,
       projectName,
+      protectiveSystemCondition,
       responsiblePersons,
-      scaffoldId,
-      scaffoldLocation,
-      scaffoldType,
-      tieInCondition,
+      soilClassification,
+      spoilPileCondition,
+      undergroundUtilityCondition,
+      waterAccumulationCondition,
       weatherCondition,
     ],
   );
@@ -146,7 +151,7 @@ export function ScaffoldInspectionGenerator() {
     event.preventDefault();
 
     try {
-      const generated = generateScaffoldInspection(previewInput);
+      const generated = generateExcavationInspection(previewInput);
 
       setResult(generated);
       setError("");
@@ -155,7 +160,7 @@ export function ScaffoldInspectionGenerator() {
       setError(
         caughtError instanceof Error
           ? caughtError.message
-          : "Unable to generate the scaffold inspection.",
+          : "Unable to generate the excavation inspection.",
       );
     }
   }
@@ -186,21 +191,27 @@ export function ScaffoldInspectionGenerator() {
       type: "text",
     },
     {
-      label: "Scaffold ID or reference number",
-      value: scaffoldId,
-      setter: setScaffoldId,
+      label: "Excavation ID or reference number",
+      value: excavationId,
+      setter: setExcavationId,
       type: "text",
     },
     {
-      label: "Scaffold type",
-      value: scaffoldType,
-      setter: setScaffoldType,
+      label: "Excavation location",
+      value: excavationLocation,
+      setter: setExcavationLocation,
       type: "text",
     },
     {
-      label: "Scaffold location",
-      value: scaffoldLocation,
-      setter: setScaffoldLocation,
+      label: "Excavation depth",
+      value: excavationDepth,
+      setter: setExcavationDepth,
+      type: "text",
+    },
+    {
+      label: "Soil classification",
+      value: soilClassification,
+      setter: setSoilClassification,
       type: "text",
     },
     {
@@ -210,67 +221,61 @@ export function ScaffoldInspectionGenerator() {
       type: "text",
     },
     {
-      label: "Foundation, base plates, and mudsills",
-      value: foundationCondition,
-      setter: setFoundationCondition,
+      label: "Protective system condition",
+      value: protectiveSystemCondition,
+      setter: setProtectiveSystemCondition,
       type: "text",
     },
     {
-      label: "Frames, posts, and uprights",
-      value: frameCondition,
-      setter: setFrameCondition,
+      label: "Safe access and egress",
+      value: accessEgressCondition,
+      setter: setAccessEgressCondition,
       type: "text",
     },
     {
-      label: "Cross braces and structural bracing",
-      value: bracingCondition,
-      setter: setBracingCondition,
+      label: "Spoil piles, materials, and equipment setback",
+      value: spoilPileCondition,
+      setter: setSpoilPileCondition,
       type: "text",
     },
     {
-      label: "Platforms and planking",
-      value: platformCondition,
-      setter: setPlatformCondition,
+      label: "Underground utility identification and protection",
+      value: undergroundUtilityCondition,
+      setter: setUndergroundUtilityCondition,
       type: "text",
     },
     {
-      label: "Access ladders and entry points",
-      value: accessCondition,
-      setter: setAccessCondition,
+      label: "Water accumulation and drainage controls",
+      value: waterAccumulationCondition,
+      setter: setWaterAccumulationCondition,
       type: "text",
     },
     {
-      label: "Guardrails, midrails, and toeboards",
-      value: guardrailCondition,
-      setter: setGuardrailCondition,
+      label: "Atmospheric testing and hazardous atmospheres",
+      value: atmosphericCondition,
+      setter: setAtmosphericCondition,
       type: "text",
     },
     {
-      label: "Personal fall protection",
-      value: fallProtectionCondition,
-      setter: setFallProtectionCondition,
+      label: "Adjacent structures and stability",
+      value: adjacentStructureCondition,
+      setter: setAdjacentStructureCondition,
       type: "text",
     },
     {
-      label: "Tie-ins, guys, and anchorage",
-      value: tieInCondition,
-      setter: setTieInCondition,
+      label: "Mobile equipment and traffic controls",
+      value: mobileEquipmentCondition,
+      setter: setMobileEquipmentCondition,
       type: "text",
     },
     {
-      label: "Load capacity and stored materials",
-      value: loadCondition,
-      setter: setLoadCondition,
+      label: "Barricades and edge protection",
+      value: barricadeCondition,
+      setter: setBarricadeCondition,
       type: "text",
     },
     {
-      label: "Electrical clearance",
-      value: electricalClearanceCondition,
-      setter: setElectricalClearanceCondition,
-      type: "text",
-    },
-    {
-      label: "Weather and environmental conditions",
+      label: "Weather and changing site conditions",
       value: weatherCondition,
       setter: setWeatherCondition,
       type: "text",
@@ -317,13 +322,13 @@ export function ScaffoldInspectionGenerator() {
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
         <h2 className="text-2xl font-black">
-          Create your scaffold inspection
+          Create your excavation inspection
         </h2>
 
         <p className="mt-2 text-sm leading-6 text-slate-300">
-          Enter the scaffold identity, competent-person details,
-          structural condition, access controls, fall protection,
-          inspection findings, corrective actions, and follow-up date.
+          Enter the excavation details, competent-person information,
+          protective systems, access controls, observed conditions,
+          corrective actions, and follow-up date.
         </p>
 
         <div className="mt-6 grid gap-4">
@@ -334,6 +339,7 @@ export function ScaffoldInspectionGenerator() {
               </span>
 
               <input
+                required
                 type={field.type}
                 value={field.value}
                 onChange={(event) => field.setter(event.target.value)}
@@ -349,6 +355,7 @@ export function ScaffoldInspectionGenerator() {
               </span>
 
               <textarea
+                required
                 value={field.value}
                 onChange={(event) => field.setter(event.target.value)}
                 rows={field.rows}
@@ -359,7 +366,10 @@ export function ScaffoldInspectionGenerator() {
         </div>
 
         {error ? (
-          <p className="mt-4 rounded-2xl border border-red-400/30 bg-red-400/10 p-4 text-sm text-red-100">
+          <p
+            aria-live="polite"
+            className="mt-4 rounded-2xl border border-red-400/30 bg-red-400/10 p-4 text-sm text-red-100"
+          >
             {error}
           </p>
         ) : null}
@@ -368,13 +378,16 @@ export function ScaffoldInspectionGenerator() {
           type="submit"
           className="mt-6 w-full rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
         >
-          Generate Scaffold Inspection
+          Generate Excavation Inspection
         </button>
       </form>
 
-      <section className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+      <section
+        aria-live="polite"
+        className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+      >
         <h2 className="text-2xl font-black">
-          Generated scaffold inspection
+          Generated excavation inspection
         </h2>
 
         {result ? (
@@ -414,7 +427,7 @@ export function ScaffoldInspectionGenerator() {
 
               <div className="flex flex-wrap gap-2">
                 <ExportTextButton
-                  fileName="scaffold-inspection-checklist.txt"
+                  fileName="excavation-inspection-checklist.txt"
                   title={result.title}
                   summary={result.summary}
                   sections={exportSections}
@@ -422,7 +435,7 @@ export function ScaffoldInspectionGenerator() {
                 />
 
                 <ExportPdfButton
-                  fileName="scaffold-inspection-checklist.pdf"
+                  fileName="excavation-inspection-checklist.pdf"
                   title={result.title}
                   summary={result.summary}
                   sections={exportSections}
@@ -434,7 +447,7 @@ export function ScaffoldInspectionGenerator() {
         ) : (
           <p className="mt-4 text-sm leading-6 text-slate-300">
             Complete the form and generate the inspection. The finished
-              scaffold inspection record will appear here.
+            excavation inspection record will appear here.
           </p>
         )}
       </section>

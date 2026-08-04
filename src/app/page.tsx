@@ -44,10 +44,10 @@ export default function Home() {
               Explore Free Tools
             </Link>
             <Link
-              href="/templates"
+              href="/faq"
               className="rounded-full border border-white/20 px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10"
             >
-              Browse Safety Templates
+              How the Tools Work
             </Link>
           </div>
         </div>
