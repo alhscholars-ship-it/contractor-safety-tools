@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -51,6 +52,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SiteHeader />
+
         {children}
 
         <script
