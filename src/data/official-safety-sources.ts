@@ -5,6 +5,20 @@ export type OfficialSafetySource = {
 };
 
 export const officialSafetySourcesByTool = {
+  "trir-calculator": [
+    {
+      title: "OSHA Injury and Illness Recordkeeping",
+      url: "https://www.osha.gov/recordkeeping",
+      description:
+        "Official OSHA recordkeeping resources, forms, requirements, and reporting guidance for workplace injuries and illnesses.",
+    },
+    {
+      title: "OSHA Incidence Rate Formula Clarification",
+      url: "https://www.osha.gov/laws-regs/standardinterpretations/2016-08-23",
+      description:
+        "Official OSHA clarification of the incidence-rate formula, employee-hours denominator, and standardized 200,000-hour base.",
+    },
+  ],
   "safety-plan-generator": [
     {
       title: "OSHA Recommended Safety and Health Practices",

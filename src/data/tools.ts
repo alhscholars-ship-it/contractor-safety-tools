@@ -4,7 +4,8 @@ export type ToolCategory =
   | "Inspections"
   | "Energy Control"
   | "Incident Reports"
-  | "Job Hazard Analysis";
+  | "Job Hazard Analysis"
+  | "Safety Calculators";
 
 export type ToolDefinition = {
   slug: string;
@@ -16,6 +17,20 @@ export type ToolDefinition = {
 };
 
 export const tools: ToolDefinition[] = [
+  {
+    slug: "trir-calculator",
+    name: "TRIR Calculator",
+    shortDescription:
+      "Calculate total recordable incident rate from recordable cases and employee hours worked using the standardized 200,000-hour base.",
+    category: "Safety Calculators",
+    href: "/tools/trir-calculator",
+    keywords: [
+      "TRIR calculator",
+      "total recordable incident rate calculator",
+      "OSHA incident rate calculator",
+      "recordable incident rate formula",
+    ],
+  },
   {
     slug: "safety-plan-generator",
     name: "Safety Plan Generator",
