@@ -18,6 +18,20 @@ export type ToolDefinition = {
 
 export const tools: ToolDefinition[] = [
   {
+    slug: "risk-matrix-calculator",
+    name: "Risk Matrix Calculator",
+    shortDescription:
+      "Compare initial and residual hazard risk with a transparent 5 by 5 likelihood and severity model.",
+    category: "Safety Calculators",
+    href: "/tools/risk-matrix-calculator",
+    keywords: [
+      "risk matrix calculator",
+      "5x5 risk matrix",
+      "likelihood severity calculator",
+      "workplace risk assessment calculator",
+    ],
+  },
+  {
     slug: "severity-rate-calculator",
     name: "Severity Rate Calculator",
     shortDescription:

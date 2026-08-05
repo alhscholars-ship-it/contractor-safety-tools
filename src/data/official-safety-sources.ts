@@ -5,6 +5,20 @@ export type OfficialSafetySource = {
 };
 
 export const officialSafetySourcesByTool = {
+  "risk-matrix-calculator": [
+    {
+      title: "OSHA Hazard Identification and Assessment",
+      url: "https://www.osha.gov/safety-management/hazard-identification",
+      description:
+        "Official OSHA guidance for evaluating hazard severity, likelihood, exposure, interim controls, and control priorities.",
+    },
+    {
+      title: "OSHA Hazard Prevention and Control",
+      url: "https://www.osha.gov/safety-management/hazard-prevention",
+      description:
+        "Official OSHA guidance for selecting controls through the hierarchy of controls and verifying that controls remain effective.",
+    },
+  ],
   "severity-rate-calculator": [
     {
       title: "OSHA Technical Manual — Back Disorders and Injuries",
