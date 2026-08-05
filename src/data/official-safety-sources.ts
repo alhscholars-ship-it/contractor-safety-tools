@@ -5,6 +5,20 @@ export type OfficialSafetySource = {
 };
 
 export const officialSafetySourcesByTool = {
+  "severity-rate-calculator": [
+    {
+      title: "OSHA Technical Manual — Back Disorders and Injuries",
+      url: "https://www.osha.gov/otm/section-7-ergonomics/chapter-1",
+      description:
+        "Official OSHA technical guidance describing severity rate as a normalized calculation using days away or restricted days in the numerator.",
+    },
+    {
+      title: "OSHA 1904.7 — General Recording Criteria",
+      url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1904/1904.7",
+      description:
+        "Official OSHA requirements for recording and counting days away from work and restricted-work or job-transfer days.",
+    },
+  ],
   "dart-rate-calculator": [
     {
       title: "OSHA Injury and Illness Recordkeeping",

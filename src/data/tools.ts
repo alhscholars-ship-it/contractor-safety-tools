@@ -18,6 +18,20 @@ export type ToolDefinition = {
 
 export const tools: ToolDefinition[] = [
   {
+    slug: "severity-rate-calculator",
+    name: "Severity Rate Calculator",
+    shortDescription:
+      "Calculate a normalized severity rate from days away, restricted or transferred days, and employee hours worked.",
+    category: "Safety Calculators",
+    href: "/tools/severity-rate-calculator",
+    keywords: [
+      "severity rate calculator",
+      "safety severity rate calculator",
+      "lost workday severity rate",
+      "OSHA severity rate formula",
+    ],
+  },
+  {
     slug: "dart-rate-calculator",
     name: "DART Rate Calculator",
     shortDescription:
