@@ -18,6 +18,20 @@ export type ToolDefinition = {
 
 export const tools: ToolDefinition[] = [
   {
+    slug: "dart-rate-calculator",
+    name: "DART Rate Calculator",
+    shortDescription:
+      "Calculate the days away, restricted, or transferred rate from qualifying case counts and employee hours worked.",
+    category: "Safety Calculators",
+    href: "/tools/dart-rate-calculator",
+    keywords: [
+      "DART rate calculator",
+      "OSHA DART calculator",
+      "days away restricted transferred rate",
+      "DART rate formula",
+    ],
+  },
+  {
     slug: "trir-calculator",
     name: "TRIR Calculator",
     shortDescription:

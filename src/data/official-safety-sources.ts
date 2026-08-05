@@ -5,6 +5,20 @@ export type OfficialSafetySource = {
 };
 
 export const officialSafetySourcesByTool = {
+  "dart-rate-calculator": [
+    {
+      title: "OSHA Injury and Illness Recordkeeping",
+      url: "https://www.osha.gov/recordkeeping",
+      description:
+        "Official OSHA recordkeeping resources, forms, requirements, and reporting guidance for workplace injuries and illnesses.",
+    },
+    {
+      title: "OSHA Field Operations Manual — DART Rate",
+      url: "https://www.osha.gov/fom/chapter-3",
+      description:
+        "Official OSHA guidance explaining DART case categories, the incidence-rate calculation, and the standardized 200,000-hour base.",
+    },
+  ],
   "trir-calculator": [
     {
       title: "OSHA Injury and Illness Recordkeeping",
