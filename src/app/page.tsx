@@ -30,11 +30,12 @@ export default function Home() {
             Contractor Safety Form Tools
           </p>
           <h1 className="text-4xl font-black tracking-tight sm:text-6xl">
-            OSHA-aligned safety forms and jobsite compliance tools for contractors.
+            Contractor safety forms and jobsite documentation tools.
           </h1>
           <p className="mt-6 text-lg leading-8 text-slate-300">
-            Create safety plans, toolbox talks, inspection checklists, incident reports,
-            and jobsite documentation faster with professional contractor-focused tools.
+            Create safety plans, toolbox talks, inspection checklists, incident
+            and near-miss reports, and structured jobsite documentation with
+            practical contractor-focused tools.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link

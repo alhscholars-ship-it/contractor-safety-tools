@@ -5,7 +5,7 @@ import { tools } from "@/data/tools";
 export const metadata: Metadata = {
   title: "Free Contractor Safety Tools",
   description:
-    "Browse free contractor safety tools, OSHA-aligned form generators, toolbox talk templates, inspection checklists, and incident report helpers.",
+    "Browse free contractor safety form generators, toolbox talk templates, inspection checklists, reports, and focused official-source references.",
   alternates: {
     canonical: "/tools",
   },
@@ -23,8 +23,9 @@ export default function ToolsPage() {
             Contractor safety form generators and jobsite documentation tools.
           </h1>
           <p className="mt-6 text-lg leading-8 text-slate-300">
-            Start with practical safety plans, toolbox talks, and incident report tools
-            designed for small contractors and construction teams.
+            Browse practical generators for planning, inspections,
+            reporting, hazard analysis, energy control, PPE, and jobsite
+            documentation.
           </p>
         </div>
 

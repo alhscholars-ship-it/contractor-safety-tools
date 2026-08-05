@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Contractor Safety Form Tools",
   description:
-    "Learn how Contractor Safety Form Tools helps contractors create practical safety plans, toolbox talks, incident reports, JHAs, and PPE checklists.",
+    "Learn how Contractor Safety Form Tools provides browser-based safety documentation generators, inspections, reports, primary references, and transparent limitations.",
   alternates: {
     canonical: "/about",
   },
@@ -38,9 +38,11 @@ export default function AboutPage() {
           <section>
             <h2 className="text-2xl font-black text-white">What we provide</h2>
             <p className="mt-3">
-              Our tools help users draft safety plans, toolbox talks, incident
-              reports, job hazard analyses, and PPE checklists. Generated
-              documents can be reviewed, adapted, and exported as TXT or PDF.
+              Our catalog covers safety plans, toolbox talks, incident and
+              near-miss reports, job hazard analyses, lockout/tagout, PPE, and
+              inspection workflows for jobsites, ladders, scaffolds,
+              excavations, fire extinguishers, and first aid kits. Generated
+              drafts can be reviewed, adapted, and exported as TXT or PDF.
             </p>
           </section>
 

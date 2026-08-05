@@ -20,8 +20,8 @@ export function SiteFooter() {
           </Link>
 
           <p className="mt-3 max-w-xl text-sm leading-6 text-slate-400">
-            Free browser-based tools for contractor safety plans, toolbox talks,
-            incident reports, job hazard analyses, and PPE checklists.
+            Free browser-based contractor safety forms, inspection
+            checklists, reports, and structured jobsite documentation tools.
           </p>
 
           <p className="mt-4 max-w-xl text-xs leading-5 text-slate-400">

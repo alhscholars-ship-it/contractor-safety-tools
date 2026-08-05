@@ -9,8 +9,7 @@ export const metadata: Metadata = {
     default: "Contractor Safety Form Tools",
     template: "%s | Contractor Safety Form Tools",
   },
-  description:
-    "Free OSHA-aligned safety form generators, contractor checklists, toolbox talks, incident reports, and jobsite safety templates.",
+  description: siteConfig.description,
   metadataBase: new URL("https://contractorsafetytools.com"),
   alternates: {
     canonical: "/",

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Read the Contractor Safety Form Tools privacy policy covering browser-based processing, cookies, analytics, third-party services, and user rights.",
+    "Read how Contractor Safety Form Tools processes generator input in the browser, creates downloads, handles technical requests, and links to external services.",
   alternates: {
     canonical: "/privacy",
   },
@@ -14,7 +14,10 @@ export default function PrivacyPolicyPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <section className="mx-auto w-full max-w-4xl px-6 py-20">
-        <Link href="/" className="text-sm font-semibold text-emerald-300">
+        <Link
+          href="/"
+          className="text-sm font-semibold text-emerald-300"
+        >
           ← Back to home
         </Link>
 
@@ -28,58 +31,75 @@ export default function PrivacyPolicyPage() {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-slate-300">
-            This policy explains how Contractor Safety Form Tools handles
-            information when you use this website.
+            This policy describes the current application&apos;s data flow,
+            browser-based document generation, downloads, technical requests,
+            and external links.
           </p>
         </div>
 
         <div className="mt-12 space-y-8 text-base leading-8 text-slate-300">
           <section>
             <h2 className="text-2xl font-black text-white">
-              Information entered into tools
+              Generator input processing
             </h2>
+
             <p className="mt-3">
-              Tool inputs are intended to be processed in your browser for the
-              purpose of generating safety documentation. Users should avoid
-              entering confidential, sensitive, medical, financial, or legally
-              protected information unless they are authorized to do so.
+              Tool input is processed in your browser to create a document
+              draft. The current application has no user accounts,
+              form-submission API, or application database that receives
+              generator entries.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-black text-white">
-              Automatically collected information
+              TXT and PDF downloads
             </h2>
+
             <p className="mt-3">
-              Like most websites, technical information may be collected
-              automatically, including browser type, device information,
-              approximate location, referring pages, pages visited, and basic
-              usage events. This information may be used for security,
-              performance, troubleshooting, and product improvement.
+              TXT and PDF exports are generated through the browser download
+              process. After a file is saved, its storage, retention, sharing,
+              backup, and deletion are controlled by your browser, device, and
+              any storage service you choose to use.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-black text-white">
-              Cookies and similar technologies
+              Website request data
             </h2>
+
             <p className="mt-3">
-              Cookies or similar technologies may be used to support essential
-              website functions, remember preferences, measure usage, and
-              improve performance. Browser settings can usually be used to
-              control or block cookies.
+              Hosting, network, and security providers may process standard
+              request information needed to deliver and protect the website,
+              such as an IP address, requested page, request time, browser
+              identifier, and error or security event data. This technical
+              request data is separate from generator field input.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-black text-white">
-              Analytics and third-party services
+              Cookies, analytics, and advertising
             </h2>
+
             <p className="mt-3">
-              Third-party hosting, analytics, security, or performance services
-              may process limited technical information on our behalf. Their
-              handling of information is governed by their own privacy terms and
-              applicable data-protection obligations.
+              The current application source does not include an analytics SDK,
+              advertising tracker, or application code that stores generator
+              input in cookies, localStorage, or sessionStorage.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-black text-white">
+              External links and services
+            </h2>
+
+            <p className="mt-3">
+              The website links to external resources, including OSHA pages and
+              the public GitHub issue tracker. When you follow an external link,
+              the destination service receives the request and applies its own
+              privacy, security, account, and retention practices.
             </p>
           </section>
 
@@ -87,11 +107,26 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-black text-white">
               Data retention
             </h2>
+
             <p className="mt-3">
-              Information is retained only as long as reasonably necessary for
-              operational, legal, security, and service-improvement purposes.
-              Retention periods may vary depending on the type of information
-              and the service provider involved.
+              Because generator entries are not submitted to an application
+              backend, we do not retain them in an application database.
+              Hosting, network, or security providers may retain technical
+              request logs according to their operational and legal
+              requirements.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-black text-white">
+              Sensitive information
+            </h2>
+
+            <p className="mt-3">
+              Do not enter confidential employee, medical, financial, legal,
+              client, incident, or personally identifying information unless
+              you are authorized to process it and have assessed the security
+              of your browser, device, downloads, and workplace procedures.
             </p>
           </section>
 
@@ -99,11 +134,12 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-black text-white">
               Data security
             </h2>
+
             <p className="mt-3">
-              Reasonable administrative and technical safeguards may be used to
-              protect information. However, no internet transmission, browser
-              environment, or storage system can be guaranteed to be completely
-              secure.
+              Browser-based processing reduces application-side collection of
+              generator input, but no browser, device, network, download,
+              transmission, or storage environment can be guaranteed to be
+              completely secure.
             </p>
           </section>
 
@@ -111,50 +147,40 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-black text-white">
               Children&apos;s privacy
             </h2>
+
             <p className="mt-3">
               This website is intended for professional and business use and is
-              not directed to children. We do not knowingly seek personal
-              information from children.
+              not directed to children. The application does not provide user
+              accounts or knowingly request information from children.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-black text-white">
-              Your choices and rights
+              Policy changes
             </h2>
-            <p className="mt-3">
-              Depending on your location, you may have rights to request access,
-              correction, deletion, restriction, or objection concerning
-              personal information. You may also manage browser cookies and
-              tracking preferences through your device or browser settings.
-            </p>
-          </section>
 
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Policy updates
-            </h2>
             <p className="mt-3">
-              This policy may be updated as the website, legal requirements, or
-              third-party services change. The current version published on this
-              page applies to your use of the website.
+              This policy may be revised when application behavior, hosting,
+              external services, or legal requirements change. The version
+              published on this page describes the current website.
             </p>
           </section>
         </div>
 
         <div className="mt-12 flex flex-wrap gap-3">
           <Link
-            href="/tools"
+            href="/methodology"
             className="inline-flex rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
           >
-            Explore safety tools
+            Read our methodology
           </Link>
 
           <Link
-            href="/disclaimer"
+            href="/contact"
             className="inline-flex rounded-full border border-white/15 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
           >
-            Read disclaimer
+            Report a website issue
           </Link>
         </div>
       </section>
