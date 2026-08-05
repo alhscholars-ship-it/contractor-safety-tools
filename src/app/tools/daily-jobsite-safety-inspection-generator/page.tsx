@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { DailyJobsiteSafetyInspectionGenerator } from "@/features/daily-jobsite-safety-inspection-generator";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
@@ -271,6 +272,8 @@ export default function DailyJobsiteSafetyInspectionGeneratorPage() {
             ))}
           </div>
         </section>
+
+        <OfficialSafetySources toolSlug="daily-jobsite-safety-inspection-generator" />
       </section>
     </main>
   );

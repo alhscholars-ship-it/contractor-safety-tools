@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { IncidentReportGenerator } from "@/features/incident-report-generator/incident-report-generator";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
@@ -271,6 +272,8 @@ export default function IncidentReportGeneratorPage() {
             ))}
           </div>
         </section>
+
+        <OfficialSafetySources toolSlug="incident-report-generator" />
       </section>
     </main>
   );

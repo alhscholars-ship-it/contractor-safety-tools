@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { FirstAidKitInspectionGenerator } from "@/features/first-aid-kit-inspection-generator";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
@@ -230,6 +231,8 @@ export default function FirstAidKitInspectionGeneratorPage() {
             </Link>
           </div>
         </div>
+
+        <OfficialSafetySources toolSlug="first-aid-kit-inspection-generator" />
       </section>
     </main>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { ScaffoldInspectionGenerator } from "@/features/scaffold-inspection-generator";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
@@ -233,6 +234,8 @@ export default function ScaffoldInspectionGeneratorPage() {
             </Link>
           </div>
         </div>
+
+        <OfficialSafetySources toolSlug="scaffold-inspection-generator" />
       </section>
     </main>
   );

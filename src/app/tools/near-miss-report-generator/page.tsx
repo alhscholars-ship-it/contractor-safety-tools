@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { NearMissReportGenerator } from "@/features/near-miss-report-generator/near-miss-report-generator";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
@@ -290,6 +291,8 @@ export default function NearMissReportGeneratorPage() {
             ))}
           </div>
         </section>
+
+        <OfficialSafetySources toolSlug="near-miss-report-generator" />
       </section>
     </main>
   );

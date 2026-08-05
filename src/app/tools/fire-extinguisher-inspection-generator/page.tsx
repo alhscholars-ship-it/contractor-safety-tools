@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { FireExtinguisherInspectionGenerator } from "@/features/fire-extinguisher-inspection-generator";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
@@ -274,6 +275,8 @@ export default function FireExtinguisherInspectionGeneratorPage() {
             ))}
           </div>
         </section>
+
+        <OfficialSafetySources toolSlug="fire-extinguisher-inspection-generator" />
       </section>
     </main>
   );

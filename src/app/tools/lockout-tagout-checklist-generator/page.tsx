@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { LockoutTagoutChecklistGenerator } from "@/features/lockout-tagout-checklist-generator/lockout-tagout-checklist-generator";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
@@ -269,6 +270,8 @@ export default function LockoutTagoutChecklistGeneratorPage() {
             ))}
           </div>
         </section>
+
+        <OfficialSafetySources toolSlug="lockout-tagout-checklist-generator" />
       </section>
     </main>
   );
