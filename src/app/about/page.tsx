@@ -62,6 +62,18 @@ export default function AboutPage() {
               intended to support—not replace—qualified safety, legal, medical,
               regulatory, or project-specific guidance.
             </p>
+
+            <p className="mt-3">
+              Read our{" "}
+              <Link
+                href="/methodology"
+                className="font-bold text-emerald-300 underline decoration-emerald-300/40 underline-offset-4"
+              >
+                methodology and editorial standards
+              </Link>{" "}
+              for details about source selection, generator design, testing,
+              maintenance, and corrections.
+            </p>
           </section>
 
           <section>
