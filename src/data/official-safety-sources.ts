@@ -5,6 +5,20 @@ export type OfficialSafetySource = {
 };
 
 export const officialSafetySourcesByTool = {
+  "incident-cost-calculator": [
+    {
+      title: "OSHA Business Case — Workplace Injury Costs",
+      url: "https://www.osha.gov/businesscase/costs",
+      description:
+        "Official OSHA guidance describing direct and indirect workplace injury and illness costs, including medical, legal, investigation, replacement, productivity, and property-related costs.",
+    },
+    {
+      title: "OSHA Safety Pays Individual Injury Estimator",
+      url: "https://www.osha.gov/safetypays/estimator-info",
+      description:
+        "Official OSHA information explaining the Safety Pays awareness tool, indirect-cost multiplier method, profitability impact, and estimator limitations.",
+    },
+  ],
   "risk-matrix-calculator": [
     {
       title: "OSHA Hazard Identification and Assessment",

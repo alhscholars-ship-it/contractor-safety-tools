@@ -18,6 +18,20 @@ export type ToolDefinition = {
 
 export const tools: ToolDefinition[] = [
   {
+    slug: "incident-cost-calculator",
+    name: "Incident Cost Calculator",
+    shortDescription:
+      "Estimate documented workplace incident expenses, productivity losses, and modeled indirect costs.",
+    category: "Safety Calculators",
+    href: "/tools/incident-cost-calculator",
+    keywords: [
+      "incident cost calculator",
+      "workplace injury cost calculator",
+      "accident cost calculator",
+      "indirect injury cost estimator",
+    ],
+  },
+  {
     slug: "risk-matrix-calculator",
     name: "Risk Matrix Calculator",
     shortDescription:
