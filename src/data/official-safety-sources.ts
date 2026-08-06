@@ -5,6 +5,20 @@ export type OfficialSafetySource = {
 };
 
 export const officialSafetySourcesByTool = {
+  "safety-training-matrix-generator": [
+    {
+      title: "OSHA 29 CFR 1926.21 — Safety Training and Education",
+      url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.21",
+      description:
+        "Official OSHA construction rule addressing employee instruction in recognizing and avoiding unsafe conditions and understanding regulations applicable to the work environment.",
+    },
+    {
+      title: "OSHA Safety Management — Education and Training",
+      url: "https://www.osha.gov/safety-management/education-training",
+      description:
+        "Official OSHA recommended practices covering role-specific training, hazard identification and controls, understandable delivery, worker feedback, and additional training when work or hazards change.",
+    },
+  ],
   "days-away-case-rate-calculator": [
     {
       title: "OSHA SST-05 — DAFWII and Days Away Case Rate",

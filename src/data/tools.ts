@@ -5,7 +5,8 @@ export type ToolCategory =
   | "Energy Control"
   | "Incident Reports"
   | "Job Hazard Analysis"
-  | "Safety Calculators";
+  | "Safety Calculators"
+  | "Safety Training";
 
 export type ToolDefinition = {
   slug: string;
@@ -17,6 +18,20 @@ export type ToolDefinition = {
 };
 
 export const tools: ToolDefinition[] = [
+  {
+    slug: "safety-training-matrix-generator",
+    name: "Safety Training Matrix Generator",
+    shortDescription:
+      "Build a role-based contractor training matrix with hazards, timing triggers, trainer qualifications, verification methods, and record owners.",
+    category: "Safety Training",
+    href: "/tools/safety-training-matrix-generator",
+    keywords: [
+      "safety training matrix generator",
+      "OSHA training matrix template",
+      "construction training matrix",
+      "employee safety training tracker",
+    ],
+  },
   {
     slug: "days-away-case-rate-calculator",
     name: "Days Away Case Rate Calculator",
