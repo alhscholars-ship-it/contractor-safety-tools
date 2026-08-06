@@ -5,6 +5,20 @@ export type OfficialSafetySource = {
 };
 
 export const officialSafetySourcesByTool = {
+  "days-away-case-rate-calculator": [
+    {
+      title: "OSHA SST-05 — DAFWII and Days Away Case Rate",
+      url: "https://www.osha.gov/enforcement/directives/05-05-cpl-02",
+      description:
+        "Official archived OSHA directive defining the DAFWII or Days Away Case Rate formula, its 200,000-hour base, numerator, and worked example.",
+    },
+    {
+      title: "OSHA 29 CFR 1904.7 — General Recording Criteria",
+      url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1904/1904.7",
+      description:
+        "Official OSHA recordkeeping rule covering cases involving days away from work, restricted work, and job transfer.",
+    },
+  ],
   "incident-cost-calculator": [
     {
       title: "OSHA Business Case — Workplace Injury Costs",

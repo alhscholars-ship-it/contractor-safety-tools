@@ -18,6 +18,20 @@ export type ToolDefinition = {
 
 export const tools: ToolDefinition[] = [
   {
+    slug: "days-away-case-rate-calculator",
+    name: "Days Away Case Rate Calculator",
+    shortDescription:
+      "Calculate DACR or DAFWII using days-away cases, employee hours, and the standardized 200,000-hour base.",
+    category: "Safety Calculators",
+    href: "/tools/days-away-case-rate-calculator",
+    keywords: [
+      "days away case rate calculator",
+      "DACR calculator",
+      "DAFWII rate calculator",
+      "days away injury rate",
+    ],
+  },
+  {
     slug: "incident-cost-calculator",
     name: "Incident Cost Calculator",
     shortDescription:
