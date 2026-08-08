@@ -1,10 +1,22 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import * as sitemapModule from "../../src/app/sitemap.ts";
 import {
   officialSafetySourcesByTool,
 } from "../../src/data/official-safety-sources.ts";
 import { tools } from "../../src/data/tools.ts";
+
+const sitemap =
+  typeof sitemapModule.default === "function"
+    ? sitemapModule.default
+    : sitemapModule.default?.default;
+
+assert.equal(
+  typeof sitemap,
+  "function",
+  "Expected sitemap default export to resolve to a function",
+);
 
 const pagePath =
   "src/app/tools/safety-training-matrix-generator/page.tsx";
@@ -18,7 +30,6 @@ const indexPath =
 const enginePath =
   "src/features/safety-training-matrix-generator/generate-safety-training-matrix.ts";
 
-const sitemapPath = "src/app/sitemap.ts";
 const toolsPath = "src/data/tools.ts";
 
 function normalizeWhitespace(
@@ -227,18 +238,19 @@ test("retains professional training limitations in the deterministic engine", as
   );
 });
 
-test("includes the Safety Training Matrix route in the static sitemap", async () => {
-  const sitemap = await readFile(
-    sitemapPath,
-    "utf8",
-  );
+test(
+  "includes the Safety Training Matrix route in the static sitemap",
+  () => {
+    const expectedUrl =
+      "https://contractorsafetytools.com/tools/safety-training-matrix-generator/";
 
-  assert.equal(
-    (
-      sitemap.match(
-        /`\$\{baseUrl\}\/tools\/safety-training-matrix-generator`/g,
-      ) ?? []
-    ).length,
-    1,
-  );
-});
+    assert.equal(
+      sitemap().filter(
+        (entry) =>
+          entry.url === expectedUrl,
+      ).length,
+      1,
+      `The sitemap must include ${expectedUrl} exactly once.`,
+    );
+  },
+);

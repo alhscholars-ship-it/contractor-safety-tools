@@ -1,10 +1,22 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import * as sitemapModule from "../../src/app/sitemap.ts";
 import {
   officialSafetySourcesByTool,
 } from "../../src/data/official-safety-sources.ts";
 import { tools } from "../../src/data/tools.ts";
+
+const sitemap =
+  typeof sitemapModule.default === "function"
+    ? sitemapModule.default
+    : sitemapModule.default?.default;
+
+assert.equal(
+  typeof sitemap,
+  "function",
+  "Expected sitemap default export to resolve to a function",
+);
 
 const pagePath =
   "src/app/tools/trir-calculator/page.tsx";
@@ -12,7 +24,6 @@ const interfacePath =
   "src/features/trir-calculator/trir-calculator.tsx";
 const indexPath =
   "src/features/trir-calculator/index.ts";
-const sitemapPath = "src/app/sitemap.ts";
 
 test("publishes the TRIR calculator in the canonical catalog", () => {
   const tool = tools.find(
@@ -132,15 +143,19 @@ test("provides an accessible deterministic calculator interface", async () => {
   );
 });
 
-test("includes the TRIR route in the static sitemap", async () => {
-  const sitemap = await readFile(sitemapPath, "utf8");
+test(
+  "includes the TRIR route in the static sitemap",
+  () => {
+    const expectedUrl =
+      "https://contractorsafetytools.com/tools/trir-calculator/";
 
-  assert.equal(
-    (
-      sitemap.match(
-        /`\$\{baseUrl\}\/tools\/trir-calculator`/g,
-      ) ?? []
-    ).length,
-    1,
-  );
-});
+    assert.equal(
+      sitemap().filter(
+        (entry) =>
+          entry.url === expectedUrl,
+      ).length,
+      1,
+      `The sitemap must include ${expectedUrl} exactly once.`,
+    );
+  },
+);

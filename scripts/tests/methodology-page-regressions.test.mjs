@@ -1,11 +1,22 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import * as sitemapModule from "../../src/app/sitemap.ts";
+
+const sitemap =
+  typeof sitemapModule.default === "function"
+    ? sitemapModule.default
+    : sitemapModule.default?.default;
+
+assert.equal(
+  typeof sitemap,
+  "function",
+  "Expected sitemap default export to resolve to a function",
+);
 
 const methodologyPath = "src/app/methodology/page.tsx";
 const aboutPath = "src/app/about/page.tsx";
 const footerPath = "src/components/layout/site-footer.tsx";
-const sitemapPath = "src/app/sitemap.ts";
 
 test("publishes a complete methodology and editorial standards page", async () => {
   const source = await readFile(methodologyPath, "utf8");
@@ -119,36 +130,51 @@ test("does not invent author or reviewer credentials", async () => {
   }
 });
 
-test("links the methodology route from trust architecture", async () => {
-  const [about, footer, sitemap] = await Promise.all([
-    readFile(aboutPath, "utf8"),
-    readFile(footerPath, "utf8"),
-    readFile(sitemapPath, "utf8"),
-  ]);
+test(
+  "links the methodology route from trust architecture",
+  async () => {
+    const [about, footer] =
+      await Promise.all([
+        readFile(
+          aboutPath,
+          "utf8",
+        ),
+        readFile(
+          footerPath,
+          "utf8",
+        ),
+      ]);
 
-  assert.equal(
-    (about.match(/href="\/methodology"/g) ?? []).length,
-    1,
-    "The About page must link to methodology exactly once.",
-  );
+    assert.equal(
+      (
+        about.match(
+          /href="\/methodology"/g,
+        ) ?? []
+      ).length,
+      1,
+      "The About page must link to methodology exactly once.",
+    );
 
-  assert.equal(
-    (
-      footer.match(
-        /href: "\/methodology"/g,
-      ) ?? []
-    ).length,
-    1,
-    "The footer must link to methodology exactly once.",
-  );
+    assert.equal(
+      (
+        footer.match(
+          /href: "\/methodology"/g,
+        ) ?? []
+      ).length,
+      1,
+      "The footer must link to methodology exactly once.",
+    );
 
-  assert.equal(
-    (
-      sitemap.match(
-        /\$\{baseUrl\}\/methodology/g,
-      ) ?? []
-    ).length,
-    1,
-    "The sitemap must include methodology exactly once.",
-  );
-});
+    const expectedUrl =
+      "https://contractorsafetytools.com/methodology/";
+
+    assert.equal(
+      sitemap().filter(
+        (entry) =>
+          entry.url === expectedUrl,
+      ).length,
+      1,
+      "The sitemap must include methodology exactly once.",
+    );
+  },
+);
