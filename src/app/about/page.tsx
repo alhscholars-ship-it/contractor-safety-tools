@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Contractor Safety Form Tools",
+  title: "About Contractor Safety Tools",
   description:
-    "Learn how Contractor Safety Form Tools provides browser-based safety documentation generators, inspections, reports, primary references, and transparent limitations.",
+    "Learn how Contractor Safety Tools provides browser-based safety documentation generators, inspections, reports, primary references, and transparent limitations.",
   alternates: {
     canonical: "/about",
   },
@@ -28,7 +28,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-slate-300">
-            Contractor Safety Form Tools provides free, browser-based generators
+            Contractor Safety Tools provides free, browser-based generators
             designed to help contractors organize common jobsite safety
             documentation.
           </p>

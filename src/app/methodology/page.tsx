@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Methodology and Editorial Standards",
   description:
-    "Learn how Contractor Safety Form Tools researches primary sources, designs deterministic generators, tests releases, handles corrections, and maintains safety content.",
+    "Learn how Contractor Safety Tools researches primary sources, designs deterministic generators, tests releases, handles corrections, and maintains safety content.",
   alternates: {
     canonical: "/methodology",
   },
@@ -16,7 +16,7 @@ const methodologyJsonLd = {
   "@type": "WebPage",
   name: "Methodology and Editorial Standards",
   description:
-    "The research, development, testing, maintenance, and correction process used by Contractor Safety Form Tools.",
+    "The research, development, testing, maintenance, and correction process used by Contractor Safety Tools.",
   url: `${siteConfig.url}/methodology`,
   publisher: {
     "@type": "Organization",
@@ -66,7 +66,7 @@ export default function MethodologyPage() {
             </h2>
 
             <p className="mt-3">
-              Contractor Safety Form Tools provides browser-based documentation
+              Contractor Safety Tools provides browser-based documentation
               aids for contractors, supervisors, project teams, and safety
               coordinators. Each generator produces a structured draft that
               users can review, adapt, approve, and export.

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Read how Contractor Safety Form Tools processes generator input in the browser, creates downloads, handles technical requests, and links to external services.",
+    "Read how Contractor Safety Tools processes generator input in the browser, creates downloads, handles technical requests, and links to external services.",
   alternates: {
     canonical: "/privacy",
   },

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description:
-    "Read the Terms of Use for Contractor Safety Form Tools, including acceptable use, user responsibilities, intellectual property, and limitations.",
+    "Read the Terms of Use for Contractor Safety Tools, including acceptable use, user responsibilities, intellectual property, and limitations.",
   alternates: {
     canonical: "/terms",
   },
@@ -28,7 +28,7 @@ export default function TermsOfUsePage() {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-slate-300">
-            These terms govern your use of Contractor Safety Form Tools and its
+            These terms govern your use of Contractor Safety Tools and its
             browser-based generators.
           </p>
         </div>
@@ -118,8 +118,8 @@ export default function TermsOfUsePage() {
               Limitation of liability
             </h2>
             <p className="mt-3">
-              To the maximum extent permitted by law, Contractor Safety Form
-              Tools is not liable for losses, claims, injuries, penalties,
+              To the maximum extent permitted by law, Contractor Safety Tools
+              is not liable for losses, claims, injuries, penalties,
               business interruption, data loss, or damages resulting from use of
               the website or generated content.
             </p>

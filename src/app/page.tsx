@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteConfig } from "@/config/site";
 
 const featuredTools = [
   {
@@ -27,7 +28,7 @@ export default function Home() {
       <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-20">
         <div className="max-w-3xl">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
-            Contractor Safety Form Tools
+            {siteConfig.name}
           </p>
           <h1 className="text-4xl font-black tracking-tight sm:text-6xl">
             Contractor safety forms and jobsite documentation tools.

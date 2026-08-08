@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteConfig } from "@/config/site";
 
 const footerLinks = [
   { href: "/about", label: "About" },
@@ -16,7 +17,7 @@ export function SiteFooter() {
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 py-10 md:grid-cols-[1.2fr_0.8fr]">
         <div>
           <Link href="/" className="text-lg font-black text-white">
-            Contractor Safety Form Tools
+            {siteConfig.name}
           </Link>
 
           <p className="mt-3 max-w-xl text-sm leading-6 text-slate-400">
@@ -54,7 +55,7 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} Contractor Safety Form Tools.
+            © {new Date().getFullYear()} {siteConfig.name}.
           </p>
 
           <Link

@@ -6,8 +6,8 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: {
-    default: "Contractor Safety Form Tools",
-    template: "%s | Contractor Safety Form Tools",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   metadataBase: new URL("https://contractorsafetytools.com"),

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Disclaimer",
   description:
-    "Read the Contractor Safety Form Tools disclaimer covering informational use, professional guidance, regulatory compliance, and user responsibility.",
+    "Read the Contractor Safety Tools disclaimer covering informational use, professional guidance, regulatory compliance, and user responsibility.",
   alternates: {
     canonical: "/disclaimer",
   },
@@ -28,7 +28,7 @@ export default function DisclaimerPage() {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-slate-300">
-            Contractor Safety Form Tools provides general informational and
+            Contractor Safety Tools provides general informational and
             documentation assistance only.
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function DisclaimerPage() {
             </h2>
             <p className="mt-3">
               To the maximum extent permitted by applicable law, Contractor
-              Safety Form Tools is not responsible for losses, injuries,
+              Contractor Safety Tools is not responsible for losses, injuries,
               penalties, claims, project delays, or other damages arising from
               use of, misuse of, or reliance on this website or generated
               documents.

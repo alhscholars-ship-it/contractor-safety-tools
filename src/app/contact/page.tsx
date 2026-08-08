@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Contact and Corrections",
   description:
-    "Submit public website feedback, correction requests, broken-link reports, and accessibility issues for Contractor Safety Form Tools.",
+    "Submit public website feedback, correction requests, broken-link reports, and accessibility issues for Contractor Safety Tools.",
   alternates: {
     canonical: "/contact",
   },
@@ -28,7 +28,7 @@ export default function ContactPage() {
           </p>
 
           <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">
-            Contact Contractor Safety Form Tools
+            Contact Contractor Safety Tools
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-slate-300">

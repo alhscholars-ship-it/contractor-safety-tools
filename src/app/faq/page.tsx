@@ -59,7 +59,7 @@ const faqJsonLd = {
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Answers about Contractor Safety Form Tools, the complete generator catalog, exports, browser processing, compliance limitations, and corrections.",
+    "Answers about Contractor Safety Tools, the complete generator catalog, exports, browser processing, compliance limitations, and corrections.",
   alternates: {
     canonical: "/faq",
   },

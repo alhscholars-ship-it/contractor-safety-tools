@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "Contractor Safety Form Tools",
-  shortName: "Safety Form Tools",
+  name: "Contractor Safety Tools",
+  shortName: "Contractor Safety Tools",
   domain: "contractorsafetytools.com",
   url: "https://contractorsafetytools.com",
   repositoryUrl:
