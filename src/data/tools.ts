@@ -155,7 +155,7 @@ export const tools: ToolDefinition[] = [
       "incident report generator",
       "construction incident report",
       "jobsite incident report form",
-      "near miss report template",
+      "construction incident report template",
     ],
   },
   {
