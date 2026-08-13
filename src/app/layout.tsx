@@ -11,13 +11,6 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL("https://contractorsafetytools.com"),
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
 };
 
 
