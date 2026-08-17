@@ -99,3 +99,42 @@ test("main tools hub links to both category hubs", async () => {
     /Start with focused safety tool collections/,
   );
 });
+
+test("category hubs use trailing-slash internal links and breadcrumbs", async () => {
+  const calculatorSource = await readFile(
+    calculatorsHubPath,
+    "utf8",
+  );
+  const inspectionSource = await readFile(
+    inspectionsHubPath,
+    "utf8",
+  );
+
+  for (const source of [
+    calculatorSource,
+    inspectionSource,
+  ]) {
+    assert.match(source, /href="\/"|href=\{["']\/["']\}/);
+    assert.match(source, /href="\/tools"|href=\{["']\/tools["']\}/);
+  }
+});
+
+test("category tool hrefs are generated from the tool catalog", () => {
+  const calculatorTools = tools.filter(
+    (tool) => tool.category === "Safety Calculators",
+  );
+  const inspectionTools = tools.filter(
+    (tool) => tool.category === "Inspections",
+  );
+
+  for (const tool of [
+    ...calculatorTools,
+    ...inspectionTools,
+  ]) {
+    assert.match(
+      tool.href,
+      /^\/tools\/[^/]+$/,
+      `${tool.slug} must use the canonical source route without a trailing slash`,
+    );
+  }
+});
