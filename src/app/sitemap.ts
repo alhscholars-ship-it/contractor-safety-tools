@@ -8,6 +8,8 @@ const baseUrl = "https://contractorsafetytools.com";
 const staticRoutes = [
   "/",
   "/tools",
+  "/tools/safety-calculators",
+  "/tools/inspection-checklists",
   "/about",
   "/methodology",
   "/disclaimer",

@@ -21,6 +21,8 @@ assert.equal(
 const staticRoutes = [
   "/",
   "/tools",
+  "/tools/safety-calculators",
+  "/tools/inspection-checklists",
   "/about",
   "/methodology",
   "/disclaimer",
@@ -54,7 +56,7 @@ test(
 
     assert.equal(
       actualUrls.length,
-      29,
+      31,
     );
 
     assert.equal(
