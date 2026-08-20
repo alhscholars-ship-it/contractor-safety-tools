@@ -320,4 +320,19 @@ export const tools: ToolDefinition[] = [
       "construction safety checklist template",
     ],
   },
+
+  {
+    slug: "fall-protection-inspection-generator",
+    name: "Fall Protection Inspection Checklist Generator",
+    shortDescription:
+      "Create a fall protection inspection checklist covering fall hazards, guardrails, harnesses, anchor points, corrective actions, and documentation.",
+    category: "Inspections",
+    href: "/tools/fall-protection-inspection-generator",
+    keywords: [
+      "fall protection inspection checklist",
+      "OSHA fall protection checklist",
+      "construction fall protection inspection",
+      "fall arrest system inspection form",
+    ],
+  },
 ];
