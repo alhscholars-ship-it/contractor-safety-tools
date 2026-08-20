@@ -298,4 +298,26 @@ export const tools: ToolDefinition[] = [
       "personal protective equipment checklist",
     ],
   },
+  {
+    slug: "osha-inspection-checklist-generator",
+    name: "OSHA Inspection Checklist Generator",
+    shortDescription:
+      "Create an OSHA-focused construction inspection checklist with hazard reviews, corrective actions, and safety documentation notes.",
+    category: "Inspections",
+    href: "/tools/osha-inspection-checklist-generator",
+    keywords: [
+      "OSHA inspection checklist generator",
+      "OSHA construction inspection checklist",
+
+
+
+
+
+
+
+
+      "jobsite safety inspection form",
+      "construction safety checklist template",
+    ],
+  },
 ];

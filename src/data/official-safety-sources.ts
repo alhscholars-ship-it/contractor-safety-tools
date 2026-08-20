@@ -285,6 +285,22 @@ export const officialSafetySourcesByTool = {
         "Federal requirements for providing, using, maintaining, and properly fitting PPE.",
     },
   ],
+
+  "osha-inspection-checklist-generator": [
+    {
+      title: "OSHA Construction Safety and Health",
+      url: "https://www.osha.gov/construction",
+      description:
+        "Official OSHA construction safety resources covering standards, hazards, and compliance information for construction workplaces.",
+    },
+    {
+      title: "OSHA Recommended Practices for Safety and Health Programs",
+      url: "https://www.osha.gov/safety-management",
+      description:
+        "Official OSHA guidance for managing workplace safety programs, hazard identification, prevention, and control.",
+    },
+  ],
+
 } as const satisfies Record<
   string,
   readonly OfficialSafetySource[]
