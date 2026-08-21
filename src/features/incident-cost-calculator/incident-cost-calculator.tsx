@@ -53,12 +53,12 @@ function NumericField({
           onChange(event.target.value)
         }
         aria-describedby={helpId}
-        className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+        className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
       />
 
       <span
         id={helpId}
-        className="text-xs leading-5 text-slate-400"
+        className="text-xs leading-5 text-steel-400"
       >
         {help}
       </span>
@@ -295,18 +295,18 @@ export function IncidentCostCalculator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Enter documented and estimated costs
         </h2>
 
-        <p className="mt-3 text-sm leading-7 text-slate-300">
+        <p className="mt-3 text-sm leading-7 text-steel-200">
           Use verified organizational records where available.
           Enter zero when a category does not apply or no amount
           is currently known.
         </p>
 
         <fieldset className="mt-7 rounded-3xl border border-white/10 p-5">
-          <legend className="px-2 text-lg font-black text-emerald-200">
+          <legend className="px-2 text-lg font-display font-black text-orange-500">
             Direct and immediate cost inputs
           </legend>
 
@@ -370,7 +370,7 @@ export function IncidentCostCalculator() {
         </fieldset>
 
         <fieldset className="mt-6 rounded-3xl border border-white/10 p-5">
-          <legend className="px-2 text-lg font-black text-emerald-200">
+          <legend className="px-2 text-lg font-display font-black text-orange-500">
             Documented indirect cost inputs
           </legend>
 
@@ -412,7 +412,7 @@ export function IncidentCostCalculator() {
         </fieldset>
 
         <fieldset className="mt-6 rounded-3xl border border-white/10 p-5">
-          <legend className="px-2 text-lg font-black text-emerald-200">
+          <legend className="px-2 text-lg font-display font-black text-orange-500">
             Additional indirect-cost assumption
           </legend>
 
@@ -438,7 +438,7 @@ export function IncidentCostCalculator() {
         <div className="mt-7 flex flex-wrap gap-3">
           <button
             type="submit"
-            className="rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
+            className="rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
           >
             Calculate Incident Cost
           </button>
@@ -446,7 +446,7 @@ export function IncidentCostCalculator() {
           <button
             type="button"
             onClick={handleReset}
-            className="rounded-full border border-white/20 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
+            className="rounded-full border border-white/20 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
           >
             Reset example
           </button>
@@ -460,36 +460,36 @@ export function IncidentCostCalculator() {
       >
         <h2
           id="incident-cost-result-heading"
-          className="text-2xl font-black"
+          className="text-2xl font-display font-black"
         >
           Estimated incident cost
         </h2>
 
         {result ? (
           <div className="mt-6 space-y-5">
-            <article className="rounded-3xl border border-emerald-300/25 bg-emerald-300/[0.08] p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-200">
+            <article className="rounded-3xl border border-orange-500/25 bg-navy-800 p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
                 Estimated total
               </p>
 
-              <p className="mt-3 break-words text-4xl font-black text-white sm:text-5xl">
+              <p className="mt-3 break-words text-4xl font-display font-black text-white sm:text-5xl">
                 {formatCurrency(
                   result.estimatedTotalIncidentCost,
                 )}
               </p>
 
-              <p className="mt-4 text-sm leading-7 text-slate-300">
+              <p className="mt-4 text-sm leading-7 text-steel-200">
                 {result.interpretation}
               </p>
             </article>
 
             <dl className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/10 p-5">
-                <dt className="text-sm font-bold text-slate-400">
+                <dt className="text-sm font-bold text-steel-400">
                   Entered cost subtotal
                 </dt>
 
-                <dd className="mt-2 text-2xl font-black text-white">
+                <dd className="mt-2 text-2xl font-display font-black text-white">
                   {formatCurrency(
                     result.directCostSubtotal,
                   )}
@@ -497,11 +497,11 @@ export function IncidentCostCalculator() {
               </div>
 
               <div className="rounded-2xl border border-white/10 p-5">
-                <dt className="text-sm font-bold text-slate-400">
+                <dt className="text-sm font-bold text-steel-400">
                   Documented indirect subtotal
                 </dt>
 
-                <dd className="mt-2 text-2xl font-black text-white">
+                <dd className="mt-2 text-2xl font-display font-black text-white">
                   {formatCurrency(
                     result.documentedIndirectCostSubtotal,
                   )}
@@ -509,11 +509,11 @@ export function IncidentCostCalculator() {
               </div>
 
               <div className="rounded-2xl border border-white/10 p-5">
-                <dt className="text-sm font-bold text-slate-400">
+                <dt className="text-sm font-bold text-steel-400">
                   Documented cost total
                 </dt>
 
-                <dd className="mt-2 text-2xl font-black text-white">
+                <dd className="mt-2 text-2xl font-display font-black text-white">
                   {formatCurrency(
                     result.documentedCostTotal,
                   )}
@@ -521,11 +521,11 @@ export function IncidentCostCalculator() {
               </div>
 
               <div className="rounded-2xl border border-white/10 p-5">
-                <dt className="text-sm font-bold text-slate-400">
+                <dt className="text-sm font-bold text-steel-400">
                   Additional modeled indirect costs
                 </dt>
 
-                <dd className="mt-2 text-2xl font-black text-white">
+                <dd className="mt-2 text-2xl font-display font-black text-white">
                   {formatCurrency(
                     result.estimatedAdditionalIndirectCosts,
                   )}
@@ -533,12 +533,12 @@ export function IncidentCostCalculator() {
               </div>
             </dl>
 
-            <article className="rounded-2xl bg-slate-950/70 p-5">
-              <h3 className="font-black text-white">
+            <article className="rounded-2xl bg-navy-950/70 p-5">
+              <h3 className="font-display font-black text-white">
                 Calculation trail
               </h3>
 
-              <div className="mt-4 grid gap-4 text-sm leading-7 text-slate-300">
+              <div className="mt-4 grid gap-4 text-sm leading-7 text-steel-200">
                 <p>
                   <strong className="text-slate-100">
                     Investigation:
@@ -562,8 +562,8 @@ export function IncidentCostCalculator() {
               </div>
             </article>
 
-            <div className="rounded-2xl border border-amber-300/20 bg-amber-300/10 p-5">
-              <p className="text-xs leading-6 text-amber-100">
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/10 p-5">
+              <p className="text-xs leading-6 text-orange-100">
                 {result.disclaimer}
               </p>
 
@@ -587,7 +587,7 @@ export function IncidentCostCalculator() {
             </div>
           </div>
         ) : (
-          <p className="mt-4 text-sm leading-7 text-slate-300">
+          <p className="mt-4 text-sm leading-7 text-steel-200">
             Enter documented cost amounts, labor hours, hourly
             values, and an approved indirect-cost assumption to
             create a transparent estimate.

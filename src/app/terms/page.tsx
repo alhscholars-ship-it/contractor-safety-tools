@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PageHero } from "@/components/content/page-hero";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
@@ -10,147 +11,86 @@ export const metadata: Metadata = {
   },
 };
 
+const sections = [
+  {
+    title: "Acceptance of terms",
+    body: "By accessing or using this website, you agree to these Terms of Use, the Privacy Policy, and the Disclaimer. If you do not agree, do not use the website.",
+  },
+  {
+    title: "Permitted use",
+    body: "You may use the website for lawful business, educational, and internal documentation purposes. Generated content may be reviewed, adapted, downloaded, and used subject to these terms.",
+  },
+  {
+    title: "Prohibited use",
+    body: "You may not misuse the website, attempt unauthorized access, interfere with service operation, upload malicious content, violate applicable law, or use generated content in a deceptive, unsafe, or unlawful manner.",
+  },
+  {
+    title: "User responsibility",
+    body: "You are responsible for the accuracy of information entered, reviewing generated documents, confirming applicable requirements, and obtaining qualified professional guidance where appropriate.",
+  },
+  {
+    title: "Intellectual property",
+    body: "The website design, source code, branding, written content, and original features are protected by applicable intellectual property laws. These terms do not transfer ownership of the website or its underlying materials.",
+  },
+  {
+    title: "Generated documents",
+    body: "Generated documents are provided as editable informational drafts. You are responsible for verifying, modifying, and approving them before operational or compliance use.",
+  },
+  {
+    title: "Service availability",
+    body: "We may update, suspend, restrict, or discontinue any part of the website without notice. Continuous or error-free availability is not guaranteed.",
+  },
+  {
+    title: "Limitation of liability",
+    body: "To the maximum extent permitted by law, Contractor Safety Tools is not liable for losses, claims, injuries, penalties, business interruption, data loss, or damages resulting from use of the website or generated content.",
+  },
+  {
+    title: "Changes to these terms",
+    body: "These terms may be updated when the website, applicable laws, or service practices change. Continued use after publication of updated terms means you accept the revised terms.",
+  },
+];
+
 export default function TermsOfUsePage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <section className="mx-auto w-full max-w-4xl px-6 py-20">
-        <Link href="/" className="text-sm font-semibold text-emerald-300">
-          ← Back to home
-        </Link>
+    <main className="bg-paper">
+      <PageHero
+        eyebrow="Legal Information"
+        title="Terms of Use"
+        lede="These terms govern your use of Contractor Safety Tools and its browser-based generators."
+      />
 
-        <div className="mt-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
-            Legal Information
-          </p>
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-4xl px-6">
+          <div className="grid gap-5">
+            {sections.map((section) => (
+              <div
+                key={section.title}
+                className="rounded-xl border border-steel-200 bg-white p-7"
+              >
+                <h2 className="font-display text-xl font-bold text-navy-950">
+                  {section.title}
+                </h2>
+                <p className="mt-3 text-[15px] leading-7 text-slate-600">
+                  {section.body}
+                </p>
+              </div>
+            ))}
+          </div>
 
-          <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">
-            Terms of Use
-          </h1>
-
-          <p className="mt-6 text-lg leading-8 text-slate-300">
-            These terms govern your use of Contractor Safety Tools and its
-            browser-based generators.
-          </p>
-        </div>
-
-        <div className="mt-12 space-y-8 text-base leading-8 text-slate-300">
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Acceptance of terms
-            </h2>
-            <p className="mt-3">
-              By accessing or using this website, you agree to these Terms of Use,
-              the Privacy Policy, and the Disclaimer. If you do not agree, do not
-              use the website.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Permitted use
-            </h2>
-            <p className="mt-3">
-              You may use the website for lawful business, educational, and
-              internal documentation purposes. Generated content may be reviewed,
-              adapted, downloaded, and used subject to these terms.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Prohibited use
-            </h2>
-            <p className="mt-3">
-              You may not misuse the website, attempt unauthorized access,
-              interfere with service operation, upload malicious content,
-              violate applicable law, or use generated content in a deceptive,
-              unsafe, or unlawful manner.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              User responsibility
-            </h2>
-            <p className="mt-3">
-              You are responsible for the accuracy of information entered,
-              reviewing generated documents, confirming applicable requirements,
-              and obtaining qualified professional guidance where appropriate.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Intellectual property
-            </h2>
-            <p className="mt-3">
-              The website design, source code, branding, written content, and
-              original features are protected by applicable intellectual
-              property laws. These terms do not transfer ownership of the
-              website or its underlying materials.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Generated documents
-            </h2>
-            <p className="mt-3">
-              Generated documents are provided as editable informational drafts.
-              You are responsible for verifying, modifying, and approving them
-              before operational or compliance use.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Service availability
-            </h2>
-            <p className="mt-3">
-              We may update, suspend, restrict, or discontinue any part of the
-              website without notice. Continuous or error-free availability is
-              not guaranteed.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Limitation of liability
-            </h2>
-            <p className="mt-3">
-              To the maximum extent permitted by law, Contractor Safety Tools
-              is not liable for losses, claims, injuries, penalties,
-              business interruption, data loss, or damages resulting from use of
-              the website or generated content.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-white">
-              Changes to these terms
-            </h2>
-            <p className="mt-3">
-              These terms may be updated when the website, applicable laws, or
-              service practices change. Continued use after publication of
-              updated terms means you accept the revised terms.
-            </p>
-          </section>
-        </div>
-
-        <div className="mt-12 flex flex-wrap gap-3">
-          <Link
-            href="/tools"
-            className="inline-flex rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
-          >
-            Explore safety tools
-          </Link>
-
-          <Link
-            href="/privacy"
-            className="inline-flex rounded-full border border-white/15 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
-          >
-            Read privacy policy
-          </Link>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link
+              href="/tools"
+              className="inline-flex rounded-[3px] border border-orange-600 bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-500"
+            >
+              Explore safety tools →
+            </Link>
+            <Link
+              href="/privacy"
+              className="inline-flex rounded-[3px] border border-navy-800 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:border-orange-500 hover:text-orange-600"
+            >
+              Read privacy policy
+            </Link>
+          </div>
         </div>
       </section>
     </main>

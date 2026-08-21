@@ -138,8 +138,8 @@ export function NearMissReportGenerator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
-        <h2 className="text-2xl font-black">Create your near-miss report</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-300">
+        <h2 className="text-2xl font-display font-black">Create your near-miss report</h2>
+        <p className="mt-2 text-sm leading-6 text-steel-200">
           Record what happened, what prevented harm, contributing factors,
           immediate controls, corrective actions, and follow-up ownership.
         </p>
@@ -151,7 +151,7 @@ export function NearMissReportGenerator() {
               <input
                 value={value}
                 onChange={(event) => setter(event.target.value)}
-                className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
+                className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
               />
             </label>
           ))}
@@ -164,7 +164,7 @@ export function NearMissReportGenerator() {
               value={eventDescription}
               onChange={(event) => setEventDescription(event.target.value)}
               rows={4}
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
             />
           </label>
 
@@ -176,7 +176,7 @@ export function NearMissReportGenerator() {
               value={potentialOutcome}
               onChange={(event) => setPotentialOutcome(event.target.value)}
               rows={3}
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
             />
           </label>
 
@@ -187,7 +187,7 @@ export function NearMissReportGenerator() {
                 value={value}
                 onChange={(event) => setter(event.target.value)}
                 rows={4}
-                className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
+                className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
               />
             </label>
           ))}
@@ -201,22 +201,22 @@ export function NearMissReportGenerator() {
 
         <button
           type="submit"
-          className="mt-6 w-full rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
+          className="mt-6 w-full rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
         >
           Generate Near-Miss Report
         </button>
       </form>
 
       <section className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-        <h2 className="text-2xl font-black">Generated near-miss report</h2>
+        <h2 className="text-2xl font-display font-black">Generated near-miss report</h2>
 
         {result ? (
           <div className="mt-6 space-y-6">
             <div>
-              <h3 className="text-xl font-black text-emerald-200">
+              <h3 className="text-xl font-display font-black text-orange-500">
                 {result.title}
               </h3>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
+              <p className="mt-3 text-sm leading-6 text-steel-200">
                 {result.summary}
               </p>
             </div>
@@ -224,10 +224,10 @@ export function NearMissReportGenerator() {
             {result.sections.map((section) => (
               <div
                 key={section.title}
-                className="rounded-2xl bg-slate-950/70 p-5"
+                className="rounded-2xl bg-navy-950/70 p-5"
               >
-                <h3 className="font-black">{section.title}</h3>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-300">
+                <h3 className="font-display font-black">{section.title}</h3>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-steel-200">
                   {section.items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
@@ -235,8 +235,8 @@ export function NearMissReportGenerator() {
               </div>
             ))}
 
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300/20 bg-amber-300/10 p-4">
-              <p className="text-xs leading-5 text-amber-100">
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-orange-500/20 bg-orange-500/10 p-4">
+              <p className="text-xs leading-5 text-orange-100">
                 {result.disclaimer}
               </p>
 
@@ -259,7 +259,7 @@ export function NearMissReportGenerator() {
             </div>
           </div>
         ) : (
-          <p className="mt-4 text-sm leading-6 text-slate-300">
+          <p className="mt-4 text-sm leading-6 text-steel-200">
             Complete the form and generate a near-miss report draft. The
             structured result will appear here.
           </p>

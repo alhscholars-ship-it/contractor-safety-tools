@@ -66,7 +66,7 @@ export function FallProtectionInspectionGenerator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Create Fall Protection Inspection
         </h2>
 
@@ -89,7 +89,7 @@ export function FallProtectionInspectionGenerator() {
                   event.target.value,
                 )
               }
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3"
             />
           </label>
         ))}
@@ -111,7 +111,7 @@ export function FallProtectionInspectionGenerator() {
                 )
               }
               rows={4}
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3"
             />
           </label>
         ))}
@@ -122,33 +122,33 @@ export function FallProtectionInspectionGenerator() {
 
         <button
           type="submit"
-          className="mt-6 w-full rounded-full bg-emerald-400 px-6 py-3 font-black text-slate-950"
+          className="mt-6 w-full rounded-full bg-orange-600 px-6 py-3 font-display font-black text-slate-950"
         >
           Generate Checklist
         </button>
       </form>
 
       <section className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Generated Checklist
         </h2>
 
         {result ? (
           <div className="mt-6 space-y-5">
-            <h3 className="text-xl font-black text-emerald-200">
+            <h3 className="text-xl font-display font-black text-orange-500">
               {result.title}
             </h3>
 
-            <p className="text-slate-300">
+            <p className="text-steel-200">
               {result.summary}
             </p>
 
             {result.sections.map((section) => (
               <div
                 key={section.title}
-                className="rounded-2xl bg-slate-950 p-5"
+                className="rounded-2xl bg-navy-950 p-5"
               >
-                <h4 className="font-black">
+                <h4 className="font-display font-black">
                   {section.title}
                 </h4>
 
@@ -177,7 +177,7 @@ export function FallProtectionInspectionGenerator() {
             />
           </div>
         ) : (
-          <p className="text-slate-300">
+          <p className="text-steel-200">
             Generate your checklist to preview it here.
           </p>
         )}

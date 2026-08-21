@@ -121,11 +121,11 @@ export function DartRateCalculator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Calculate your DART rate
         </h2>
 
-        <p className="mt-3 text-sm leading-7 text-slate-300">
+        <p className="mt-3 text-sm leading-7 text-steel-200">
           Enter the OSHA 300 Log case counts and employee
           hours worked for the same reporting period.
         </p>
@@ -152,12 +152,12 @@ export function DartRateCalculator() {
                 setDaysAwayCases(event.target.value)
               }
               aria-describedby="dart-days-away-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="dart-days-away-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter the number of cases classified as involving
               days away from work, not the number of days.
@@ -187,12 +187,12 @@ export function DartRateCalculator() {
                 )
               }
               aria-describedby="dart-restricted-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="dart-restricted-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter the number of cases involving job transfer
               or restriction, not the number of restricted days.
@@ -222,12 +222,12 @@ export function DartRateCalculator() {
                 )
               }
               aria-describedby="dart-hours-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="dart-hours-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Use actual hours worked by all included employees
               during the same period as the entered cases.
@@ -247,7 +247,7 @@ export function DartRateCalculator() {
         <div className="mt-7 flex flex-wrap gap-3">
           <button
             type="submit"
-            className="rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
+            className="rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
           >
             Calculate DART Rate
           </button>
@@ -255,7 +255,7 @@ export function DartRateCalculator() {
           <button
             type="button"
             onClick={handleReset}
-            className="rounded-full border border-white/20 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
+            className="rounded-full border border-white/20 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
           >
             Reset example
           </button>
@@ -269,35 +269,35 @@ export function DartRateCalculator() {
       >
         <h2
           id="dart-result-heading"
-          className="text-2xl font-black"
+          className="text-2xl font-display font-black"
         >
           DART rate result
         </h2>
 
         {result ? (
           <div className="mt-6 space-y-6">
-            <div className="rounded-3xl border border-emerald-300/25 bg-emerald-300/[0.08] p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+            <div className="rounded-3xl border border-orange-500/25 bg-navy-800 p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
                 Days away, restricted, or transferred rate
               </p>
 
-              <p className="mt-3 text-6xl font-black tracking-tight text-white">
+              <p className="mt-3 text-6xl font-display font-black tracking-tight text-white">
                 {result.roundedRate.toFixed(1)}
               </p>
 
-              <p className="mt-4 text-sm leading-7 text-slate-300">
+              <p className="mt-4 text-sm leading-7 text-steel-200">
                 {result.interpretation}
               </p>
             </div>
 
-            <div className="rounded-2xl bg-slate-950/70 p-5">
-              <h3 className="font-black text-white">
+            <div className="rounded-2xl bg-navy-950/70 p-5">
+              <h3 className="font-display font-black text-white">
                 Calculation details
               </h3>
 
               <dl className="mt-4 grid gap-4 text-sm">
                 <div>
-                  <dt className="font-bold text-slate-400">
+                  <dt className="font-bold text-steel-400">
                     Combined DART cases
                   </dt>
                   <dd className="mt-1 text-slate-200">
@@ -306,7 +306,7 @@ export function DartRateCalculator() {
                 </div>
 
                 <div>
-                  <dt className="font-bold text-slate-400">
+                  <dt className="font-bold text-steel-400">
                     Formula with entered values
                   </dt>
                   <dd className="mt-1 break-words text-slate-200">
@@ -315,7 +315,7 @@ export function DartRateCalculator() {
                 </div>
 
                 <div>
-                  <dt className="font-bold text-slate-400">
+                  <dt className="font-bold text-steel-400">
                     Unrounded result
                   </dt>
                   <dd className="mt-1 text-slate-200">
@@ -324,7 +324,7 @@ export function DartRateCalculator() {
                 </div>
 
                 <div>
-                  <dt className="font-bold text-slate-400">
+                  <dt className="font-bold text-steel-400">
                     Standard base
                   </dt>
                   <dd className="mt-1 text-slate-200">
@@ -337,8 +337,8 @@ export function DartRateCalculator() {
               </dl>
             </div>
 
-            <div className="rounded-2xl border border-amber-300/20 bg-amber-300/10 p-5">
-              <p className="text-xs leading-6 text-amber-100">
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/10 p-5">
+              <p className="text-xs leading-6 text-orange-100">
                 {result.disclaimer}
               </p>
 
@@ -362,7 +362,7 @@ export function DartRateCalculator() {
             </div>
           </div>
         ) : (
-          <p className="mt-4 text-sm leading-7 text-slate-300">
+          <p className="mt-4 text-sm leading-7 text-steel-200">
             Enter both DART case categories and employee hours,
             then select Calculate DART Rate. The normalized rate
             and equation will appear here.

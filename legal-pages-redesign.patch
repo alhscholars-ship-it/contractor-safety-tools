@@ -1,0 +1,1211 @@
+diff --git a/src/app/disclaimer/page.tsx b/src/app/disclaimer/page.tsx
+index c71b60f..f94acfd 100644
+--- a/src/app/disclaimer/page.tsx
++++ b/src/app/disclaimer/page.tsx
+@@ -1,5 +1,6 @@
+ import type { Metadata } from "next";
+ import Link from "next/link";
++import { PageHero } from "@/components/content/page-hero";
+ 
+ export const metadata: Metadata = {
+   title: "Disclaimer",
+@@ -10,116 +11,74 @@ export const metadata: Metadata = {
+   },
+ };
+ 
++const sections = [
++  {
++    title: "Not professional advice",
++    body: "Content and generated documents are not legal, medical, engineering, insurance, regulatory, or certified occupational safety advice. They do not create a professional-client relationship.",
++  },
++  {
++    title: "No guarantee of compliance",
++    body: "Use of this website does not guarantee compliance with OSHA, state-plan requirements, local regulations, contractual obligations, manufacturer instructions, client standards, or project-specific safety rules.",
++  },
++  {
++    title: "User responsibility",
++    body: "Users are responsible for reviewing, verifying, adapting, and approving every generated document before use. Conditions, hazards, equipment, workers, and applicable requirements must be evaluated by competent and qualified persons.",
++  },
++  {
++    title: "Information may change",
++    body: "Laws, standards, agency guidance, and accepted safety practices may change. Users should consult current official sources and qualified professionals before relying on generated content.",
++  },
++  {
++    title: "No warranty",
++    body: "The website and its tools are provided on an \u201cas is\u201d and \u201cas available\u201d basis without warranties of accuracy, completeness, fitness for a particular purpose, or uninterrupted availability.",
++  },
++  {
++    title: "Limitation of liability",
++    body: "To the maximum extent permitted by applicable law, Contractor Safety Tools is not responsible for losses, injuries, penalties, claims, project delays, or other damages arising from use of, misuse of, or reliance on this website or generated documents.",
++  },
++];
++
+ export default function DisclaimerPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
+-      <section className="mx-auto w-full max-w-4xl px-6 py-20">
+-        <Link href="/" className="text-sm font-semibold text-orange-500">
+-          ← Back to home
+-        </Link>
+-
+-        <div className="mt-8">
+-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Legal Information
+-          </p>
+-
+-          <h1 className="mt-4 text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Disclaimer
+-          </h1>
+-
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            Contractor Safety Tools provides general informational and
+-            documentation assistance only.
+-          </p>
+-        </div>
+-
+-        <div className="mt-12 space-y-8 text-base leading-8 text-steel-200">
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Not professional advice
+-            </h2>
+-            <p className="mt-3">
+-              Content and generated documents are not legal, medical,
+-              engineering, insurance, regulatory, or certified occupational
+-              safety advice. They do not create a professional-client
+-              relationship.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              No guarantee of compliance
+-            </h2>
+-            <p className="mt-3">
+-              Use of this website does not guarantee compliance with OSHA,
+-              state-plan requirements, local regulations, contractual
+-              obligations, manufacturer instructions, client standards, or
+-              project-specific safety rules.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              User responsibility
+-            </h2>
+-            <p className="mt-3">
+-              Users are responsible for reviewing, verifying, adapting, and
+-              approving every generated document before use. Conditions,
+-              hazards, equipment, workers, and applicable requirements must be
+-              evaluated by competent and qualified persons.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Information may change
+-            </h2>
+-            <p className="mt-3">
+-              Laws, standards, agency guidance, and accepted safety practices
+-              may change. Users should consult current official sources and
+-              qualified professionals before relying on generated content.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              No warranty
+-            </h2>
+-            <p className="mt-3">
+-              The website and its tools are provided on an “as is” and “as
+-              available” basis without warranties of accuracy, completeness,
+-              fitness for a particular purpose, or uninterrupted availability.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Limitation of liability
+-            </h2>
+-            <p className="mt-3">
+-              To the maximum extent permitted by applicable law, Contractor
+-              Contractor Safety Tools is not responsible for losses, injuries,
+-              penalties, claims, project delays, or other damages arising from
+-              use of, misuse of, or reliance on this website or generated
+-              documents.
+-            </p>
+-          </section>
+-        </div>
++    <main className="bg-paper">
++      <PageHero
++        eyebrow="Legal Information"
++        title="Disclaimer"
++        lede="Contractor Safety Tools provides general informational and documentation assistance only."
++      />
+ 
+-        <div className="mt-12 flex flex-wrap gap-3">
+-          <Link
+-            href="/tools"
+-            className="inline-flex rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
+-          >
+-            Explore safety tools
+-          </Link>
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-4xl px-6">
++          <div className="grid gap-5">
++            {sections.map((section) => (
++              <div
++                key={section.title}
++                className="rounded-xl border border-steel-200 bg-white p-7"
++              >
++                <h2 className="font-display text-xl font-bold text-navy-950">
++                  {section.title}
++                </h2>
++                <p className="mt-3 text-[15px] leading-7 text-slate-600">
++                  {section.body}
++                </p>
++              </div>
++            ))}
++          </div>
+ 
+-          <Link
+-            href="/about"
+-            className="inline-flex rounded-full border border-white/15 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
+-          >
+-            About this website
+-          </Link>
++          <div className="mt-10 flex flex-wrap gap-3">
++            <Link
++              href="/tools"
++              className="inline-flex rounded-[3px] border border-orange-600 bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-500"
++            >
++              Explore safety tools →
++            </Link>
++            <Link
++              href="/about"
++              className="inline-flex rounded-[3px] border border-navy-800 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:border-orange-500 hover:text-orange-600"
++            >
++              About this website
++            </Link>
++          </div>
+         </div>
+       </section>
+     </main>
+diff --git a/src/app/methodology/page.tsx b/src/app/methodology/page.tsx
+index e4dd613..e6c1100 100644
+--- a/src/app/methodology/page.tsx
++++ b/src/app/methodology/page.tsx
+@@ -1,6 +1,7 @@
+ import type { Metadata } from "next";
+ import Link from "next/link";
+ import { siteConfig } from "@/config/site";
++import { PageHero } from "@/components/content/page-hero";
+ 
+ export const metadata: Metadata = {
+   title: "Methodology and Editorial Standards",
+@@ -25,277 +26,237 @@ const methodologyJsonLd = {
+   },
+ };
+ 
++function Card({
++  title,
++  children,
++}: {
++  title: string;
++  children: React.ReactNode;
++}) {
++  return (
++    <div className="rounded-xl border border-steel-200 bg-white p-7">
++      <h2 className="font-display text-xl font-bold text-navy-950">
++        {title}
++      </h2>
++      <div className="mt-3 space-y-3 text-[15px] leading-7 text-slate-600">
++        {children}
++      </div>
++    </div>
++  );
++}
++
+ export default function MethodologyPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(methodologyJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(methodologyJsonLd) }}
+       />
+ 
+-      <section className="mx-auto w-full max-w-4xl px-6 py-20">
+-        <Link
+-          href="/"
+-          className="text-sm font-semibold text-orange-500"
+-        >
+-          ← Back to home
+-        </Link>
+-
+-        <div className="mt-8">
+-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Editorial Transparency
+-          </p>
+-
+-          <h1 className="mt-4 text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Methodology and Editorial Standards
+-          </h1>
+-
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            This page explains how we research safety topics, structure
+-            generators, select primary references, test releases, maintain
+-            published material, and evaluate correction requests.
+-          </p>
+-        </div>
+-
+-        <div className="mt-12 space-y-10 text-base leading-8 text-steel-200">
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Purpose of the website
+-            </h2>
+-
+-            <p className="mt-3">
+-              Contractor Safety Tools provides browser-based documentation
+-              aids for contractors, supervisors, project teams, and safety
+-              coordinators. Each generator produces a structured draft that
+-              users can review, adapt, approve, and export.
+-            </p>
+-
+-            <p className="mt-3">
+-              The website does not issue certifications, approve safety
+-              programs, determine legal compliance, or replace competent and
+-              qualified professionals.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Source hierarchy
+-            </h2>
+-
+-            <p className="mt-3">
+-              Research begins with current primary government sources,
+-              especially applicable OSHA standards, official topic pages,
+-              worksheets, forms, and compliance-assistance resources.
+-            </p>
+-
+-            <ul className="mt-4 list-disc space-y-3 pl-5">
+-              <li>
+-                Federal OSHA regulations, official topic pages, forms, and
+-                compliance-assistance resources.
+-              </li>
+-              <li>
+-                State-plan, state, local, and authority-having-jurisdiction
+-                requirements where applicable.
+-              </li>
+-              <li>
+-                Manufacturer instructions, engineered requirements, employer
+-                programs, client rules, and project specifications.
+-              </li>
+-              <li>
+-                Qualified professional judgment for workplace-specific hazards,
+-                controls, responsibilities, and approvals.
+-              </li>
+-            </ul>
+-
+-            <div className="mt-6 flex flex-wrap gap-3">
+-              <a
+-                href="https://www.osha.gov/safety-management"
+-                target="_blank"
+-                rel="noreferrer noopener"
+-                className="rounded-full border border-orange-500/30 px-5 py-3 text-sm font-bold text-orange-500 transition hover:border-emerald-200 hover:text-orange-100"
+-              >
+-                OSHA Safety Management
+-              </a>
++      <PageHero
++        eyebrow="Editorial Transparency"
++        title="Methodology and Editorial Standards"
++        lede="This page explains how we research safety topics, structure generators, select primary references, test releases, maintain published material, and evaluate correction requests."
++      />
+ 
+-              <a
+-                href="https://www.osha.gov/construction/topics"
+-                target="_blank"
+-                rel="noreferrer noopener"
+-                className="rounded-full border border-orange-500/30 px-5 py-3 text-sm font-bold text-orange-500 transition hover:border-emerald-200 hover:text-orange-100"
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-4xl px-6">
++          <div className="grid gap-5">
++            <Card title="Purpose of the website">
++              <p>
++                Contractor Safety Tools provides browser-based documentation
++                aids for contractors, supervisors, project teams, and safety
++                coordinators. Each generator produces a structured draft that
++                users can review, adapt, approve, and export.
++              </p>
++              <p>
++                The website does not issue certifications, approve safety
++                programs, determine legal compliance, or replace competent
++                and qualified professionals.
++              </p>
++            </Card>
++
++            <Card title="Source hierarchy">
++              <p>
++                Research begins with current primary government sources,
++                especially applicable OSHA standards, official topic pages,
++                worksheets, forms, and compliance-assistance resources.
++              </p>
++              <ul className="list-disc space-y-2.5 pl-5">
++                <li>
++                  Federal OSHA regulations, official topic pages, forms, and
++                  compliance-assistance resources.
++                </li>
++                <li>
++                  State-plan, state, local, and authority-having-jurisdiction
++                  requirements where applicable.
++                </li>
++                <li>
++                  Manufacturer instructions, engineered requirements, employer
++                  programs, client rules, and project specifications.
++                </li>
++                <li>
++                  Qualified professional judgment for workplace-specific
++                  hazards, controls, responsibilities, and approvals.
++                </li>
++              </ul>
++              <div className="flex flex-wrap gap-3 pt-2">
++                <a
++                  href="https://www.osha.gov/safety-management"
++                  target="_blank"
++                  rel="noreferrer noopener"
++                  className="rounded-[3px] border border-orange-500/40 px-4 py-2 text-xs font-semibold text-orange-600 transition hover:border-orange-500 hover:bg-orange-100/50"
++                >
++                  OSHA Safety Management ↗
++                </a>
++                <a
++                  href="https://www.osha.gov/construction/topics"
++                  target="_blank"
++                  rel="noreferrer noopener"
++                  className="rounded-[3px] border border-orange-500/40 px-4 py-2 text-xs font-semibold text-orange-600 transition hover:border-orange-500 hover:bg-orange-100/50"
++                >
++                  OSHA Construction Topics ↗
++                </a>
++              </div>
++            </Card>
++
++            <Card title="How tool-specific references are selected">
++              <p>
++                Each generator links to focused official sources that closely
++                match its subject. Source selection favors primary OSHA
++                material over commercial summaries, unsupported claims, or
++                general pages that do not address the tool&apos;s principal
++                topic.
++              </p>
++              <p>
++                Including a source link helps users continue their own
++                verification. It does not mean OSHA reviewed, endorsed,
++                approved, or certified the generator or any document it
++                produces.
++              </p>
++            </Card>
++
++            <Card title="Generator design process">
++              <ol className="list-decimal space-y-2.5 pl-5">
++                <li>
++                  Define the documentation purpose and intended workplace
++                  users.
++                </li>
++                <li>
++                  Identify essential job details, findings, hazards,
++                  controls, responsibilities, and follow-up information.
++                </li>
++                <li>
++                  Create explicit validation rules for required fields and
++                  list inputs.
++                </li>
++                <li>
++                  Produce deterministic output from information entered by
++                  the user.
++                </li>
++                <li>
++                  Include clear limitations and review reminders in the
++                  interface and exported document.
++                </li>
++                <li>
++                  Add focused primary sources and related internal tools
++                  where they support verification or workflow continuity.
++                </li>
++              </ol>
++              <p>
++                The generators do not invent workplace facts or independently
++                determine whether a jobsite, procedure, employee, or document
++                is compliant.
++              </p>
++            </Card>
++
++            <Card title="Quality assurance">
++              <p>
++                Production changes are checked through automated and manual
++                quality controls before release.
++              </p>
++              <ul className="list-disc space-y-2.5 pl-5">
++                <li>
++                  Automated tests covering validation, deterministic
++                  generation, exports, structured data, navigation, and
++                  authority references.
++                </li>
++                <li>
++                  ESLint and TypeScript checks for code quality and type
++                  safety.
++                </li>
++                <li>A fresh optimized production build for verified releases.</li>
++                <li>Accessibility auditing across physical website routes.</li>
++                <li>
++                  Git scope, whitespace, repository-health, and regression
++                  checks before commits and pushes.
++                </li>
++              </ul>
++            </Card>
++
++            <Card title="Review and maintenance triggers">
++              <p>
++                Content and tools should be reviewed when an official source
++                changes, a linked standard is revised, a broken reference is
++                discovered, generator behavior changes, a material error is
++                reported, or new regulatory context affects published
++                wording.
++              </p>
++              <p>
++                Laws, standards, guidance, site conditions, and employer
++                programs can change. Users must verify current requirements
++                at the time of use.
++              </p>
++            </Card>
++
++            <Card title="Corrections and feedback">
++              <p>
++                Reports of broken links, inaccurate wording, technical
++                defects, accessibility problems, or outdated references are
++                evaluated against the affected primary source, tool
++                behavior, and current repository implementation.
++              </p>
++              <p>
++                A report should identify the affected page or tool and
++                explain the issue without including confidential employee,
++                medical, client, legal, or incident information.
++              </p>
++              <Link
++                href="/contact"
++                className="inline-flex rounded-[3px] border border-navy-800 px-5 py-2.5 text-sm font-semibold text-navy-950 transition hover:border-orange-500 hover:text-orange-600"
+               >
+-                OSHA Construction Topics
+-              </a>
+-            </div>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              How tool-specific references are selected
+-            </h2>
+-
+-            <p className="mt-3">
+-              Each generator links to focused official sources that closely
+-              match its subject. Source selection favors primary OSHA material
+-              over commercial summaries, unsupported claims, or general pages
+-              that do not address the tool&apos;s principal topic.
+-            </p>
+-
+-            <p className="mt-3">
+-              Including a source link helps users continue their own
+-              verification. It does not mean OSHA reviewed, endorsed, approved,
+-              or certified the generator or any document it produces.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Generator design process
+-            </h2>
+-
+-            <ol className="mt-4 list-decimal space-y-3 pl-5">
+-              <li>
+-                Define the documentation purpose and intended workplace users.
+-              </li>
+-              <li>
+-                Identify essential job details, findings, hazards, controls,
+-                responsibilities, and follow-up information.
+-              </li>
+-              <li>
+-                Create explicit validation rules for required fields and list
+-                inputs.
+-              </li>
+-              <li>
+-                Produce deterministic output from information entered by the
+-                user.
+-              </li>
+-              <li>
+-                Include clear limitations and review reminders in the interface
+-                and exported document.
+-              </li>
+-              <li>
+-                Add focused primary sources and related internal tools where
+-                they support verification or workflow continuity.
+-              </li>
+-            </ol>
+-
+-            <p className="mt-4">
+-              The generators do not invent workplace facts or independently
+-              determine whether a jobsite, procedure, employee, or document is
+-              compliant.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Quality assurance
+-            </h2>
+-
+-            <p className="mt-3">
+-              Production changes are checked through automated and manual
+-              quality controls before release.
+-            </p>
+-
+-            <ul className="mt-4 list-disc space-y-3 pl-5">
+-              <li>
+-                Automated tests covering validation, deterministic generation,
+-                exports, structured data, navigation, and authority references.
+-              </li>
+-              <li>
+-                ESLint and TypeScript checks for code quality and type safety.
+-              </li>
+-              <li>
+-                A fresh optimized production build for verified releases.
+-              </li>
+-              <li>
+-                Accessibility auditing across physical website routes.
+-              </li>
+-              <li>
+-                Git scope, whitespace, repository-health, and regression
+-                checks before commits and pushes.
+-              </li>
+-            </ul>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Review and maintenance triggers
+-            </h2>
+-
+-            <p className="mt-3">
+-              Content and tools should be reviewed when an official source
+-              changes, a linked standard is revised, a broken reference is
+-              discovered, generator behavior changes, a material error is
+-              reported, or new regulatory context affects published wording.
+-            </p>
+-
+-            <p className="mt-3">
+-              Laws, standards, guidance, site conditions, and employer programs
+-              can change. Users must verify current requirements at the time of
+-              use.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Corrections and feedback
+-            </h2>
+-
+-            <p className="mt-3">
+-              Reports of broken links, inaccurate wording, technical defects,
+-              accessibility problems, or outdated references are evaluated
+-              against the affected primary source, tool behavior, and current
+-              repository implementation.
+-            </p>
+-
+-            <p className="mt-3">
+-              A report should identify the affected page or tool and explain
+-              the issue without including confidential employee, medical,
+-              client, legal, or incident information.
+-            </p>
+-
++                View correction and contact guidance
++              </Link>
++            </Card>
++
++            <Card title="Editorial limitations">
++              <p>
++                No general-purpose generator can represent every possible
++                hazard, jurisdiction, trade, emergency, equipment condition,
++                contractual requirement, or professional judgment.
++              </p>
++              <p>
++                Users remain responsible for workplace assessment, document
++                approval, employee training, implementation, supervision,
++                regulatory reporting, and obtaining qualified guidance.
++              </p>
++            </Card>
++          </div>
++
++          <div className="mt-10 flex flex-wrap gap-3">
+             <Link
+-              href="/contact"
+-              className="mt-5 inline-flex rounded-full border border-white/15 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
++              href="/tools"
++              className="inline-flex rounded-[3px] border border-orange-600 bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-500"
+             >
+-              View correction and contact guidance
++              Explore safety tools →
+             </Link>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Editorial limitations
+-            </h2>
+-
+-            <p className="mt-3">
+-              No general-purpose generator can represent every possible hazard,
+-              jurisdiction, trade, emergency, equipment condition, contractual
+-              requirement, or professional judgment.
+-            </p>
+-
+-            <p className="mt-3">
+-              Users remain responsible for workplace assessment, document
+-              approval, employee training, implementation, supervision,
+-              regulatory reporting, and obtaining qualified guidance.
+-            </p>
+-          </section>
+-        </div>
+-
+-        <div className="mt-14 flex flex-wrap gap-3">
+-          <Link
+-            href="/tools"
+-            className="inline-flex rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
+-          >
+-            Explore safety tools
+-          </Link>
+-
+-          <Link
+-            href="/disclaimer"
+-            className="inline-flex rounded-full border border-white/15 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
+-          >
+-            Read the disclaimer
+-          </Link>
++            <Link
++              href="/disclaimer"
++              className="inline-flex rounded-[3px] border border-navy-800 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:border-orange-500 hover:text-orange-600"
++            >
++              Read the disclaimer
++            </Link>
++          </div>
+         </div>
+       </section>
+     </main>
+diff --git a/src/app/privacy/page.tsx b/src/app/privacy/page.tsx
+index c35c452..0cbeb95 100644
+--- a/src/app/privacy/page.tsx
++++ b/src/app/privacy/page.tsx
+@@ -1,5 +1,6 @@
+ import type { Metadata } from "next";
+ import Link from "next/link";
++import { PageHero } from "@/components/content/page-hero";
+ 
+ export const metadata: Metadata = {
+   title: "Privacy Policy",
+@@ -10,178 +11,90 @@ export const metadata: Metadata = {
+   },
+ };
+ 
++const sections = [
++  {
++    title: "Generator input processing",
++    body: "Tool input is processed in your browser to create a document draft. The current application has no user accounts, form-submission API, or application database that receives generator entries.",
++  },
++  {
++    title: "TXT and PDF downloads",
++    body: "TXT and PDF exports are generated through the browser download process. After a file is saved, its storage, retention, sharing, backup, and deletion are controlled by your browser, device, and any storage service you choose to use.",
++  },
++  {
++    title: "Website request data",
++    body: "Hosting, network, and security providers may process standard request information needed to deliver and protect the website, such as an IP address, requested page, request time, browser identifier, and error or security event data. This technical request data is separate from generator field input.",
++  },
++  {
++    title: "Cookies, analytics, and advertising",
++    body: "The current application source does not include an analytics SDK, advertising tracker, or application code that stores generator input in cookies, localStorage, or sessionStorage.",
++  },
++  {
++    title: "External links and services",
++    body: "The website links to external resources, including OSHA pages and the public GitHub issue tracker. When you follow an external link, the destination service receives the request and applies its own privacy, security, account, and retention practices.",
++  },
++  {
++    title: "Data retention",
++    body: "Because generator entries are not submitted to an application backend, we do not retain them in an application database. Hosting, network, or security providers may retain technical request logs according to their operational and legal requirements.",
++  },
++  {
++    title: "Sensitive information",
++    body: "Do not enter confidential employee, medical, financial, legal, client, incident, or personally identifying information unless you are authorized to process it and have assessed the security of your browser, device, downloads, and workplace procedures.",
++  },
++  {
++    title: "Data security",
++    body: "Browser-based processing reduces application-side collection of generator input, but no browser, device, network, download, transmission, or storage environment can be guaranteed to be completely secure.",
++  },
++  {
++    title: "Children's privacy",
++    body: "This website is intended for professional and business use and is not directed to children. The application does not provide user accounts or knowingly request information from children.",
++  },
++  {
++    title: "Policy changes",
++    body: "This policy may be revised when application behavior, hosting, external services, or legal requirements change. The version published on this page describes the current website.",
++  },
++];
++
+ export default function PrivacyPolicyPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
+-      <section className="mx-auto w-full max-w-4xl px-6 py-20">
+-        <Link
+-          href="/"
+-          className="text-sm font-semibold text-orange-500"
+-        >
+-          ← Back to home
+-        </Link>
+-
+-        <div className="mt-8">
+-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Privacy
+-          </p>
+-
+-          <h1 className="mt-4 text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Privacy Policy
+-          </h1>
+-
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            This policy describes the current application&apos;s data flow,
+-            browser-based document generation, downloads, technical requests,
+-            and external links.
+-          </p>
+-        </div>
+-
+-        <div className="mt-12 space-y-8 text-base leading-8 text-steel-200">
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Generator input processing
+-            </h2>
+-
+-            <p className="mt-3">
+-              Tool input is processed in your browser to create a document
+-              draft. The current application has no user accounts,
+-              form-submission API, or application database that receives
+-              generator entries.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              TXT and PDF downloads
+-            </h2>
+-
+-            <p className="mt-3">
+-              TXT and PDF exports are generated through the browser download
+-              process. After a file is saved, its storage, retention, sharing,
+-              backup, and deletion are controlled by your browser, device, and
+-              any storage service you choose to use.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Website request data
+-            </h2>
+-
+-            <p className="mt-3">
+-              Hosting, network, and security providers may process standard
+-              request information needed to deliver and protect the website,
+-              such as an IP address, requested page, request time, browser
+-              identifier, and error or security event data. This technical
+-              request data is separate from generator field input.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Cookies, analytics, and advertising
+-            </h2>
+-
+-            <p className="mt-3">
+-              The current application source does not include an analytics SDK,
+-              advertising tracker, or application code that stores generator
+-              input in cookies, localStorage, or sessionStorage.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              External links and services
+-            </h2>
+-
+-            <p className="mt-3">
+-              The website links to external resources, including OSHA pages and
+-              the public GitHub issue tracker. When you follow an external link,
+-              the destination service receives the request and applies its own
+-              privacy, security, account, and retention practices.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Data retention
+-            </h2>
+-
+-            <p className="mt-3">
+-              Because generator entries are not submitted to an application
+-              backend, we do not retain them in an application database.
+-              Hosting, network, or security providers may retain technical
+-              request logs according to their operational and legal
+-              requirements.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Sensitive information
+-            </h2>
+-
+-            <p className="mt-3">
+-              Do not enter confidential employee, medical, financial, legal,
+-              client, incident, or personally identifying information unless
+-              you are authorized to process it and have assessed the security
+-              of your browser, device, downloads, and workplace procedures.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Data security
+-            </h2>
+-
+-            <p className="mt-3">
+-              Browser-based processing reduces application-side collection of
+-              generator input, but no browser, device, network, download,
+-              transmission, or storage environment can be guaranteed to be
+-              completely secure.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Children&apos;s privacy
+-            </h2>
+-
+-            <p className="mt-3">
+-              This website is intended for professional and business use and is
+-              not directed to children. The application does not provide user
+-              accounts or knowingly request information from children.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Policy changes
+-            </h2>
+-
+-            <p className="mt-3">
+-              This policy may be revised when application behavior, hosting,
+-              external services, or legal requirements change. The version
+-              published on this page describes the current website.
+-            </p>
+-          </section>
+-        </div>
+-
+-        <div className="mt-12 flex flex-wrap gap-3">
+-          <Link
+-            href="/methodology"
+-            className="inline-flex rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
+-          >
+-            Read our methodology
+-          </Link>
+-
+-          <Link
+-            href="/contact"
+-            className="inline-flex rounded-full border border-white/15 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
+-          >
+-            Report a website issue
+-          </Link>
++    <main className="bg-paper">
++      <PageHero
++        eyebrow="Privacy"
++        title="Privacy Policy"
++        lede="This policy describes the current application's data flow, browser-based document generation, downloads, technical requests, and external links."
++      />
++
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-4xl px-6">
++          <div className="grid gap-5">
++            {sections.map((section) => (
++              <div
++                key={section.title}
++                className="rounded-xl border border-steel-200 bg-white p-7"
++              >
++                <h2 className="font-display text-xl font-bold text-navy-950">
++                  {section.title}
++                </h2>
++                <p className="mt-3 text-[15px] leading-7 text-slate-600">
++                  {section.body}
++                </p>
++              </div>
++            ))}
++          </div>
++
++          <div className="mt-10 flex flex-wrap gap-3">
++            <Link
++              href="/methodology"
++              className="inline-flex rounded-[3px] border border-orange-600 bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-500"
++            >
++              Read our methodology →
++            </Link>
++            <Link
++              href="/contact"
++              className="inline-flex rounded-[3px] border border-navy-800 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:border-orange-500 hover:text-orange-600"
++            >
++              Report a website issue
++            </Link>
++          </div>
+         </div>
+       </section>
+     </main>
+diff --git a/src/app/terms/page.tsx b/src/app/terms/page.tsx
+index 2cbfdc1..24c0f0d 100644
+--- a/src/app/terms/page.tsx
++++ b/src/app/terms/page.tsx
+@@ -1,5 +1,6 @@
+ import type { Metadata } from "next";
+ import Link from "next/link";
++import { PageHero } from "@/components/content/page-hero";
+ 
+ export const metadata: Metadata = {
+   title: "Terms of Use",
+@@ -10,147 +11,86 @@ export const metadata: Metadata = {
+   },
+ };
+ 
++const sections = [
++  {
++    title: "Acceptance of terms",
++    body: "By accessing or using this website, you agree to these Terms of Use, the Privacy Policy, and the Disclaimer. If you do not agree, do not use the website.",
++  },
++  {
++    title: "Permitted use",
++    body: "You may use the website for lawful business, educational, and internal documentation purposes. Generated content may be reviewed, adapted, downloaded, and used subject to these terms.",
++  },
++  {
++    title: "Prohibited use",
++    body: "You may not misuse the website, attempt unauthorized access, interfere with service operation, upload malicious content, violate applicable law, or use generated content in a deceptive, unsafe, or unlawful manner.",
++  },
++  {
++    title: "User responsibility",
++    body: "You are responsible for the accuracy of information entered, reviewing generated documents, confirming applicable requirements, and obtaining qualified professional guidance where appropriate.",
++  },
++  {
++    title: "Intellectual property",
++    body: "The website design, source code, branding, written content, and original features are protected by applicable intellectual property laws. These terms do not transfer ownership of the website or its underlying materials.",
++  },
++  {
++    title: "Generated documents",
++    body: "Generated documents are provided as editable informational drafts. You are responsible for verifying, modifying, and approving them before operational or compliance use.",
++  },
++  {
++    title: "Service availability",
++    body: "We may update, suspend, restrict, or discontinue any part of the website without notice. Continuous or error-free availability is not guaranteed.",
++  },
++  {
++    title: "Limitation of liability",
++    body: "To the maximum extent permitted by law, Contractor Safety Tools is not liable for losses, claims, injuries, penalties, business interruption, data loss, or damages resulting from use of the website or generated content.",
++  },
++  {
++    title: "Changes to these terms",
++    body: "These terms may be updated when the website, applicable laws, or service practices change. Continued use after publication of updated terms means you accept the revised terms.",
++  },
++];
++
+ export default function TermsOfUsePage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
+-      <section className="mx-auto w-full max-w-4xl px-6 py-20">
+-        <Link href="/" className="text-sm font-semibold text-orange-500">
+-          ← Back to home
+-        </Link>
+-
+-        <div className="mt-8">
+-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Legal Information
+-          </p>
+-
+-          <h1 className="mt-4 text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Terms of Use
+-          </h1>
+-
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            These terms govern your use of Contractor Safety Tools and its
+-            browser-based generators.
+-          </p>
+-        </div>
+-
+-        <div className="mt-12 space-y-8 text-base leading-8 text-steel-200">
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Acceptance of terms
+-            </h2>
+-            <p className="mt-3">
+-              By accessing or using this website, you agree to these Terms of Use,
+-              the Privacy Policy, and the Disclaimer. If you do not agree, do not
+-              use the website.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Permitted use
+-            </h2>
+-            <p className="mt-3">
+-              You may use the website for lawful business, educational, and
+-              internal documentation purposes. Generated content may be reviewed,
+-              adapted, downloaded, and used subject to these terms.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Prohibited use
+-            </h2>
+-            <p className="mt-3">
+-              You may not misuse the website, attempt unauthorized access,
+-              interfere with service operation, upload malicious content,
+-              violate applicable law, or use generated content in a deceptive,
+-              unsafe, or unlawful manner.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              User responsibility
+-            </h2>
+-            <p className="mt-3">
+-              You are responsible for the accuracy of information entered,
+-              reviewing generated documents, confirming applicable requirements,
+-              and obtaining qualified professional guidance where appropriate.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Intellectual property
+-            </h2>
+-            <p className="mt-3">
+-              The website design, source code, branding, written content, and
+-              original features are protected by applicable intellectual
+-              property laws. These terms do not transfer ownership of the
+-              website or its underlying materials.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Generated documents
+-            </h2>
+-            <p className="mt-3">
+-              Generated documents are provided as editable informational drafts.
+-              You are responsible for verifying, modifying, and approving them
+-              before operational or compliance use.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Service availability
+-            </h2>
+-            <p className="mt-3">
+-              We may update, suspend, restrict, or discontinue any part of the
+-              website without notice. Continuous or error-free availability is
+-              not guaranteed.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Limitation of liability
+-            </h2>
+-            <p className="mt-3">
+-              To the maximum extent permitted by law, Contractor Safety Tools
+-              is not liable for losses, claims, injuries, penalties,
+-              business interruption, data loss, or damages resulting from use of
+-              the website or generated content.
+-            </p>
+-          </section>
+-
+-          <section>
+-            <h2 className="text-2xl font-display font-black text-white">
+-              Changes to these terms
+-            </h2>
+-            <p className="mt-3">
+-              These terms may be updated when the website, applicable laws, or
+-              service practices change. Continued use after publication of
+-              updated terms means you accept the revised terms.
+-            </p>
+-          </section>
+-        </div>
+-
+-        <div className="mt-12 flex flex-wrap gap-3">
+-          <Link
+-            href="/tools"
+-            className="inline-flex rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
+-          >
+-            Explore safety tools
+-          </Link>
+-
+-          <Link
+-            href="/privacy"
+-            className="inline-flex rounded-full border border-white/15 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
+-          >
+-            Read privacy policy
+-          </Link>
++    <main className="bg-paper">
++      <PageHero
++        eyebrow="Legal Information"
++        title="Terms of Use"
++        lede="These terms govern your use of Contractor Safety Tools and its browser-based generators."
++      />
++
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-4xl px-6">
++          <div className="grid gap-5">
++            {sections.map((section) => (
++              <div
++                key={section.title}
++                className="rounded-xl border border-steel-200 bg-white p-7"
++              >
++                <h2 className="font-display text-xl font-bold text-navy-950">
++                  {section.title}
++                </h2>
++                <p className="mt-3 text-[15px] leading-7 text-slate-600">
++                  {section.body}
++                </p>
++              </div>
++            ))}
++          </div>
++
++          <div className="mt-10 flex flex-wrap gap-3">
++            <Link
++              href="/tools"
++              className="inline-flex rounded-[3px] border border-orange-600 bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-500"
++            >
++              Explore safety tools →
++            </Link>
++            <Link
++              href="/privacy"
++              className="inline-flex rounded-[3px] border border-navy-800 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:border-orange-500 hover:text-orange-600"
++            >
++              Read privacy policy
++            </Link>
++          </div>
+         </div>
+       </section>
+     </main>

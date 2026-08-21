@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { tools } from "@/data/tools";
+import { PageHero } from "@/components/content/page-hero";
 
 const toolCatalogAnswer = `The current catalog includes ${
   tools.length
@@ -23,8 +24,7 @@ const faqs = [
   },
   {
     question: "Can I export generated documents?",
-    answer:
-      "Yes. Each generator supports downloadable TXT and PDF exports.",
+    answer: "Yes. Each generator supports downloadable TXT and PDF exports.",
   },
   {
     question: "Is information entered into the tools stored?",
@@ -67,68 +67,50 @@ export const metadata: Metadata = {
 
 export default function FaqPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="bg-paper">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <section className="mx-auto w-full max-w-4xl px-6 py-20">
-        <Link
-          href="/"
-          className="text-sm font-semibold text-emerald-300"
-        >
-          ← Back to home
-        </Link>
+      <PageHero
+        eyebrow="Help Center"
+        title="Frequently asked questions."
+        lede="Common questions about the safety generator catalog, exports, browser processing, compliance limitations, and responsible use."
+      />
 
-        <div className="mt-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
-            Help Center
-          </p>
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-4xl px-6">
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <section
+                key={faq.question}
+                className="rounded-xl border border-steel-200 bg-white p-6"
+              >
+                <h2 className="font-display text-lg font-bold text-navy-950">
+                  {faq.question}
+                </h2>
+                <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
+                  {faq.answer}
+                </p>
+              </section>
+            ))}
+          </div>
 
-          <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">
-            Frequently Asked Questions
-          </h1>
-
-          <p className="mt-6 text-lg leading-8 text-slate-300">
-            Common questions about the safety generator catalog, exports,
-            browser processing, compliance limitations, and responsible use.
-          </p>
-        </div>
-
-        <div className="mt-12 space-y-5">
-          {faqs.map((faq) => (
-            <section
-              key={faq.question}
-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link
+              href="/tools"
+              className="inline-flex rounded-[3px] border border-orange-600 bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-500"
             >
-              <h2 className="text-xl font-black text-white">
-                {faq.question}
-              </h2>
-
-              <p className="mt-3 text-sm leading-7 text-slate-300">
-                {faq.answer}
-              </p>
-            </section>
-          ))}
-        </div>
-
-        <div className="mt-12 flex flex-wrap gap-3">
-          <Link
-            href="/tools"
-            className="inline-flex rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
-          >
-            Explore safety tools
-          </Link>
-
-          <Link
-            href="/contact"
-            className="inline-flex rounded-full border border-white/15 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
-          >
-            Report a website issue
-          </Link>
+              Explore safety tools →
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex rounded-[3px] border border-navy-800 px-6 py-3 text-sm font-semibold text-navy-950 transition hover:border-orange-500 hover:text-orange-600"
+            >
+              Report a website issue
+            </Link>
+          </div>
         </div>
       </section>
     </main>

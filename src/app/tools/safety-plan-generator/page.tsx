@@ -11,9 +11,8 @@ const toolJsonLd = createToolJsonLd({
   description:
     "Create a contractor safety plan outline for construction jobsites, trades, hazards, PPE, emergency procedures, and documentation.",
   url: "/tools/safety-plan-generator",
-  keywords: ['safety plan generator', 'contractor safety plan', 'construction safety plan template'],
+  keywords: ["safety plan generator", "contractor safety plan", "construction safety plan template"],
 });
-
 
 const breadcrumbJsonLd = createBreadcrumbJsonLd([
   { name: "Home", path: "/" },
@@ -46,6 +45,47 @@ const safetyPlanFaqs = [
 
 const faqJsonLd = createFaqJsonLd(safetyPlanFaqs);
 
+const steps = [
+  {
+    title: "1. Add project details",
+    description:
+      "Identify the contractor, project, trade, jobsite location, and emergency contact.",
+  },
+  {
+    title: "2. Document hazards and PPE",
+    description:
+      "List the main jobsite hazards and the personal protective equipment expected for the work.",
+  },
+  {
+    title: "3. Review and export",
+    description:
+      "Check the generated plan, adapt it to actual site conditions, and export it as TXT or PDF.",
+  },
+];
+
+const relatedTools = [
+  {
+    href: "/tools/jha-generator",
+    title: "JHA Generator",
+    description: "Break work into task steps, hazards, controls, and PPE.",
+  },
+  {
+    href: "/tools/toolbox-talk-generator",
+    title: "Toolbox Talk Generator",
+    description: "Prepare crew discussion points and safety meeting notes.",
+  },
+  {
+    href: "/tools/ppe-checklist-generator",
+    title: "PPE Checklist Generator",
+    description: "Create task-specific PPE and pre-use inspection checklists.",
+  },
+  {
+    href: "/tools/incident-report-generator",
+    title: "Incident Report Generator",
+    description: "Document incidents, immediate actions, and corrective actions.",
+  },
+];
+
 export const metadata: Metadata = {
   title: "Safety Plan Generator",
   description:
@@ -57,222 +97,191 @@ export const metadata: Metadata = {
 
 export default function SafetyPlanGeneratorPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="bg-paper">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <section className="mx-auto w-full max-w-6xl px-6 py-20">
-        <Link href="/tools" className="text-sm font-semibold text-emerald-300">
-          ← Back to tools
-        </Link>
 
-        <div className="mt-8 max-w-3xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
-            Safety Plans
-          </p>
-          <h1 className="text-4xl font-black tracking-tight sm:text-6xl">
-            Safety Plan Generator for Contractors
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-slate-300">
-            Build a practical safety plan outline for construction jobsites,
-            trade-specific hazards, PPE requirements, emergency procedures, and
-            corrective action documentation.
-          </p>
+      <section className="bg-navy-950 py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <Link
+            href="/tools"
+            className="font-mono text-xs font-semibold text-steel-400 transition hover:text-orange-500"
+          >
+            ← Back to tools
+          </Link>
+
+          <div className="mt-6 max-w-3xl">
+            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
+              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
+              Safety Plans
+            </p>
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
+              Safety Plan Generator for Contractors
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
+              Build a practical safety plan outline for construction
+              jobsites, trade-specific hazards, PPE requirements, emergency
+              procedures, and corrective action documentation.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="mt-12">
+      <section className="border-b border-white/10 bg-navy-950 py-14">
+        <div className="mx-auto w-full max-w-6xl px-6">
           <SafetyPlanGenerator />
         </div>
+      </section>
 
-        <section className="mt-16 border-t border-white/10 pt-16">
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
+            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">
+              <span className="inline-block h-[2px] w-3.5 bg-orange-600" />
               How it works
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
               How to create a contractor safety plan
             </h2>
-            <p className="mt-5 text-base leading-8 text-slate-300">
+            <p className="mt-4 text-[15px] leading-7 text-slate-600">
               Enter the project, trade, jobsite, emergency contact, primary
-              hazards, and required PPE. The generator organizes those details
-              into a structured draft that can be reviewed, edited, and exported
-              for project documentation.
+              hazards, and required PPE. The generator organizes those
+              details into a structured draft that can be reviewed, edited,
+              and exported for project documentation.
             </p>
           </div>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {[
-              {
-                title: "1. Add project details",
-                description:
-                  "Identify the contractor, project, trade, jobsite location, and emergency contact.",
-              },
-              {
-                title: "2. Document hazards and PPE",
-                description:
-                  "List the main jobsite hazards and the personal protective equipment expected for the work.",
-              },
-              {
-                title: "3. Review and export",
-                description:
-                  "Check the generated plan, adapt it to actual site conditions, and export it as TXT or PDF.",
-              },
-            ].map((step) => (
+          <div className="mt-7 grid gap-4 md:grid-cols-3">
+            {steps.map((step) => (
               <article
                 key={step.title}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+                className="rounded-xl border border-steel-200 bg-white p-6"
               >
-                <h3 className="text-lg font-black text-white">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">
+                <h3 className="font-display text-lg font-bold text-navy-950">
+                  {step.title}
+                </h3>
+                <p className="mt-2.5 text-[13.5px] leading-relaxed text-slate-600">
                   {step.description}
                 </p>
               </article>
             ))}
           </div>
-        </section>
 
-        <section className="mt-16 grid gap-8 lg:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
-              What should a construction safety plan include?
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              A useful plan should reflect the actual project, trade, workforce,
-              equipment, and hazards. Common sections include:
-            </p>
+          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+            <div className="rounded-xl border border-steel-200 bg-white p-7">
+              <h2 className="font-display text-xl font-bold text-navy-950">
+                What should a construction safety plan include?
+              </h2>
+              <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
+                A useful plan should reflect the actual project, trade,
+                workforce, equipment, and hazards. Common sections include:
+              </p>
+              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+                <li>Company, project, trade, and jobsite identification</li>
+                <li>Roles, responsibilities, and emergency contacts</li>
+                <li>Known hazards and planned control measures</li>
+                <li>Required PPE and inspection expectations</li>
+                <li>Emergency response and incident-reporting procedures</li>
+                <li>Training, communication, and toolbox talk requirements</li>
+                <li>Corrective actions, review notes, and recordkeeping</li>
+              </ul>
+            </div>
 
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
-              <li>Company, project, trade, and jobsite identification</li>
-              <li>Roles, responsibilities, and emergency contacts</li>
-              <li>Known hazards and planned control measures</li>
-              <li>Required PPE and inspection expectations</li>
-              <li>Emergency response and incident-reporting procedures</li>
-              <li>Training, communication, and toolbox talk requirements</li>
-              <li>Corrective actions, review notes, and recordkeeping</li>
-            </ul>
+            <div className="rounded-xl border border-steel-200 bg-white p-7">
+              <h2 className="font-display text-xl font-bold text-navy-950">
+                When should the safety plan be updated?
+              </h2>
+              <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
+                Review the plan before work begins and whenever conditions
+                change. Updates may be needed when:
+              </p>
+              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+                <li>New work phases, trades, or subcontractors are introduced</li>
+                <li>Equipment, materials, or work methods change</li>
+                <li>New hazards or site restrictions are identified</li>
+                <li>An incident, near miss, or corrective action occurs</li>
+                <li>Client, insurer, manufacturer, or regulatory requirements change</li>
+                <li>Workers report that controls are missing or ineffective</li>
+              </ul>
+            </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
-              When should the safety plan be updated?
+          <div className="mt-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
+            <h2 className="font-display text-xl font-bold text-orange-950">
+              Safety and compliance limitations
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              Review the plan before work begins and whenever conditions change.
-              Updates may be needed when:
+            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
+              This generator creates an informational draft only. It does
+              not guarantee OSHA compliance and does not replace a
+              competent person, qualified safety professional, legal
+              counsel, project-specific requirements, manufacturer
+              instructions, or current federal, state, and local
+              regulations.
             </p>
-
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
-              <li>New work phases, trades, or subcontractors are introduced</li>
-              <li>Equipment, materials, or work methods change</li>
-              <li>New hazards or site restrictions are identified</li>
-              <li>An incident, near miss, or corrective action occurs</li>
-              <li>Client, insurer, manufacturer, or regulatory requirements change</li>
-              <li>Workers report that controls are missing or ineffective</li>
-            </ul>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="mt-16 rounded-3xl border border-amber-300/20 bg-amber-300/10 p-7">
-          <h2 className="text-2xl font-black text-amber-100">
-            Safety and compliance limitations
-          </h2>
-          <p className="mt-4 text-sm leading-7 text-amber-50/90">
-            This generator creates an informational draft only. It does not
-            guarantee OSHA compliance and does not replace a competent person,
-            qualified safety professional, legal counsel, project-specific
-            requirements, manufacturer instructions, or current federal, state,
-            and local regulations.
-          </p>
-        </section>
-
-        <section className="mt-16">
+      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-black tracking-tight">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
               Related contractor safety tools
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
+            <p className="mt-3 text-[15px] leading-7 text-slate-600">
               Use these related generators to support job planning,
               communication, hazard analysis, and documentation.
             </p>
           </div>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                href: "/tools/jha-generator",
-                title: "JHA Generator",
-                description:
-                  "Break work into task steps, hazards, controls, and PPE.",
-              },
-              {
-                href: "/tools/toolbox-talk-generator",
-                title: "Toolbox Talk Generator",
-                description:
-                  "Prepare crew discussion points and safety meeting notes.",
-              },
-              {
-                href: "/tools/ppe-checklist-generator",
-                title: "PPE Checklist Generator",
-                description:
-                  "Create task-specific PPE and pre-use inspection checklists.",
-              },
-              {
-                href: "/tools/incident-report-generator",
-                title: "Incident Report Generator",
-                description:
-                  "Document incidents, immediate actions, and corrective actions.",
-              },
-            ].map((tool) => (
+          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {relatedTools.map((tool) => (
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-emerald-300/40 hover:bg-white/[0.07]"
+                className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
               >
-                <h3 className="font-black text-white">{tool.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-400">
+                <h3 className="font-bold text-navy-950">{tool.title}</h3>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
                   {tool.description}
                 </p>
               </Link>
             ))}
           </div>
-        </section>
 
-        <section className="mt-16">
-          <h2 className="text-3xl font-black tracking-tight">
-            Safety Plan Generator FAQs
-          </h2>
-
-          <div className="mt-8 space-y-5">
-            {safetyPlanFaqs.map((faq) => (
-              <article
-                key={faq.question}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
-              >
-                <h3 className="text-lg font-black text-white">
-                  {faq.question}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">
-                  {faq.answer}
-                </p>
-              </article>
-            ))}
+          <div className="mt-14">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+              Safety Plan Generator FAQs
+            </h2>
+            <div className="mt-7 space-y-4">
+              {safetyPlanFaqs.map((faq) => (
+                <article
+                  key={faq.question}
+                  className="rounded-xl border border-steel-200 bg-white p-6"
+                >
+                  <h3 className="font-display text-lg font-bold text-navy-950">
+                    {faq.question}
+                  </h3>
+                  <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
+                    {faq.answer}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
-        </section>
 
-        <OfficialSafetySources toolSlug="safety-plan-generator" />
+          <OfficialSafetySources toolSlug="safety-plan-generator" />
+        </div>
       </section>
     </main>
   );

@@ -130,11 +130,11 @@ export function DaysAwayCaseRateCalculator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Enter recordkeeping data
         </h2>
 
-        <p className="mt-3 text-sm leading-7 text-slate-300">
+        <p className="mt-3 text-sm leading-7 text-steel-200">
           Use days-away case counts and total employee
           hours from the same reporting period.
         </p>
@@ -163,12 +163,12 @@ export function DaysAwayCaseRateCalculator() {
                 )
               }
               aria-describedby="days-away-case-count-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="days-away-case-count-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Use the number of recordable cases
               classified as involving days away from
@@ -199,12 +199,12 @@ export function DaysAwayCaseRateCalculator() {
                 )
               }
               aria-describedby="days-away-employee-hours-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="days-away-employee-hours-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter total hours worked by all employees
               during the same reporting period.
@@ -213,7 +213,7 @@ export function DaysAwayCaseRateCalculator() {
         </div>
 
         <article className="mt-6 rounded-2xl border border-sky-300/20 bg-sky-300/10 p-5">
-          <h3 className="font-black text-sky-100">
+          <h3 className="font-display font-black text-sky-100">
             Numerator scope
           </h3>
 
@@ -237,7 +237,7 @@ export function DaysAwayCaseRateCalculator() {
         <div className="mt-7 flex flex-wrap gap-3">
           <button
             type="submit"
-            className="rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
+            className="rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
           >
             Calculate Days Away Rate
           </button>
@@ -245,7 +245,7 @@ export function DaysAwayCaseRateCalculator() {
           <button
             type="button"
             onClick={handleReset}
-            className="rounded-full border border-white/20 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
+            className="rounded-full border border-white/20 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
           >
             Reset OSHA example
           </button>
@@ -259,36 +259,36 @@ export function DaysAwayCaseRateCalculator() {
       >
         <h2
           id="days-away-result-heading"
-          className="text-2xl font-black"
+          className="text-2xl font-display font-black"
         >
           Days Away Case Rate result
         </h2>
 
         {result ? (
           <div className="mt-6 space-y-5">
-            <article className="rounded-3xl border border-emerald-300/25 bg-emerald-300/[0.08] p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-200">
+            <article className="rounded-3xl border border-orange-500/25 bg-navy-800 p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
                 Calculated rate
               </p>
 
-              <p className="mt-3 text-5xl font-black text-white sm:text-6xl">
+              <p className="mt-3 text-5xl font-display font-black text-white sm:text-6xl">
                 {result.daysAwayCaseRate.toFixed(
                   1,
                 )}
               </p>
 
-              <p className="mt-4 text-sm leading-7 text-slate-300">
+              <p className="mt-4 text-sm leading-7 text-steel-200">
                 {result.interpretation}
               </p>
             </article>
 
             <dl className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/10 p-5">
-                <dt className="text-sm font-bold text-slate-400">
+                <dt className="text-sm font-bold text-steel-400">
                   Days-away cases
                 </dt>
 
-                <dd className="mt-2 text-2xl font-black text-white">
+                <dd className="mt-2 text-2xl font-display font-black text-white">
                   {formatNumber(
                     result.daysAwayCases,
                   )}
@@ -296,11 +296,11 @@ export function DaysAwayCaseRateCalculator() {
               </div>
 
               <div className="rounded-2xl border border-white/10 p-5">
-                <dt className="text-sm font-bold text-slate-400">
+                <dt className="text-sm font-bold text-steel-400">
                   Employee hours
                 </dt>
 
-                <dd className="mt-2 text-2xl font-black text-white">
+                <dd className="mt-2 text-2xl font-display font-black text-white">
                   {formatNumber(
                     result.employeeHoursWorked,
                   )}
@@ -308,18 +308,18 @@ export function DaysAwayCaseRateCalculator() {
               </div>
             </dl>
 
-            <article className="rounded-2xl bg-slate-950/70 p-5">
-              <h3 className="font-black text-white">
+            <article className="rounded-2xl bg-navy-950/70 p-5">
+              <h3 className="font-display font-black text-white">
                 Calculation equation
               </h3>
 
-              <p className="mt-3 break-words text-sm leading-7 text-slate-300">
+              <p className="mt-3 break-words text-sm leading-7 text-steel-200">
                 {result.equation}
               </p>
             </article>
 
             <article className="rounded-2xl border border-sky-300/20 bg-sky-300/10 p-5">
-              <h3 className="font-black text-sky-100">
+              <h3 className="font-display font-black text-sky-100">
                 Days Away Rate versus DART
               </h3>
 
@@ -328,8 +328,8 @@ export function DaysAwayCaseRateCalculator() {
               </p>
             </article>
 
-            <div className="rounded-2xl border border-amber-300/20 bg-amber-300/10 p-5">
-              <p className="text-xs leading-6 text-amber-100">
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/10 p-5">
+              <p className="text-xs leading-6 text-orange-100">
                 {result.disclaimer}
               </p>
 
@@ -353,7 +353,7 @@ export function DaysAwayCaseRateCalculator() {
             </div>
           </div>
         ) : (
-          <p className="mt-4 text-sm leading-7 text-slate-300">
+          <p className="mt-4 text-sm leading-7 text-steel-200">
             Enter the case count and employee hours to
             calculate a standardized rate per 100
             full-time-equivalent employees.

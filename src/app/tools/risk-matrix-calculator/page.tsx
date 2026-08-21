@@ -20,18 +20,9 @@ const toolJsonLd = createToolJsonLd({
 });
 
 const breadcrumbJsonLd = createBreadcrumbJsonLd([
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "Safety Tools",
-    path: "/tools",
-  },
-  {
-    name: "Risk Matrix Calculator",
-    path: "/tools/risk-matrix-calculator",
-  },
+  { name: "Home", path: "/" },
+  { name: "Safety Tools", path: "/tools" },
+  { name: "Risk Matrix Calculator", path: "/tools/risk-matrix-calculator" },
 ]);
 
 const faqs = [
@@ -59,6 +50,24 @@ const faqs = [
 
 const faqJsonLd = createFaqJsonLd(faqs);
 
+const relatedTools = [
+  {
+    href: "/tools/jha-generator",
+    title: "JHA Generator",
+    description: "Document task steps, hazards, controls, and required PPE.",
+  },
+  {
+    href: "/tools/safety-plan-generator",
+    title: "Safety Plan Generator",
+    description: "Create a project safety plan with hazards, controls, and emergency information.",
+  },
+  {
+    href: "/tools/near-miss-report-generator",
+    title: "Near Miss Report Generator",
+    description: "Capture potential outcomes, contributing factors, and preventive actions.",
+  },
+];
+
 export const metadata: Metadata = {
   title: "Risk Matrix Calculator",
   description:
@@ -70,67 +79,43 @@ export const metadata: Metadata = {
 
 export default function RiskMatrixCalculatorPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="bg-paper">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
       />
-
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <section className="border-b border-white/10">
-        <div className="mx-auto w-full max-w-6xl px-6 py-16">
-          <nav
-            aria-label="Breadcrumb"
-            className="text-sm text-slate-400"
-          >
-            <Link
-              href="/"
-              className="transition hover:text-white"
-            >
+      <section className="bg-navy-950 py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <nav aria-label="Breadcrumb" className="font-mono text-xs text-steel-400">
+            <Link href="/" className="transition hover:text-orange-500">
               Home
             </Link>
-
             <span className="px-2">/</span>
-
-            <Link
-              href="/tools"
-              className="transition hover:text-white"
-            >
+            <Link href="/tools" className="transition hover:text-orange-500">
               Safety Tools
             </Link>
-
             <span className="px-2">/</span>
-
-            <span className="text-slate-200">
-              Risk Matrix Calculator
-            </span>
+            <span className="text-steel-200">Risk Matrix Calculator</span>
           </nav>
 
-          <div className="mt-8 max-w-4xl">
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-emerald-300">
+          <div className="mt-6 max-w-3xl">
+            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
+              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
               Hazard prioritization tool
             </p>
-
-            <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
               Risk Matrix Calculator
             </h1>
-
-            <p className="mt-6 text-lg leading-8 text-slate-300">
+            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
               Compare initial and residual hazard risk using a
               transparent 5 × 5 likelihood and severity model.
             </p>
@@ -138,31 +123,29 @@ export default function RiskMatrixCalculatorPage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-12">
-        <RiskMatrixCalculator />
+      <section className="border-b border-white/10 bg-navy-950 py-14">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <RiskMatrixCalculator />
+        </div>
       </section>
 
-      <section className="border-t border-white/10 bg-white/[0.02]">
-        <div className="mx-auto grid w-full max-w-6xl gap-6 px-6 py-16 lg:grid-cols-2">
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto grid w-full max-w-6xl gap-5 px-6 lg:grid-cols-2">
+          <article className="rounded-xl border border-steel-200 bg-white p-7">
+            <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
               Transparent model
-            </p>
-
-            <h2 className="mt-3 text-3xl font-black">
+            </span>
+            <h2 className="mt-2.5 font-display text-2xl font-bold text-navy-950">
               How the 5 × 5 score is calculated
             </h2>
-
-            <p className="mt-5 text-sm leading-7 text-slate-300">
-              Each score is calculated by multiplying the
-              selected likelihood and severity values:
+            <p className="mt-4 text-[14.5px] leading-7 text-slate-600">
+              Each score is calculated by multiplying the selected
+              likelihood and severity values:
             </p>
-
-            <p className="mt-5 rounded-2xl bg-slate-950 p-5 font-mono text-sm leading-7 text-emerald-200">
+            <p className="mt-4 rounded-[3px] bg-navy-950 p-4 font-mono text-[13px] leading-6 text-orange-300">
               Risk score = likelihood × severity
             </p>
-
-            <ul className="mt-5 list-disc space-y-2 pl-5 text-sm leading-7 text-slate-300">
+            <ul className="mt-4 list-disc space-y-1.5 pl-5 text-[14.5px] leading-7 text-slate-600">
               <li>Low: scores 1 through 4</li>
               <li>Moderate: scores 5 through 9</li>
               <li>High: scores 10 through 16</li>
@@ -170,163 +153,127 @@ export default function RiskMatrixCalculatorPage() {
             </ul>
           </article>
 
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+          <article className="rounded-xl border border-steel-200 bg-white p-7">
+            <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
               Assessment quality
-            </p>
-
-            <h2 className="mt-3 text-3xl font-black">
+            </span>
+            <h2 className="mt-2.5 font-display text-2xl font-bold text-navy-950">
               Use credible likelihood and consequence estimates
             </h2>
-
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
+            <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
               <li>
-                Consider how often workers perform the task and
-                how many workers may be exposed.
+                Consider how often workers perform the task and how many
+                workers may be exposed.
               </li>
               <li>
-                Use the credible potential consequence rather
-                than only the most common minor outcome.
+                Use the credible potential consequence rather than only
+                the most common minor outcome.
               </li>
               <li>
-                Include abnormal, emergency, maintenance, and
-                nonroutine conditions.
+                Include abnormal, emergency, maintenance, and nonroutine
+                conditions.
               </li>
               <li>
-                Obtain worker input and review incident,
-                inspection, and near-miss information.
+                Obtain worker input and review incident, inspection, and
+                near-miss information.
               </li>
               <li>
-                Reassess when equipment, processes, staffing, or
-                work conditions change.
+                Reassess when equipment, processes, staffing, or work
+                conditions change.
               </li>
             </ul>
           </article>
 
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
+          <article className="rounded-xl border border-steel-200 bg-white p-7">
+            <h2 className="font-display text-xl font-bold text-navy-950">
               Initial risk versus residual risk
             </h2>
-
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              Initial risk represents conditions before the
-              proposed controls are relied upon. Residual risk
-              represents the estimated risk after controls have
-              been implemented and their effectiveness verified.
+            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
+              Initial risk represents conditions before the proposed
+              controls are relied upon. Residual risk represents the
+              estimated risk after controls have been implemented and
+              their effectiveness verified.
             </p>
-
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              Do not lower a residual score merely because a
-              control appears in a plan. Confirm that the control
-              is installed, used correctly, maintained, and
-              effective under actual work conditions.
+            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
+              Do not lower a residual score merely because a control
+              appears in a plan. Confirm that the control is installed,
+              used correctly, maintained, and effective under actual
+              work conditions.
             </p>
           </article>
 
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
+          <article className="rounded-xl border border-steel-200 bg-white p-7">
+            <h2 className="font-display text-xl font-bold text-navy-950">
               Apply the hierarchy of controls
             </h2>
-
-            <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-7 text-slate-300">
+            <ol className="mt-4 list-decimal space-y-2 pl-5 text-[14.5px] leading-7 text-slate-600">
               <li>Eliminate the hazard where feasible.</li>
               <li>Substitute a safer material or process.</li>
               <li>Use engineering controls to isolate exposure.</li>
-              <li>
-                Add administrative controls and safe work
-                practices.
-              </li>
-              <li>
-                Use suitable personal protective equipment as
-                the final layer.
-              </li>
+              <li>Add administrative controls and safe work practices.</li>
+              <li>Use suitable personal protective equipment as the final layer.</li>
             </ol>
           </article>
 
-          <article className="rounded-3xl border border-amber-300/20 bg-amber-300/10 p-7 lg:col-span-2">
-            <h2 className="text-2xl font-black text-amber-100">
+          <article className="rounded-xl border border-orange-500/30 bg-orange-500/10 p-7 lg:col-span-2">
+            <h2 className="font-display text-xl font-bold text-orange-950">
               Important limitation
             </h2>
-
-            <p className="mt-4 text-sm leading-7 text-amber-100/90">
-              This 5 × 5 matrix is not an OSHA-required scoring
-              formula, permission to proceed, or compliance
-              determination. It cannot replace applicable
-              standards, competent-person decisions,
-              task-specific assessment, exposure monitoring,
-              worker participation, or immediate control of
-              recognized serious or imminent hazards.
+            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
+              This 5 × 5 matrix is not an OSHA-required scoring formula,
+              permission to proceed, or compliance determination. It
+              cannot replace applicable standards, competent-person
+              decisions, task-specific assessment, exposure monitoring,
+              worker participation, or immediate control of recognized
+              serious or imminent hazards.
             </p>
           </article>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16">
-        <h2 className="text-3xl font-black tracking-tight">
-          Risk Matrix Calculator FAQs
-        </h2>
-
-        <div className="mt-8 grid gap-5">
-          {faqs.map((faq) => (
-            <article
-              key={faq.question}
-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
-            >
-              <h3 className="text-lg font-black text-emerald-200">
-                {faq.question}
-              </h3>
-
-              <p className="mt-3 text-sm leading-7 text-slate-300">
-                {faq.answer}
-              </p>
-            </article>
-          ))}
-        </div>
-
-        <section className="mt-16">
-          <h2 className="text-3xl font-black tracking-tight">
-            Related contractor safety tools
+      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+            Risk Matrix Calculator FAQs
           </h2>
-
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {[
-              {
-                href: "/tools/jha-generator",
-                title: "JHA Generator",
-                description:
-                  "Document task steps, hazards, controls, and required PPE.",
-              },
-              {
-                href: "/tools/safety-plan-generator",
-                title: "Safety Plan Generator",
-                description:
-                  "Create a project safety plan with hazards, controls, and emergency information.",
-              },
-              {
-                href: "/tools/near-miss-report-generator",
-                title: "Near Miss Report Generator",
-                description:
-                  "Capture potential outcomes, contributing factors, and preventive actions.",
-              },
-            ].map((tool) => (
-              <Link
-                key={tool.href}
-                href={tool.href}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-emerald-300/40 hover:bg-white/[0.07]"
+          <div className="mt-7 grid gap-4">
+            {faqs.map((faq) => (
+              <article
+                key={faq.question}
+                className="rounded-xl border border-steel-200 bg-white p-6"
               >
-                <h3 className="font-black text-white">
-                  {tool.title}
+                <h3 className="font-display text-lg font-bold text-navy-950">
+                  {faq.question}
                 </h3>
-
-                <p className="mt-3 text-sm leading-6 text-slate-400">
-                  {tool.description}
+                <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
+                  {faq.answer}
                 </p>
-              </Link>
+              </article>
             ))}
           </div>
-        </section>
 
-        <OfficialSafetySources toolSlug="risk-matrix-calculator" />
+          <div className="mt-14">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+              Related contractor safety tools
+            </h2>
+            <div className="mt-7 grid gap-4 md:grid-cols-3">
+              {relatedTools.map((tool) => (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
+                >
+                  <h3 className="font-bold text-navy-950">{tool.title}</h3>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
+                    {tool.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <OfficialSafetySources toolSlug="risk-matrix-calculator" />
+        </div>
       </section>
     </main>
   );

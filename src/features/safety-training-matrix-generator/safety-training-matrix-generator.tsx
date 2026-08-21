@@ -304,11 +304,11 @@ export function SafetyTrainingMatrixGenerator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8"
       >
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Define the training program
         </h2>
 
-        <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
+        <p className="mt-3 max-w-3xl text-sm leading-7 text-steel-200">
           Connect each worker group with the
           applicable task or hazard, training
           timing, trainer qualification,
@@ -317,7 +317,7 @@ export function SafetyTrainingMatrixGenerator() {
         </p>
 
         <fieldset className="mt-8 grid gap-5 rounded-3xl border border-white/10 p-5 sm:grid-cols-2">
-          <legend className="px-2 text-lg font-black text-emerald-200">
+          <legend className="px-2 text-lg font-display font-black text-orange-500">
             Program information
           </legend>
 
@@ -339,7 +339,7 @@ export function SafetyTrainingMatrixGenerator() {
                   event.target.value,
                 )
               }
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
             />
           </label>
 
@@ -361,7 +361,7 @@ export function SafetyTrainingMatrixGenerator() {
                   event.target.value,
                 )
               }
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
             />
           </label>
 
@@ -384,12 +384,12 @@ export function SafetyTrainingMatrixGenerator() {
                 )
               }
               aria-describedby="training-prepared-by-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="training-prepared-by-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter the responsible person or
               role. This field does not certify
@@ -415,7 +415,7 @@ export function SafetyTrainingMatrixGenerator() {
                   event.target.value,
                 )
               }
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
             />
           </label>
 
@@ -438,12 +438,12 @@ export function SafetyTrainingMatrixGenerator() {
                 )
               }
               aria-describedby="training-program-contacts-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="training-program-contacts-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter one contact or responsible
               resource per line.
@@ -459,12 +459,12 @@ export function SafetyTrainingMatrixGenerator() {
             <div>
               <h3
                 id="training-assignments-heading"
-                className="text-xl font-black"
+                className="text-xl font-display font-black"
               >
                 Training assignments
               </h3>
 
-              <p className="mt-2 text-sm leading-6 text-slate-400">
+              <p className="mt-2 text-sm leading-6 text-steel-400">
                 Verify every row against the
                 requirement and workplace
                 conditions that actually apply.
@@ -474,7 +474,7 @@ export function SafetyTrainingMatrixGenerator() {
             <button
               type="button"
               onClick={addAssignment}
-              className="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-5 py-2.5 text-sm font-black text-emerald-100 transition hover:bg-emerald-300/20"
+              className="rounded-full border border-orange-500/30 bg-orange-500/10 px-5 py-2.5 text-sm font-display font-black text-orange-100 transition hover:bg-orange-500/20"
             >
               Add training assignment
             </button>
@@ -485,9 +485,9 @@ export function SafetyTrainingMatrixGenerator() {
               (assignment, index) => (
                 <fieldset
                   key={assignment.id}
-                  className="grid gap-5 rounded-3xl border border-white/10 bg-slate-950/40 p-5 sm:grid-cols-2"
+                  className="grid gap-5 rounded-3xl border border-white/10 bg-navy-950/40 p-5 sm:grid-cols-2"
                 >
-                  <legend className="px-2 text-base font-black text-emerald-200">
+                  <legend className="px-2 text-base font-display font-black text-orange-500">
                     Assignment {index + 1}
                   </legend>
 
@@ -513,7 +513,7 @@ export function SafetyTrainingMatrixGenerator() {
                           event.target.value,
                         )
                       }
-                      className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+                      className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
                     />
                   </label>
 
@@ -539,7 +539,7 @@ export function SafetyTrainingMatrixGenerator() {
                           event.target.value,
                         )
                       }
-                      className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+                      className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
                     />
                   </label>
 
@@ -565,7 +565,7 @@ export function SafetyTrainingMatrixGenerator() {
                           event.target.value,
                         )
                       }
-                      className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+                      className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
                     />
                   </label>
 
@@ -593,12 +593,12 @@ export function SafetyTrainingMatrixGenerator() {
                         )
                       }
                       aria-describedby={`training-timing-help-${assignment.id}`}
-                      className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+                      className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
                     />
 
                     <span
                       id={`training-timing-help-${assignment.id}`}
-                      className="text-xs leading-5 text-slate-400"
+                      className="text-xs leading-5 text-steel-400"
                     >
                       Verify timing against the
                       applicable requirement. Do
@@ -630,7 +630,7 @@ export function SafetyTrainingMatrixGenerator() {
                           event.target.value,
                         )
                       }
-                      className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+                      className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
                     />
                   </label>
 
@@ -656,7 +656,7 @@ export function SafetyTrainingMatrixGenerator() {
                           event.target.value,
                         )
                       }
-                      className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+                      className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
                     />
                   </label>
 
@@ -684,7 +684,7 @@ export function SafetyTrainingMatrixGenerator() {
                           event.target.value,
                         )
                       }
-                      className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+                      className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
                     />
                   </label>
 
@@ -711,7 +711,7 @@ export function SafetyTrainingMatrixGenerator() {
         </section>
 
         <fieldset className="mt-8 grid gap-6 rounded-3xl border border-white/10 p-5 lg:grid-cols-2">
-          <legend className="px-2 text-lg font-black text-emerald-200">
+          <legend className="px-2 text-lg font-display font-black text-orange-500">
             Review and documentation
           </legend>
 
@@ -735,12 +735,12 @@ export function SafetyTrainingMatrixGenerator() {
                 )
               }
               aria-describedby="training-change-triggers-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="training-change-triggers-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter one review condition per
               line. These are not automatic
@@ -767,12 +767,12 @@ export function SafetyTrainingMatrixGenerator() {
                 )
               }
               aria-describedby="training-documentation-fields-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="training-documentation-fields-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter one record field per line.
               Verify retention requirements
@@ -781,13 +781,13 @@ export function SafetyTrainingMatrixGenerator() {
           </label>
         </fieldset>
 
-        <article className="mt-6 rounded-2xl border border-amber-300/20 bg-amber-300/10 p-5">
-          <h3 className="font-black text-amber-100">
+        <article className="mt-6 rounded-2xl border border-orange-500/20 bg-orange-500/10 p-5">
+          <h3 className="font-display font-black text-orange-100">
             Do not treat this as a universal
             compliance list
           </h3>
 
-          <p className="mt-2 text-sm leading-7 text-amber-100/90">
+          <p className="mt-2 text-sm leading-7 text-orange-100/90">
             Requirements differ by standard,
             jurisdiction, industry, role,
             equipment, substance, task, and
@@ -808,7 +808,7 @@ export function SafetyTrainingMatrixGenerator() {
         <div className="mt-7 flex flex-wrap gap-3">
           <button
             type="submit"
-            className="rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
+            className="rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
           >
             Generate Training Matrix
           </button>
@@ -816,7 +816,7 @@ export function SafetyTrainingMatrixGenerator() {
           <button
             type="button"
             onClick={handleReset}
-            className="rounded-full border border-white/20 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
+            className="rounded-full border border-white/20 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
           >
             Reset Example
           </button>
@@ -830,23 +830,23 @@ export function SafetyTrainingMatrixGenerator() {
       >
         <h2
           id="training-matrix-result-heading"
-          className="text-2xl font-black"
+          className="text-2xl font-display font-black"
         >
           Generated safety training matrix
         </h2>
 
         {result ? (
           <div className="mt-6 space-y-7">
-            <article className="rounded-3xl border border-emerald-300/25 bg-emerald-300/[0.08] p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-200">
+            <article className="rounded-3xl border border-orange-500/25 bg-navy-800 p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
                 Planning document
               </p>
 
-              <h3 className="mt-3 text-3xl font-black text-white">
+              <h3 className="mt-3 text-3xl font-display font-black text-white">
                 {result.title}
               </h3>
 
-              <p className="mt-4 text-sm leading-7 text-slate-300">
+              <p className="mt-4 text-sm leading-7 text-steel-200">
                 {result.summary}
               </p>
             </article>
@@ -873,7 +873,7 @@ export function SafetyTrainingMatrixGenerator() {
                       <th
                         key={heading}
                         scope="col"
-                        className="border-b border-white/10 px-4 py-4 font-black text-emerald-200"
+                        className="border-b border-white/10 px-4 py-4 font-display font-black text-orange-500"
                       >
                         {heading}
                       </th>
@@ -890,40 +890,40 @@ export function SafetyTrainingMatrixGenerator() {
                       >
                         <th
                           scope="row"
-                          className="border-b border-white/10 px-4 py-4 font-black text-white"
+                          className="border-b border-white/10 px-4 py-4 font-display font-black text-white"
                         >
                           {row.rowNumber}
                         </th>
 
-                        <td className="border-b border-white/10 px-4 py-4 text-slate-300">
+                        <td className="border-b border-white/10 px-4 py-4 text-steel-200">
                           {row.workerGroup}
                         </td>
 
-                        <td className="border-b border-white/10 px-4 py-4 text-slate-300">
+                        <td className="border-b border-white/10 px-4 py-4 text-steel-200">
                           {row.trainingTopic}
                         </td>
 
-                        <td className="border-b border-white/10 px-4 py-4 text-slate-300">
+                        <td className="border-b border-white/10 px-4 py-4 text-steel-200">
                           {row.hazardOrTask}
                         </td>
 
-                        <td className="border-b border-white/10 px-4 py-4 text-slate-300">
+                        <td className="border-b border-white/10 px-4 py-4 text-steel-200">
                           {row.trainingTiming}
                         </td>
 
-                        <td className="border-b border-white/10 px-4 py-4 text-slate-300">
+                        <td className="border-b border-white/10 px-4 py-4 text-steel-200">
                           {
                             row.trainerQualification
                           }
                         </td>
 
-                        <td className="border-b border-white/10 px-4 py-4 text-slate-300">
+                        <td className="border-b border-white/10 px-4 py-4 text-steel-200">
                           {
                             row.verificationMethod
                           }
                         </td>
 
-                        <td className="border-b border-white/10 px-4 py-4 text-slate-300">
+                        <td className="border-b border-white/10 px-4 py-4 text-steel-200">
                           {row.recordOwner}
                         </td>
                       </tr>
@@ -943,13 +943,13 @@ export function SafetyTrainingMatrixGenerator() {
                 .map((section) => (
                   <article
                     key={section.title}
-                    className="rounded-3xl border border-white/10 bg-slate-950/50 p-6"
+                    className="rounded-3xl border border-white/10 bg-navy-950/50 p-6"
                   >
-                    <h3 className="text-lg font-black text-white">
+                    <h3 className="text-lg font-display font-black text-white">
                       {section.title}
                     </h3>
 
-                    <ul className="mt-4 grid gap-3 text-sm leading-7 text-slate-300">
+                    <ul className="mt-4 grid gap-3 text-sm leading-7 text-steel-200">
                       {section.items.map(
                         (item) => (
                           <li
@@ -958,7 +958,7 @@ export function SafetyTrainingMatrixGenerator() {
                           >
                             <span
                               aria-hidden="true"
-                              className="text-emerald-300"
+                              className="text-orange-500"
                             >
                               •
                             </span>
@@ -972,12 +972,12 @@ export function SafetyTrainingMatrixGenerator() {
                 ))}
             </div>
 
-            <article className="rounded-3xl border border-amber-300/20 bg-amber-300/10 p-6">
-              <h3 className="font-black text-amber-100">
+            <article className="rounded-3xl border border-orange-500/20 bg-orange-500/10 p-6">
+              <h3 className="font-display font-black text-orange-100">
                 Professional limitation
               </h3>
 
-              <p className="mt-3 text-xs leading-6 text-amber-100/90">
+              <p className="mt-3 text-xs leading-6 text-orange-100/90">
                 {result.disclaimer}
               </p>
 
@@ -1005,7 +1005,7 @@ export function SafetyTrainingMatrixGenerator() {
             </article>
           </div>
         ) : (
-          <p className="mt-4 text-sm leading-7 text-slate-300">
+          <p className="mt-4 text-sm leading-7 text-steel-200">
             Complete the program information and
             training assignments to generate a
             structured matrix for review and

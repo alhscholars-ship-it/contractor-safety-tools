@@ -3,29 +3,18 @@ import Link from "next/link";
 import { tools } from "@/data/tools";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 
-const inspectionTools = tools.filter(
-  (tool) => tool.category === "Inspections",
-);
+const checklistTools = tools.filter((tool) => tool.category === "Inspections");
 
 const breadcrumbJsonLd = createBreadcrumbJsonLd([
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "Safety Tools",
-    path: "/tools",
-  },
-  {
-    name: "Inspection Checklists",
-    path: "/tools/inspection-checklists",
-  },
+  { name: "Home", path: "/" },
+  { name: "Safety Tools", path: "/tools" },
+  { name: "Inspection Checklists", path: "/tools/inspection-checklists" },
 ]);
 
 export const metadata: Metadata = {
   title: "Inspection Checklists",
   description:
-    "Use free contractor inspection checklist generators for jobsites, ladders, scaffolds, excavations, PPE, fire extinguishers, and first aid kits.",
+    "Create structured jobsite, equipment, excavation, scaffold, PPE, fire extinguisher, and first aid inspection records.",
   alternates: {
     canonical: "/tools/inspection-checklists",
   },
@@ -33,106 +22,84 @@ export const metadata: Metadata = {
 
 export default function InspectionChecklistsPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="bg-paper">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <section className="border-b border-white/10">
-        <div className="mx-auto w-full max-w-6xl px-6 py-16">
-          <nav
-            aria-label="Breadcrumb"
-            className="text-sm text-slate-400"
-          >
-            <Link
-              href="/"
-              className="transition hover:text-white"
-            >
+      <section className="bg-navy-950 py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <nav aria-label="Breadcrumb" className="font-mono text-xs text-steel-400">
+            <Link href="/" className="transition hover:text-orange-500">
               Home
             </Link>
-
             <span className="px-2">/</span>
-
-            <Link
-              href="/tools"
-              className="transition hover:text-white"
-            >
+            <Link href="/tools" className="transition hover:text-orange-500">
               Safety Tools
             </Link>
-
             <span className="px-2">/</span>
-
-            <span className="text-slate-200">
-              Inspection Checklists
-            </span>
+            <span className="text-steel-200">Inspection Checklists</span>
           </nav>
 
-          <div className="mt-8 max-w-4xl">
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-emerald-300">
+          <div className="mt-6 max-w-3xl">
+            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
+              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
               Inspection checklist collection
             </p>
-
-            <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">
-              Contractor Safety Inspection Checklists
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
+              Contractor Inspection Checklists
             </h1>
-
-            <p className="mt-6 text-lg leading-8 text-slate-300">
-              Create structured inspection records for jobsites,
-              equipment, excavations, scaffolds, ladders, PPE,
-              fire extinguishers, and first aid supplies.
+            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
+              Create structured jobsite, equipment, excavation, scaffold,
+              PPE, fire extinguisher, and first aid inspection records.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-12">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {inspectionTools.map((tool) => (
-            <Link
-              key={tool.slug}
-              href={tool.href}
-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-emerald-300/50 hover:bg-white/[0.07]"
-            >
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
-                Inspection Checklist
-              </p>
-
-              <h2 className="mt-4 text-2xl font-black">
-                {tool.name}
-              </h2>
-
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                {tool.shortDescription}
-              </p>
-
-              <span className="mt-5 inline-block text-sm font-bold text-emerald-300">
-                Open checklist →
-              </span>
-            </Link>
-          ))}
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {checklistTools.map((tool) => (
+              <Link
+                key={tool.slug}
+                href={tool.href}
+                className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
+              >
+                <span className="mb-2.5 block font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
+                  Inspection Checklist
+                </span>
+                <h2 className="text-[17px] font-bold leading-snug text-navy-950">
+                  {tool.name}
+                </h2>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
+                  {tool.shortDescription}
+                </p>
+                <span className="mt-4 inline-block font-mono text-xs font-semibold text-orange-600">
+                  Open checklist →
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-white/[0.02]">
-        <div className="mx-auto max-w-6xl px-6 py-16">
+      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-black">
+            <h2 className="font-display text-3xl font-bold text-navy-950">
               Inspection documentation in one place
             </h2>
-
-            <p className="mt-5 leading-7 text-slate-300">
+            <p className="mt-4 text-[15px] leading-7 text-slate-600">
               These generators help organize inspection observations,
-              deficiencies, corrective actions, responsible persons,
-              and follow-up information into structured records that
-              can support contractor safety-management workflows.
+              deficiencies, corrective actions, responsible persons, and
+              follow-up information into structured records that can
+              support contractor safety-management workflows.
             </p>
-
-            <p className="mt-4 leading-7 text-slate-300">
-              An inspection checklist is a documentation aid. It does
-              not replace applicable regulations, competent-person
+            <p className="mt-3 text-[15px] leading-7 text-slate-600">
+              An inspection checklist is a documentation aid. It does not
+              replace applicable regulations, competent-person
               determinations, manufacturer requirements, engineering
               controls, site-specific procedures, or employer judgment.
             </p>

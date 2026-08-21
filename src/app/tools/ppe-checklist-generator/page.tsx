@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 
 export default function PpeChecklistGeneratorPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-navy-950 text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
@@ -75,20 +75,20 @@ export default function PpeChecklistGeneratorPage() {
         }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
-        <Link href="/tools" className="text-sm font-semibold text-emerald-300">
+        <Link href="/tools" className="text-sm font-semibold text-orange-500">
           ← Back to tools
         </Link>
 
         <div className="mt-8 max-w-3xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
             PPE Checklists
           </p>
 
-          <h1 className="text-4xl font-black tracking-tight sm:text-6xl">
+          <h1 className="text-4xl font-display font-black tracking-tight sm:text-6xl">
             PPE Checklist Generator
           </h1>
 
-          <p className="mt-6 text-lg leading-8 text-slate-300">
+          <p className="mt-6 text-lg leading-8 text-steel-200">
             Create professional PPE checklists for construction trades,
             hazards, pre-use inspections, and compliance documentation.
           </p>
@@ -100,13 +100,13 @@ export default function PpeChecklistGeneratorPage() {
 
         <section className="mt-16 border-t border-white/10 pt-16">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
               How it works
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-display font-black tracking-tight sm:text-4xl">
               How to create a construction PPE checklist
             </h2>
-            <p className="mt-5 text-base leading-8 text-slate-300">
+            <p className="mt-5 text-base leading-8 text-steel-200">
               Enter the company, project, trade, jobsite, task, supervisor,
               hazards, required PPE, and inspection items. The generator
               organizes those details into a practical pre-task checklist that
@@ -136,8 +136,8 @@ export default function PpeChecklistGeneratorPage() {
                 key={step.title}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
               >
-                <h3 className="text-lg font-black text-white">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">
+                <h3 className="text-lg font-display font-black text-white">{step.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-steel-400">
                   {step.description}
                 </p>
               </article>
@@ -147,16 +147,16 @@ export default function PpeChecklistGeneratorPage() {
 
         <section className="mt-16 grid gap-8 lg:grid-cols-2">
           <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
+            <h2 className="text-2xl font-display font-black">
               What should a PPE checklist include?
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
+            <p className="mt-4 text-sm leading-7 text-steel-200">
               A useful checklist should match the task, hazard assessment,
               equipment, environment, and applicable requirements. Common
               sections include:
             </p>
 
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
+            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
               <li>Company, project, trade, task, and jobsite details</li>
               <li>Hazards identified for the planned work</li>
               <li>Required head, eye, face, hearing, hand, foot, and body protection</li>
@@ -168,15 +168,15 @@ export default function PpeChecklistGeneratorPage() {
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
+            <h2 className="text-2xl font-display font-black">
               When should PPE be inspected?
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
+            <p className="mt-4 text-sm leading-7 text-steel-200">
               Inspection frequency depends on the equipment, hazard, employer
               program, and manufacturer instructions. Checks are commonly needed:
             </p>
 
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
+            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
               <li>Before each use or work shift</li>
               <li>After exposure to impact, contamination, heat, chemicals, or damage</li>
               <li>When equipment is issued to a new user</li>
@@ -187,11 +187,11 @@ export default function PpeChecklistGeneratorPage() {
           </div>
         </section>
 
-        <section className="mt-16 rounded-3xl border border-amber-300/20 bg-amber-300/10 p-7">
-          <h2 className="text-2xl font-black text-amber-100">
+        <section className="mt-16 rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7">
+          <h2 className="text-2xl font-display font-black text-orange-100">
             PPE selection and compliance limitations
           </h2>
-          <p className="mt-4 text-sm leading-7 text-amber-50/90">
+          <p className="mt-4 text-sm leading-7 text-white/90">
             This generator creates an informational checklist draft only. It
             does not perform a hazard assessment, determine required protection,
             confirm fit or compatibility, replace medical evaluation or fit
@@ -202,10 +202,10 @@ export default function PpeChecklistGeneratorPage() {
 
         <section className="mt-16">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-black tracking-tight">
+            <h2 className="text-3xl font-display font-black tracking-tight">
               Related contractor safety tools
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
+            <p className="mt-4 text-sm leading-7 text-steel-200">
               Connect PPE checks with task planning, hazard analysis, crew
               communication, and incident documentation.
             </p>
@@ -241,10 +241,10 @@ export default function PpeChecklistGeneratorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-emerald-300/40 hover:bg-white/[0.07]"
+                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
               >
-                <h3 className="font-black text-white">{tool.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-400">
+                <h3 className="font-display font-black text-white">{tool.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-steel-400">
                   {tool.description}
                 </p>
               </Link>
@@ -253,7 +253,7 @@ export default function PpeChecklistGeneratorPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-3xl font-black tracking-tight">
+          <h2 className="text-3xl font-display font-black tracking-tight">
             PPE Checklist Generator FAQs
           </h2>
 
@@ -263,10 +263,10 @@ export default function PpeChecklistGeneratorPage() {
                 key={faq.question}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
               >
-                <h3 className="text-lg font-black text-white">
+                <h3 className="text-lg font-display font-black text-white">
                   {faq.question}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">
+                <p className="mt-3 text-sm leading-7 text-steel-200">
                   {faq.answer}
                 </p>
               </article>

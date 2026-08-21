@@ -61,8 +61,8 @@ export function ToolboxTalkGenerator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
-        <h2 className="text-2xl font-black">Create your toolbox talk</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-300">
+        <h2 className="text-2xl font-display font-black">Create your toolbox talk</h2>
+        <p className="mt-2 text-sm leading-6 text-steel-200">
           Enter the topic, trade, jobsite hazards, and controls. The generator will
           format a practical safety meeting outline.
         </p>
@@ -81,7 +81,7 @@ export function ToolboxTalkGenerator() {
                 onChange={(event) =>
                   (setter as (nextValue: string) => void)(event.target.value)
                 }
-                className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
+                className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
               />
             </label>
           ))}
@@ -94,7 +94,7 @@ export function ToolboxTalkGenerator() {
               value={hazards}
               onChange={(event) => setHazards(event.target.value)}
               rows={5}
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
             />
           </label>
 
@@ -106,7 +106,7 @@ export function ToolboxTalkGenerator() {
               value={controls}
               onChange={(event) => setControls(event.target.value)}
               rows={5}
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-300"
             />
           </label>
         </div>
@@ -119,51 +119,51 @@ export function ToolboxTalkGenerator() {
 
         <button
           type="submit"
-          className="mt-6 w-full rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
+          className="mt-6 w-full rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
         >
           Generate Toolbox Talk
         </button>
       </form>
 
       <section className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-        <h2 className="text-2xl font-black">Generated toolbox talk</h2>
+        <h2 className="text-2xl font-display font-black">Generated toolbox talk</h2>
 
         {result ? (
           <div className="mt-6 space-y-6">
             <div>
-              <h3 className="text-xl font-black text-emerald-200">{result.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-300">{result.opening}</p>
+              <h3 className="text-xl font-display font-black text-orange-500">{result.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-steel-200">{result.opening}</p>
             </div>
 
-            <div className="rounded-2xl bg-slate-950/70 p-5">
-              <h3 className="font-black">Discussion Points</h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-300">
+            <div className="rounded-2xl bg-navy-950/70 p-5">
+              <h3 className="font-display font-black">Discussion Points</h3>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-steel-200">
                 {result.discussionPoints.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-2xl bg-slate-950/70 p-5">
-              <h3 className="font-black">Crew Questions</h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-300">
+            <div className="rounded-2xl bg-navy-950/70 p-5">
+              <h3 className="font-display font-black">Crew Questions</h3>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-steel-200">
                 {result.crewQuestions.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-2xl bg-slate-950/70 p-5">
-              <h3 className="font-black">Documentation Notes</h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-300">
+            <div className="rounded-2xl bg-navy-950/70 p-5">
+              <h3 className="font-display font-black">Documentation Notes</h3>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-steel-200">
                 {result.documentationNotes.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300/20 bg-amber-300/10 p-4">
-              <p className="text-xs leading-5 text-amber-100">{result.disclaimer}</p>
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-orange-500/20 bg-orange-500/10 p-4">
+              <p className="text-xs leading-5 text-orange-100">{result.disclaimer}</p>
               <div className="flex flex-wrap gap-2">
                 <ExportTextButton
                   fileName="toolbox-talk.txt"
@@ -209,7 +209,7 @@ export function ToolboxTalkGenerator() {
             </div>
           </div>
         ) : (
-          <p className="mt-4 text-sm leading-6 text-slate-300">
+          <p className="mt-4 text-sm leading-6 text-steel-200">
             Fill out the form and generate a toolbox talk. Your result will appear here.
           </p>
         )}

@@ -36,7 +36,7 @@ export function ExportPdfButton({
     <button
       type="button"
       onClick={handleExport}
-      className="rounded-xl border border-emerald-300/30 bg-emerald-300/10 px-4 py-2 text-sm font-bold text-emerald-100 transition hover:bg-emerald-300/20"
+      className="rounded-xl border border-orange-500/30 bg-orange-500/10 px-4 py-2 text-sm font-bold text-orange-100 transition hover:bg-orange-500/20"
     >
       Export as PDF
     </button>

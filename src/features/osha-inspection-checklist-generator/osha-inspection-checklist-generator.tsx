@@ -61,7 +61,7 @@ export function OshaInspectionChecklistGenerator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Create OSHA inspection checklist
         </h2>
 
@@ -85,7 +85,7 @@ export function OshaInspectionChecklistGenerator() {
                     event.target.value,
                   )
                 }
-                className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white"
+                className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white"
               />
             </label>
           ))}
@@ -99,7 +99,7 @@ export function OshaInspectionChecklistGenerator() {
               value={areas}
               onChange={(event) => setAreas(event.target.value)}
               rows={5}
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-sm text-white"
             />
           </label>
         </div>
@@ -112,7 +112,7 @@ export function OshaInspectionChecklistGenerator() {
 
         <button
           type="submit"
-          className="mt-6 w-full rounded-full bg-emerald-400 px-6 py-3 font-black text-slate-950"
+          className="mt-6 w-full rounded-full bg-orange-600 px-6 py-3 font-display font-black text-slate-950"
         >
           Generate Inspection Checklist
         </button>
@@ -120,30 +120,30 @@ export function OshaInspectionChecklistGenerator() {
 
 
       <section className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Generated checklist
         </h2>
 
         {result ? (
           <div className="mt-6 space-y-6">
-            <h3 className="text-xl font-black text-emerald-200">
+            <h3 className="text-xl font-display font-black text-orange-500">
               {result.title}
             </h3>
 
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-steel-200">
               {result.summary}
             </p>
 
             {result.sections.map((section) => (
               <div
                 key={section.title}
-                className="rounded-2xl bg-slate-950/70 p-5"
+                className="rounded-2xl bg-navy-950/70 p-5"
               >
-                <h4 className="font-black">
+                <h4 className="font-display font-black">
                   {section.title}
                 </h4>
 
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-steel-200">
                   {section.items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
@@ -170,7 +170,7 @@ export function OshaInspectionChecklistGenerator() {
             </div>
           </div>
         ) : (
-          <p className="mt-4 text-sm text-slate-300">
+          <p className="mt-4 text-sm text-steel-200">
             Generate your checklist to preview it here.
           </p>
         )}

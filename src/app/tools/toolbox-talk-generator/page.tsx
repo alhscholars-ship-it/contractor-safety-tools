@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 
 export default function ToolboxTalkGeneratorPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-navy-950 text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
@@ -75,18 +75,18 @@ export default function ToolboxTalkGeneratorPage() {
         }}
       />
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
-        <Link href="/tools" className="text-sm font-semibold text-emerald-300">
+        <Link href="/tools" className="text-sm font-semibold text-orange-500">
           ← Back to tools
         </Link>
 
         <div className="mt-8 max-w-3xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
             Toolbox Talks
           </p>
-          <h1 className="text-4xl font-black tracking-tight sm:text-6xl">
+          <h1 className="text-4xl font-display font-black tracking-tight sm:text-6xl">
             Toolbox Talk Generator for Construction Safety Meetings
           </h1>
-          <p className="mt-6 text-lg leading-8 text-slate-300">
+          <p className="mt-6 text-lg leading-8 text-steel-200">
             Create practical toolbox talk outlines for jobsite hazards, safety reminders,
             crew discussion points, and meeting documentation.
           </p>
@@ -98,13 +98,13 @@ export default function ToolboxTalkGeneratorPage() {
 
         <section className="mt-16 border-t border-white/10 pt-16">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
               How it works
             </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-display font-black tracking-tight sm:text-4xl">
               How to create a construction toolbox talk
             </h2>
-            <p className="mt-5 text-base leading-8 text-slate-300">
+            <p className="mt-5 text-base leading-8 text-steel-200">
               Enter the safety topic, trade, jobsite, supervisor, hazards, and
               controls. The generator turns those details into a practical
               meeting outline with discussion points, crew questions, and
@@ -134,8 +134,8 @@ export default function ToolboxTalkGeneratorPage() {
                 key={step.title}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
               >
-                <h3 className="text-lg font-black text-white">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">
+                <h3 className="text-lg font-display font-black text-white">{step.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-steel-400">
                   {step.description}
                 </p>
               </article>
@@ -145,16 +145,16 @@ export default function ToolboxTalkGeneratorPage() {
 
         <section className="mt-16 grid gap-8 lg:grid-cols-2">
           <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
+            <h2 className="text-2xl font-display font-black">
               What should a toolbox talk include?
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
+            <p className="mt-4 text-sm leading-7 text-steel-200">
               A useful toolbox talk should be short, relevant to the current
               work, and focused on conditions the crew can act on immediately.
               Common elements include:
             </p>
 
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
+            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
               <li>Topic, trade, jobsite, date, and meeting leader</li>
               <li>Current hazards connected to the planned work</li>
               <li>Required controls, PPE, and safe work practices</li>
@@ -165,16 +165,16 @@ export default function ToolboxTalkGeneratorPage() {
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
+            <h2 className="text-2xl font-display font-black">
               When should toolbox talks be conducted?
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
+            <p className="mt-4 text-sm leading-7 text-steel-200">
               The appropriate frequency depends on the project, employer,
               hazards, and applicable requirements. Toolbox talks are commonly
               useful when:
             </p>
 
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
+            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
               <li>A new task, phase, crew, or subcontractor starts work</li>
               <li>Jobsite conditions, equipment, or work methods change</li>
               <li>A new hazard or unsafe trend is identified</li>
@@ -185,11 +185,11 @@ export default function ToolboxTalkGeneratorPage() {
           </div>
         </section>
 
-        <section className="mt-16 rounded-3xl border border-amber-300/20 bg-amber-300/10 p-7">
-          <h2 className="text-2xl font-black text-amber-100">
+        <section className="mt-16 rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7">
+          <h2 className="text-2xl font-display font-black text-orange-100">
             Safety and training limitations
           </h2>
-          <p className="mt-4 text-sm leading-7 text-amber-50/90">
+          <p className="mt-4 text-sm leading-7 text-white/90">
             A generated toolbox talk is an informational meeting aid only. It
             does not replace required training, competent-person oversight,
             manufacturer instructions, written safety programs, regulatory
@@ -199,10 +199,10 @@ export default function ToolboxTalkGeneratorPage() {
 
         <section className="mt-16">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-black tracking-tight">
+            <h2 className="text-3xl font-display font-black tracking-tight">
               Related contractor safety tools
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
+            <p className="mt-4 text-sm leading-7 text-steel-200">
               Connect the safety meeting with planning, hazard analysis, PPE,
               and incident documentation.
             </p>
@@ -238,10 +238,10 @@ export default function ToolboxTalkGeneratorPage() {
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-emerald-300/40 hover:bg-white/[0.07]"
+                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
               >
-                <h3 className="font-black text-white">{tool.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-400">
+                <h3 className="font-display font-black text-white">{tool.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-steel-400">
                   {tool.description}
                 </p>
               </Link>
@@ -250,7 +250,7 @@ export default function ToolboxTalkGeneratorPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-3xl font-black tracking-tight">
+          <h2 className="text-3xl font-display font-black tracking-tight">
             Toolbox Talk Generator FAQs
           </h2>
 
@@ -260,10 +260,10 @@ export default function ToolboxTalkGeneratorPage() {
                 key={faq.question}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
               >
-                <h3 className="text-lg font-black text-white">
+                <h3 className="text-lg font-display font-black text-white">
                   {faq.question}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">
+                <p className="mt-3 text-sm leading-7 text-steel-200">
                   {faq.answer}
                 </p>
               </article>

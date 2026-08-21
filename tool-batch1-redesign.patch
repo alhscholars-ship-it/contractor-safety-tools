@@ -1,0 +1,1231 @@
+diff --git a/src/app/tools/incident-report-generator/page.tsx b/src/app/tools/incident-report-generator/page.tsx
+index 445cc77..a26ec6a 100644
+--- a/src/app/tools/incident-report-generator/page.tsx
++++ b/src/app/tools/incident-report-generator/page.tsx
+@@ -11,10 +11,9 @@ const toolJsonLd = createToolJsonLd({
+   description:
+     "Create a structured construction incident report draft with event details, injury notes, witnesses, corrective actions, and documentation reminders.",
+   url: "/tools/incident-report-generator",
+-  keywords: ['incident report generator', 'construction incident report', 'jobsite incident report form'],
++  keywords: ["incident report generator", "construction incident report", "jobsite incident report form"],
+ });
+ 
+-
+ const breadcrumbJsonLd = createBreadcrumbJsonLd([
+   { name: "Home", path: "/" },
+   { name: "Tools", path: "/tools" },
+@@ -46,6 +45,48 @@ const incidentReportFaqs = [
+ 
+ const faqJsonLd = createFaqJsonLd(incidentReportFaqs);
+ 
++const steps = [
++  {
++    title: "1. Record the event",
++    description:
++      "Document when and where the incident occurred, what happened, and who was involved.",
++  },
++  {
++    title: "2. Capture the response",
++    description:
++      "List immediate actions, witnesses, notifications, and steps taken to control the situation.",
++  },
++  {
++    title: "3. Review and export",
++    description:
++      "Confirm the facts, add corrective actions, obtain required approvals, and export the report.",
++  },
++];
++
++const relatedTools = [
++  {
++    href: "/tools/safety-plan-generator",
++    title: "Safety Plan Generator",
++    description:
++      "Update project hazards, emergency procedures, and corrective action expectations.",
++  },
++  {
++    href: "/tools/toolbox-talk-generator",
++    title: "Toolbox Talk Generator",
++    description: "Communicate lessons learned and required controls to the crew.",
++  },
++  {
++    href: "/tools/jha-generator",
++    title: "JHA Generator",
++    description: "Reassess task steps, hazards, controls, and PPE after an event.",
++  },
++  {
++    href: "/tools/ppe-checklist-generator",
++    title: "PPE Checklist Generator",
++    description: "Review required PPE and pre-use inspection expectations.",
++  },
++];
++
+ export const metadata: Metadata = {
+   title: "Incident Report Generator",
+   description:
+@@ -57,223 +98,193 @@ export const metadata: Metadata = {
+ 
+ export default function IncidentReportGeneratorPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(breadcrumbJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(faqJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+       />
+-      <section className="mx-auto w-full max-w-6xl px-6 py-20">
+-        <Link href="/tools" className="text-sm font-semibold text-orange-500">
+-          ← Back to tools
+-        </Link>
+ 
+-        <div className="mt-8 max-w-3xl">
+-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Incident Reports
+-          </p>
+-          <h1 className="text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Incident Report Generator for Construction Jobsites
+-          </h1>
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            Create a structured incident report draft for jobsite events, injury notes,
+-            witnesses, immediate actions, corrective actions, and safety documentation.
+-          </p>
++      <section className="bg-navy-950 py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <Link
++            href="/tools"
++            className="font-mono text-xs font-semibold text-steel-400 transition hover:text-orange-500"
++          >
++            ← Back to tools
++          </Link>
++
++          <div className="mt-6 max-w-3xl">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
++              Incident Reports
++            </p>
++            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
++              Incident Report Generator for Construction Jobsites
++            </h1>
++            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
++              Create a structured incident report draft for jobsite events,
++              injury notes, witnesses, immediate actions, corrective
++              actions, and safety documentation.
++            </p>
++          </div>
+         </div>
++      </section>
+ 
+-        <div className="mt-12">
++      <section className="border-b border-white/10 bg-navy-950 py-14">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <IncidentReportGenerator />
+         </div>
++      </section>
+ 
+-        <section className="mt-16 border-t border-white/10 pt-16">
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <div className="max-w-3xl">
+-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-600" />
+               How it works
+             </p>
+-            <h2 className="mt-4 text-3xl font-display font-black tracking-tight sm:text-4xl">
++            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+               How to create a construction incident report
+             </h2>
+-            <p className="mt-5 text-base leading-8 text-steel-200">
++            <p className="mt-4 text-[15px] leading-7 text-slate-600">
+               Enter the project, incident date, location, event type,
+               description, people involved, witnesses, immediate actions,
+               corrective actions, and supervisor details. The generator
+-              organizes the information into a structured report draft that can
+-              be reviewed and exported.
++              organizes the information into a structured report draft
++              that can be reviewed and exported.
+             </p>
+           </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+-            {[
+-              {
+-                title: "1. Record the event",
+-                description:
+-                  "Document when and where the incident occurred, what happened, and who was involved.",
+-              },
+-              {
+-                title: "2. Capture the response",
+-                description:
+-                  "List immediate actions, witnesses, notifications, and steps taken to control the situation.",
+-              },
+-              {
+-                title: "3. Review and export",
+-                description:
+-                  "Confirm the facts, add corrective actions, obtain required approvals, and export the report.",
+-              },
+-            ].map((step) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-3">
++            {steps.map((step) => (
+               <article
+                 key={step.title}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
++                className="rounded-xl border border-steel-200 bg-white p-6"
+               >
+-                <h3 className="text-lg font-display font-black text-white">{step.title}</h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-400">
++                <h3 className="font-display text-lg font-bold text-navy-950">
++                  {step.title}
++                </h3>
++                <p className="mt-2.5 text-[13.5px] leading-relaxed text-slate-600">
+                   {step.description}
+                 </p>
+               </article>
+             ))}
+           </div>
+-        </section>
+ 
+-        <section className="mt-16 grid gap-8 lg:grid-cols-2">
+-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              What should an incident report include?
+-            </h2>
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
+-              A useful report should separate verified facts from assumptions
+-              and clearly document the event, response, and follow-up. Common
+-              sections include:
+-            </p>
++          <div className="mt-14 grid gap-5 lg:grid-cols-2">
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                What should an incident report include?
++              </h2>
++              <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++                A useful report should separate verified facts from
++                assumptions and clearly document the event, response, and
++                follow-up. Common sections include:
++              </p>
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
++                <li>Company, project, date, time, and exact location</li>
++                <li>Incident type and a factual description of what occurred</li>
++                <li>People involved and available witness information</li>
++                <li>Injury, property damage, equipment, or environmental details</li>
++                <li>Immediate actions and emergency response measures</li>
++                <li>Notifications, photographs, records, and supporting evidence</li>
++                <li>Corrective actions, responsible persons, and completion dates</li>
++              </ul>
++            </div>
+ 
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
+-              <li>Company, project, date, time, and exact location</li>
+-              <li>Incident type and a factual description of what occurred</li>
+-              <li>People involved and available witness information</li>
+-              <li>Injury, property damage, equipment, or environmental details</li>
+-              <li>Immediate actions and emergency response measures</li>
+-              <li>Notifications, photographs, records, and supporting evidence</li>
+-              <li>Corrective actions, responsible persons, and completion dates</li>
+-            </ul>
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                When should an incident report be completed?
++              </h2>
++              <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++                Reporting should begin promptly after immediate safety and
++                medical needs are addressed. A report may be needed for:
++              </p>
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
++                <li>Work-related injuries or illnesses</li>
++                <li>Near misses and high-potential events</li>
++                <li>Property, equipment, or vehicle damage</li>
++                <li>Environmental releases or hazardous material events</li>
++                <li>Unsafe conditions requiring corrective action</li>
++                <li>Client, insurer, employer, or regulatory reporting workflows</li>
++              </ul>
++            </div>
+           </div>
+ 
+-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              When should an incident report be completed?
++          <div className="mt-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
++            <h2 className="font-display text-xl font-bold text-orange-950">
++              Reporting and compliance limitations
+             </h2>
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
+-              Reporting should begin promptly after immediate safety and medical
+-              needs are addressed. A report may be needed for:
++            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
++              This generator creates an informational draft only. It does
++              not determine OSHA recordability, reporting deadlines, legal
++              liability, workers&apos; compensation obligations, medical
++              conclusions, or root cause. Follow applicable emergency,
++              employer, insurer, client, federal, state, and local
++              reporting requirements.
+             </p>
+-
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
+-              <li>Work-related injuries or illnesses</li>
+-              <li>Near misses and high-potential events</li>
+-              <li>Property, equipment, or vehicle damage</li>
+-              <li>Environmental releases or hazardous material events</li>
+-              <li>Unsafe conditions requiring corrective action</li>
+-              <li>Client, insurer, employer, or regulatory reporting workflows</li>
+-            </ul>
+           </div>
+-        </section>
+-
+-        <section className="mt-16 rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7">
+-          <h2 className="text-2xl font-display font-black text-orange-100">
+-            Reporting and compliance limitations
+-          </h2>
+-          <p className="mt-4 text-sm leading-7 text-white/90">
+-            This generator creates an informational draft only. It does not
+-            determine OSHA recordability, reporting deadlines, legal liability,
+-            workers&apos; compensation obligations, medical conclusions, or root
+-            cause. Follow applicable emergency, employer, insurer, client,
+-            federal, state, and local reporting requirements.
+-          </p>
+-        </section>
++        </div>
++      </section>
+ 
+-        <section className="mt-16">
++      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <div className="max-w-3xl">
+-            <h2 className="text-3xl font-display font-black tracking-tight">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+               Related contractor safety tools
+             </h2>
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
++            <p className="mt-3 text-[15px] leading-7 text-slate-600">
+               Use related tools to document corrective actions, communicate
+               lessons learned, and improve future job planning.
+             </p>
+           </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+-            {[
+-              {
+-                href: "/tools/safety-plan-generator",
+-                title: "Safety Plan Generator",
+-                description:
+-                  "Update project hazards, emergency procedures, and corrective action expectations.",
+-              },
+-              {
+-                href: "/tools/toolbox-talk-generator",
+-                title: "Toolbox Talk Generator",
+-                description:
+-                  "Communicate lessons learned and required controls to the crew.",
+-              },
+-              {
+-                href: "/tools/jha-generator",
+-                title: "JHA Generator",
+-                description:
+-                  "Reassess task steps, hazards, controls, and PPE after an event.",
+-              },
+-              {
+-                href: "/tools/ppe-checklist-generator",
+-                title: "PPE Checklist Generator",
+-                description:
+-                  "Review required PPE and pre-use inspection expectations.",
+-              },
+-            ].map((tool) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
++            {relatedTools.map((tool) => (
+               <Link
+                 key={tool.href}
+                 href={tool.href}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
++                className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
+               >
+-                <h3 className="font-display font-black text-white">{tool.title}</h3>
+-                <p className="mt-3 text-sm leading-6 text-steel-400">
++                <h3 className="font-bold text-navy-950">{tool.title}</h3>
++                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
+                   {tool.description}
+                 </p>
+               </Link>
+             ))}
+           </div>
+-        </section>
+-
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Incident Report Generator FAQs
+-          </h2>
+ 
+-          <div className="mt-8 space-y-5">
+-            {incidentReportFaqs.map((faq) => (
+-              <article
+-                key={faq.question}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+-              >
+-                <h3 className="text-lg font-display font-black text-white">
+-                  {faq.question}
+-                </h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-200">
+-                  {faq.answer}
+-                </p>
+-              </article>
+-            ))}
++          <div className="mt-14">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Incident Report Generator FAQs
++            </h2>
++            <div className="mt-7 space-y-4">
++              {incidentReportFaqs.map((faq) => (
++                <article
++                  key={faq.question}
++                  className="rounded-xl border border-steel-200 bg-white p-6"
++                >
++                  <h3 className="font-display text-lg font-bold text-navy-950">
++                    {faq.question}
++                  </h3>
++                  <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
++                    {faq.answer}
++                  </p>
++                </article>
++              ))}
++            </div>
+           </div>
+-        </section>
+ 
+-        <OfficialSafetySources toolSlug="incident-report-generator" />
++          <OfficialSafetySources toolSlug="incident-report-generator" />
++        </div>
+       </section>
+     </main>
+   );
+diff --git a/src/app/tools/safety-plan-generator/page.tsx b/src/app/tools/safety-plan-generator/page.tsx
+index 6c820c2..f79415e 100644
+--- a/src/app/tools/safety-plan-generator/page.tsx
++++ b/src/app/tools/safety-plan-generator/page.tsx
+@@ -11,10 +11,9 @@ const toolJsonLd = createToolJsonLd({
+   description:
+     "Create a contractor safety plan outline for construction jobsites, trades, hazards, PPE, emergency procedures, and documentation.",
+   url: "/tools/safety-plan-generator",
+-  keywords: ['safety plan generator', 'contractor safety plan', 'construction safety plan template'],
++  keywords: ["safety plan generator", "contractor safety plan", "construction safety plan template"],
+ });
+ 
+-
+ const breadcrumbJsonLd = createBreadcrumbJsonLd([
+   { name: "Home", path: "/" },
+   { name: "Tools", path: "/tools" },
+@@ -46,6 +45,47 @@ const safetyPlanFaqs = [
+ 
+ const faqJsonLd = createFaqJsonLd(safetyPlanFaqs);
+ 
++const steps = [
++  {
++    title: "1. Add project details",
++    description:
++      "Identify the contractor, project, trade, jobsite location, and emergency contact.",
++  },
++  {
++    title: "2. Document hazards and PPE",
++    description:
++      "List the main jobsite hazards and the personal protective equipment expected for the work.",
++  },
++  {
++    title: "3. Review and export",
++    description:
++      "Check the generated plan, adapt it to actual site conditions, and export it as TXT or PDF.",
++  },
++];
++
++const relatedTools = [
++  {
++    href: "/tools/jha-generator",
++    title: "JHA Generator",
++    description: "Break work into task steps, hazards, controls, and PPE.",
++  },
++  {
++    href: "/tools/toolbox-talk-generator",
++    title: "Toolbox Talk Generator",
++    description: "Prepare crew discussion points and safety meeting notes.",
++  },
++  {
++    href: "/tools/ppe-checklist-generator",
++    title: "PPE Checklist Generator",
++    description: "Create task-specific PPE and pre-use inspection checklists.",
++  },
++  {
++    href: "/tools/incident-report-generator",
++    title: "Incident Report Generator",
++    description: "Document incidents, immediate actions, and corrective actions.",
++  },
++];
++
+ export const metadata: Metadata = {
+   title: "Safety Plan Generator",
+   description:
+@@ -57,222 +97,191 @@ export const metadata: Metadata = {
+ 
+ export default function SafetyPlanGeneratorPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(breadcrumbJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(faqJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+       />
+-      <section className="mx-auto w-full max-w-6xl px-6 py-20">
+-        <Link href="/tools" className="text-sm font-semibold text-orange-500">
+-          ← Back to tools
+-        </Link>
+ 
+-        <div className="mt-8 max-w-3xl">
+-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Safety Plans
+-          </p>
+-          <h1 className="text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Safety Plan Generator for Contractors
+-          </h1>
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            Build a practical safety plan outline for construction jobsites,
+-            trade-specific hazards, PPE requirements, emergency procedures, and
+-            corrective action documentation.
+-          </p>
++      <section className="bg-navy-950 py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <Link
++            href="/tools"
++            className="font-mono text-xs font-semibold text-steel-400 transition hover:text-orange-500"
++          >
++            ← Back to tools
++          </Link>
++
++          <div className="mt-6 max-w-3xl">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
++              Safety Plans
++            </p>
++            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
++              Safety Plan Generator for Contractors
++            </h1>
++            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
++              Build a practical safety plan outline for construction
++              jobsites, trade-specific hazards, PPE requirements, emergency
++              procedures, and corrective action documentation.
++            </p>
++          </div>
+         </div>
++      </section>
+ 
+-        <div className="mt-12">
++      <section className="border-b border-white/10 bg-navy-950 py-14">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <SafetyPlanGenerator />
+         </div>
++      </section>
+ 
+-        <section className="mt-16 border-t border-white/10 pt-16">
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <div className="max-w-3xl">
+-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-600" />
+               How it works
+             </p>
+-            <h2 className="mt-4 text-3xl font-display font-black tracking-tight sm:text-4xl">
++            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+               How to create a contractor safety plan
+             </h2>
+-            <p className="mt-5 text-base leading-8 text-steel-200">
++            <p className="mt-4 text-[15px] leading-7 text-slate-600">
+               Enter the project, trade, jobsite, emergency contact, primary
+-              hazards, and required PPE. The generator organizes those details
+-              into a structured draft that can be reviewed, edited, and exported
+-              for project documentation.
++              hazards, and required PPE. The generator organizes those
++              details into a structured draft that can be reviewed, edited,
++              and exported for project documentation.
+             </p>
+           </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+-            {[
+-              {
+-                title: "1. Add project details",
+-                description:
+-                  "Identify the contractor, project, trade, jobsite location, and emergency contact.",
+-              },
+-              {
+-                title: "2. Document hazards and PPE",
+-                description:
+-                  "List the main jobsite hazards and the personal protective equipment expected for the work.",
+-              },
+-              {
+-                title: "3. Review and export",
+-                description:
+-                  "Check the generated plan, adapt it to actual site conditions, and export it as TXT or PDF.",
+-              },
+-            ].map((step) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-3">
++            {steps.map((step) => (
+               <article
+                 key={step.title}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
++                className="rounded-xl border border-steel-200 bg-white p-6"
+               >
+-                <h3 className="text-lg font-display font-black text-white">{step.title}</h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-400">
++                <h3 className="font-display text-lg font-bold text-navy-950">
++                  {step.title}
++                </h3>
++                <p className="mt-2.5 text-[13.5px] leading-relaxed text-slate-600">
+                   {step.description}
+                 </p>
+               </article>
+             ))}
+           </div>
+-        </section>
+ 
+-        <section className="mt-16 grid gap-8 lg:grid-cols-2">
+-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              What should a construction safety plan include?
+-            </h2>
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
+-              A useful plan should reflect the actual project, trade, workforce,
+-              equipment, and hazards. Common sections include:
+-            </p>
++          <div className="mt-14 grid gap-5 lg:grid-cols-2">
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                What should a construction safety plan include?
++              </h2>
++              <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++                A useful plan should reflect the actual project, trade,
++                workforce, equipment, and hazards. Common sections include:
++              </p>
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
++                <li>Company, project, trade, and jobsite identification</li>
++                <li>Roles, responsibilities, and emergency contacts</li>
++                <li>Known hazards and planned control measures</li>
++                <li>Required PPE and inspection expectations</li>
++                <li>Emergency response and incident-reporting procedures</li>
++                <li>Training, communication, and toolbox talk requirements</li>
++                <li>Corrective actions, review notes, and recordkeeping</li>
++              </ul>
++            </div>
+ 
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
+-              <li>Company, project, trade, and jobsite identification</li>
+-              <li>Roles, responsibilities, and emergency contacts</li>
+-              <li>Known hazards and planned control measures</li>
+-              <li>Required PPE and inspection expectations</li>
+-              <li>Emergency response and incident-reporting procedures</li>
+-              <li>Training, communication, and toolbox talk requirements</li>
+-              <li>Corrective actions, review notes, and recordkeeping</li>
+-            </ul>
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                When should the safety plan be updated?
++              </h2>
++              <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++                Review the plan before work begins and whenever conditions
++                change. Updates may be needed when:
++              </p>
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
++                <li>New work phases, trades, or subcontractors are introduced</li>
++                <li>Equipment, materials, or work methods change</li>
++                <li>New hazards or site restrictions are identified</li>
++                <li>An incident, near miss, or corrective action occurs</li>
++                <li>Client, insurer, manufacturer, or regulatory requirements change</li>
++                <li>Workers report that controls are missing or ineffective</li>
++              </ul>
++            </div>
+           </div>
+ 
+-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              When should the safety plan be updated?
++          <div className="mt-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
++            <h2 className="font-display text-xl font-bold text-orange-950">
++              Safety and compliance limitations
+             </h2>
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
+-              Review the plan before work begins and whenever conditions change.
+-              Updates may be needed when:
++            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
++              This generator creates an informational draft only. It does
++              not guarantee OSHA compliance and does not replace a
++              competent person, qualified safety professional, legal
++              counsel, project-specific requirements, manufacturer
++              instructions, or current federal, state, and local
++              regulations.
+             </p>
+-
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
+-              <li>New work phases, trades, or subcontractors are introduced</li>
+-              <li>Equipment, materials, or work methods change</li>
+-              <li>New hazards or site restrictions are identified</li>
+-              <li>An incident, near miss, or corrective action occurs</li>
+-              <li>Client, insurer, manufacturer, or regulatory requirements change</li>
+-              <li>Workers report that controls are missing or ineffective</li>
+-            </ul>
+           </div>
+-        </section>
+-
+-        <section className="mt-16 rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7">
+-          <h2 className="text-2xl font-display font-black text-orange-100">
+-            Safety and compliance limitations
+-          </h2>
+-          <p className="mt-4 text-sm leading-7 text-white/90">
+-            This generator creates an informational draft only. It does not
+-            guarantee OSHA compliance and does not replace a competent person,
+-            qualified safety professional, legal counsel, project-specific
+-            requirements, manufacturer instructions, or current federal, state,
+-            and local regulations.
+-          </p>
+-        </section>
++        </div>
++      </section>
+ 
+-        <section className="mt-16">
++      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <div className="max-w-3xl">
+-            <h2 className="text-3xl font-display font-black tracking-tight">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+               Related contractor safety tools
+             </h2>
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
++            <p className="mt-3 text-[15px] leading-7 text-slate-600">
+               Use these related generators to support job planning,
+               communication, hazard analysis, and documentation.
+             </p>
+           </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+-            {[
+-              {
+-                href: "/tools/jha-generator",
+-                title: "JHA Generator",
+-                description:
+-                  "Break work into task steps, hazards, controls, and PPE.",
+-              },
+-              {
+-                href: "/tools/toolbox-talk-generator",
+-                title: "Toolbox Talk Generator",
+-                description:
+-                  "Prepare crew discussion points and safety meeting notes.",
+-              },
+-              {
+-                href: "/tools/ppe-checklist-generator",
+-                title: "PPE Checklist Generator",
+-                description:
+-                  "Create task-specific PPE and pre-use inspection checklists.",
+-              },
+-              {
+-                href: "/tools/incident-report-generator",
+-                title: "Incident Report Generator",
+-                description:
+-                  "Document incidents, immediate actions, and corrective actions.",
+-              },
+-            ].map((tool) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
++            {relatedTools.map((tool) => (
+               <Link
+                 key={tool.href}
+                 href={tool.href}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
++                className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
+               >
+-                <h3 className="font-display font-black text-white">{tool.title}</h3>
+-                <p className="mt-3 text-sm leading-6 text-steel-400">
++                <h3 className="font-bold text-navy-950">{tool.title}</h3>
++                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
+                   {tool.description}
+                 </p>
+               </Link>
+             ))}
+           </div>
+-        </section>
+-
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Safety Plan Generator FAQs
+-          </h2>
+ 
+-          <div className="mt-8 space-y-5">
+-            {safetyPlanFaqs.map((faq) => (
+-              <article
+-                key={faq.question}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+-              >
+-                <h3 className="text-lg font-display font-black text-white">
+-                  {faq.question}
+-                </h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-200">
+-                  {faq.answer}
+-                </p>
+-              </article>
+-            ))}
++          <div className="mt-14">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Safety Plan Generator FAQs
++            </h2>
++            <div className="mt-7 space-y-4">
++              {safetyPlanFaqs.map((faq) => (
++                <article
++                  key={faq.question}
++                  className="rounded-xl border border-steel-200 bg-white p-6"
++                >
++                  <h3 className="font-display text-lg font-bold text-navy-950">
++                    {faq.question}
++                  </h3>
++                  <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
++                    {faq.answer}
++                  </p>
++                </article>
++              ))}
++            </div>
+           </div>
+-        </section>
+ 
+-        <OfficialSafetySources toolSlug="safety-plan-generator" />
++          <OfficialSafetySources toolSlug="safety-plan-generator" />
++        </div>
+       </section>
+     </main>
+   );
+diff --git a/src/app/tools/trir-calculator/page.tsx b/src/app/tools/trir-calculator/page.tsx
+index 881b97a..5bf754c 100644
+--- a/src/app/tools/trir-calculator/page.tsx
++++ b/src/app/tools/trir-calculator/page.tsx
+@@ -20,18 +20,9 @@ const toolJsonLd = createToolJsonLd({
+ });
+ 
+ const breadcrumbJsonLd = createBreadcrumbJsonLd([
+-  {
+-    name: "Home",
+-    path: "/",
+-  },
+-  {
+-    name: "Safety Tools",
+-    path: "/tools",
+-  },
+-  {
+-    name: "TRIR Calculator",
+-    path: "/tools/trir-calculator",
+-  },
++  { name: "Home", path: "/" },
++  { name: "Safety Tools", path: "/tools" },
++  { name: "TRIR Calculator", path: "/tools/trir-calculator" },
+ ]);
+ 
+ const faqs = [
+@@ -59,6 +50,27 @@ const faqs = [
+ 
+ const faqJsonLd = createFaqJsonLd(faqs);
+ 
++const relatedTools = [
++  {
++    href: "/tools/incident-report-generator",
++    title: "Incident Report Generator",
++    description:
++      "Document event details, corrective actions, and follow-up responsibilities.",
++  },
++  {
++    href: "/tools/near-miss-report-generator",
++    title: "Near Miss Report Generator",
++    description:
++      "Capture potential outcomes, contributing factors, and preventive actions.",
++  },
++  {
++    href: "/tools/daily-jobsite-safety-inspection-generator",
++    title: "Daily Jobsite Inspection",
++    description:
++      "Record observed hazards, corrective actions, owners, and follow-up dates.",
++  },
++];
++
+ export const metadata: Metadata = {
+   title: "TRIR Calculator",
+   description:
+@@ -70,246 +82,187 @@ export const metadata: Metadata = {
+ 
+ export default function TrirCalculatorPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(toolJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+       />
+-
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(breadcrumbJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+       />
+-
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(faqJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+       />
+ 
+-      <section className="border-b border-white/10">
+-        <div className="mx-auto w-full max-w-6xl px-6 py-16">
+-          <nav
+-            aria-label="Breadcrumb"
+-            className="text-sm text-steel-400"
+-          >
+-            <Link
+-              href="/"
+-              className="transition hover:text-white"
+-            >
++      <section className="bg-navy-950 py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <nav aria-label="Breadcrumb" className="font-mono text-xs text-steel-400">
++            <Link href="/" className="transition hover:text-orange-500">
+               Home
+             </Link>
+-
+             <span className="px-2">/</span>
+-
+-            <Link
+-              href="/tools"
+-              className="transition hover:text-white"
+-            >
++            <Link href="/tools" className="transition hover:text-orange-500">
+               Safety Tools
+             </Link>
+-
+             <span className="px-2">/</span>
+-
+-            <span className="text-slate-200">
+-              TRIR Calculator
+-            </span>
++            <span className="text-steel-200">TRIR Calculator</span>
+           </nav>
+ 
+-          <div className="mt-8 max-w-4xl">
+-            <p className="text-sm font-display font-black uppercase tracking-[0.2em] text-orange-500">
++          <div className="mt-6 max-w-3xl">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
+               Safety performance calculator
+             </p>
+-
+-            <h1 className="mt-4 text-4xl font-display font-black tracking-tight sm:text-6xl">
++            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
+               TRIR Calculator
+             </h1>
+-
+-            <p className="mt-6 text-lg leading-8 text-steel-200">
+-              Calculate a total recordable incident rate using
+-              the recordable cases and employee hours worked for
+-              the same reporting period.
++            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
++              Calculate a total recordable incident rate using the
++              recordable cases and employee hours worked for the same
++              reporting period.
+             </p>
+           </div>
+         </div>
+       </section>
+ 
+-      <section className="mx-auto w-full max-w-6xl px-6 py-12">
+-        <TrirCalculator />
++      <section className="border-b border-white/10 bg-navy-950 py-14">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <TrirCalculator />
++        </div>
+       </section>
+ 
+-      <section className="border-t border-white/10 bg-white/[0.02]">
+-        <div className="mx-auto grid w-full max-w-6xl gap-6 px-6 py-16 lg:grid-cols-2">
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto grid w-full max-w-6xl gap-5 px-6 lg:grid-cols-2">
++          <article className="rounded-xl border border-steel-200 bg-white p-7">
++            <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
+               Formula
+-            </p>
+-
+-            <h2 className="mt-3 text-3xl font-display font-black">
++            </span>
++            <h2 className="mt-2.5 font-display text-2xl font-bold text-navy-950">
+               How TRIR is calculated
+             </h2>
+-
+-            <p className="mt-5 text-sm leading-7 text-steel-200">
++            <p className="mt-4 text-[14.5px] leading-7 text-slate-600">
+               The calculator applies the standardized incidence-rate
+               formula to the values entered for the selected period:
+             </p>
+-
+-            <p className="mt-5 rounded-2xl bg-navy-950 p-5 font-mono text-sm leading-7 text-orange-500">
+-              TRIR = (recordable cases × 200,000) ÷ employee
+-              hours worked
++            <p className="mt-4 rounded-[3px] bg-navy-950 p-4 font-mono text-[13px] leading-6 text-orange-300">
++              TRIR = (recordable cases × 200,000) ÷ employee hours worked
+             </p>
+-
+-            <p className="mt-5 text-sm leading-7 text-steel-200">
+-              The 200,000-hour base represents 100 full-time
+-              employees working 40 hours per week for 50 weeks.
+-              Normalization allows rates from differently sized
+-              workforces to be compared on a common basis.
++            <p className="mt-4 text-[14.5px] leading-7 text-slate-600">
++              The 200,000-hour base represents 100 full-time employees
++              working 40 hours per week for 50 weeks. Normalization allows
++              rates from differently sized workforces to be compared on a
++              common basis.
+             </p>
+           </article>
+ 
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
++          <article className="rounded-xl border border-steel-200 bg-white p-7">
++            <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
+               Required inputs
+-            </p>
+-
+-            <h2 className="mt-3 text-3xl font-display font-black">
++            </span>
++            <h2 className="mt-2.5 font-display text-2xl font-bold text-navy-950">
+               Use matching reporting-period data
+             </h2>
+-
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
++            <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+               <li>
+-                Use the recordable-case count for the reporting
+-                period being evaluated.
++                Use the recordable-case count for the reporting period
++                being evaluated.
+               </li>
+               <li>
+-                Use actual employee hours worked for that same
+-                reporting period.
++                Use actual employee hours worked for that same reporting
++                period.
+               </li>
+               <li>
+                 Apply a consistent establishment, workforce, and
+                 reporting-period scope.
+               </li>
+               <li>
+-                Review case classification and hour totals before
+-                relying on the result.
+-              </li>
+-              <li>
+-                Preserve the underlying records used in the
+-                calculation.
++                Review case classification and hour totals before relying
++                on the result.
+               </li>
++              <li>Preserve the underlying records used in the calculation.</li>
+             </ul>
+           </article>
+ 
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
++          <article className="rounded-xl border border-steel-200 bg-white p-7">
++            <h2 className="font-display text-xl font-bold text-navy-950">
+               How to interpret a TRIR result
+             </h2>
+-
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
+-              The result expresses the entered recordable-case
+-              experience per 100 full-time-equivalent workers.
+-              Interpretation should account for workforce size,
+-              reporting period, industry, establishment type,
+-              recordkeeping quality, and changes in exposure hours.
++            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++              The result expresses the entered recordable-case experience
++              per 100 full-time-equivalent workers. Interpretation should
++              account for workforce size, reporting period, industry,
++              establishment type, recordkeeping quality, and changes in
++              exposure hours.
+             </p>
+-
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
+-              A small change in case count can produce a large rate
+-              change when relatively few employee hours are worked.
+-              Rate trends should therefore be reviewed with the
+-              underlying events, hazards, controls, and leading
+-              indicators.
++            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++              A small change in case count can produce a large rate change
++              when relatively few employee hours are worked. Rate trends
++              should therefore be reviewed with the underlying events,
++              hazards, controls, and leading indicators.
+             </p>
+           </article>
+ 
+-          <article className="rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7">
+-            <h2 className="text-2xl font-display font-black text-orange-100">
++          <article className="rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
++            <h2 className="font-display text-xl font-bold text-orange-950">
+               Recordkeeping and comparison limitations
+             </h2>
+-
+-            <p className="mt-4 text-sm leading-7 text-orange-100/90">
+-              This calculator does not decide whether an injury or
+-              illness is recordable, validate OSHA logs, select an
+-              industry benchmark, prove that a workplace is safe,
+-              or establish compliance. Review current recordkeeping
+-              requirements and qualified guidance before using the
+-              result for reporting or business decisions.
++            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
++              This calculator does not decide whether an injury or illness
++              is recordable, validate OSHA logs, select an industry
++              benchmark, prove that a workplace is safe, or establish
++              compliance. Review current recordkeeping requirements and
++              qualified guidance before using the result for reporting or
++              business decisions.
+             </p>
+           </article>
+         </div>
+       </section>
+ 
+-      <section className="mx-auto w-full max-w-6xl px-6 py-16">
+-        <h2 className="text-3xl font-display font-black tracking-tight">
+-          TRIR Calculator FAQs
+-        </h2>
+-
+-        <div className="mt-8 grid gap-5">
+-          {faqs.map((faq) => (
+-            <article
+-              key={faq.question}
+-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+-            >
+-              <h3 className="text-lg font-display font-black text-orange-500">
+-                {faq.question}
+-              </h3>
+-
+-              <p className="mt-3 text-sm leading-7 text-steel-200">
+-                {faq.answer}
+-              </p>
+-            </article>
+-          ))}
+-        </div>
+-
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Related contractor safety tools
++      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++            TRIR Calculator FAQs
+           </h2>
+-
+-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+-            {[
+-              {
+-                href: "/tools/incident-report-generator",
+-                title: "Incident Report Generator",
+-                description:
+-                  "Document event details, corrective actions, and follow-up responsibilities.",
+-              },
+-              {
+-                href: "/tools/near-miss-report-generator",
+-                title: "Near Miss Report Generator",
+-                description:
+-                  "Capture potential outcomes, contributing factors, and preventive actions.",
+-              },
+-              {
+-                href: "/tools/daily-jobsite-safety-inspection-generator",
+-                title: "Daily Jobsite Inspection",
+-                description:
+-                  "Record observed hazards, corrective actions, owners, and follow-up dates.",
+-              },
+-            ].map((tool) => (
+-              <Link
+-                key={tool.href}
+-                href={tool.href}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
++          <div className="mt-7 grid gap-4">
++            {faqs.map((faq) => (
++              <article
++                key={faq.question}
++                className="rounded-xl border border-steel-200 bg-white p-6"
+               >
+-                <h3 className="font-display font-black text-white">
+-                  {tool.title}
++                <h3 className="font-display text-lg font-bold text-navy-950">
++                  {faq.question}
+                 </h3>
+-
+-                <p className="mt-3 text-sm leading-6 text-steel-400">
+-                  {tool.description}
++                <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
++                  {faq.answer}
+                 </p>
+-              </Link>
++              </article>
+             ))}
+           </div>
+-        </section>
+ 
+-        <OfficialSafetySources toolSlug="trir-calculator" />
++          <div className="mt-14">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Related contractor safety tools
++            </h2>
++            <div className="mt-7 grid gap-4 md:grid-cols-3">
++              {relatedTools.map((tool) => (
++                <Link
++                  key={tool.href}
++                  href={tool.href}
++                  className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
++                >
++                  <h3 className="font-bold text-navy-950">{tool.title}</h3>
++                  <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
++                    {tool.description}
++                  </p>
++                </Link>
++              ))}
++            </div>
++          </div>
++
++          <OfficialSafetySources toolSlug="trir-calculator" />
++        </div>
+       </section>
+     </main>
+   );

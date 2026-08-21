@@ -125,11 +125,11 @@ export function SeverityRateCalculator() {
         onSubmit={handleSubmit}
         className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
       >
-        <h2 className="text-2xl font-black">
+        <h2 className="text-2xl font-display font-black">
           Calculate your severity rate
         </h2>
 
-        <p className="mt-3 text-sm leading-7 text-slate-300">
+        <p className="mt-3 text-sm leading-7 text-steel-200">
           Enter OSHA 300 Log day totals and employee hours
           worked for the same reporting period and workforce
           scope.
@@ -159,12 +159,12 @@ export function SeverityRateCalculator() {
                 )
               }
               aria-describedby="severity-days-away-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="severity-days-away-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter the recorded number of calendar days away
               from work, not the number of cases.
@@ -194,12 +194,12 @@ export function SeverityRateCalculator() {
                 )
               }
               aria-describedby="severity-restricted-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="severity-restricted-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Enter recorded restricted-work or job-transfer
               calendar days, not the number of cases.
@@ -229,12 +229,12 @@ export function SeverityRateCalculator() {
                 )
               }
               aria-describedby="severity-hours-help"
-              className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
+              className="rounded-2xl border border-white/10 bg-navy-950 px-4 py-3 text-base text-white outline-none transition focus:border-emerald-300"
             />
 
             <span
               id="severity-hours-help"
-              className="text-xs leading-5 text-slate-400"
+              className="text-xs leading-5 text-steel-400"
             >
               Use actual hours worked by the included employees
               during the same period as the entered day totals.
@@ -254,7 +254,7 @@ export function SeverityRateCalculator() {
         <div className="mt-7 flex flex-wrap gap-3">
           <button
             type="submit"
-            className="rounded-full bg-emerald-400 px-6 py-3 text-sm font-black text-slate-950 transition hover:bg-emerald-300"
+            className="rounded-full bg-orange-600 px-6 py-3 text-sm font-display font-black text-slate-950 transition hover:bg-orange-500"
           >
             Calculate Severity Rate
           </button>
@@ -262,7 +262,7 @@ export function SeverityRateCalculator() {
           <button
             type="button"
             onClick={handleReset}
-            className="rounded-full border border-white/20 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
+            className="rounded-full border border-white/20 px-6 py-3 text-sm font-display font-black text-white transition hover:bg-white/10"
           >
             Reset example
           </button>
@@ -276,35 +276,35 @@ export function SeverityRateCalculator() {
       >
         <h2
           id="severity-result-heading"
-          className="text-2xl font-black"
+          className="text-2xl font-display font-black"
         >
           Severity rate result
         </h2>
 
         {result ? (
           <div className="mt-6 space-y-6">
-            <div className="rounded-3xl border border-emerald-300/25 bg-emerald-300/[0.08] p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+            <div className="rounded-3xl border border-orange-500/25 bg-navy-800 p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
                 Normalized lost or restricted workdays
               </p>
 
-              <p className="mt-3 text-6xl font-black tracking-tight text-white">
+              <p className="mt-3 text-6xl font-display font-black tracking-tight text-white">
                 {result.roundedRate.toFixed(1)}
               </p>
 
-              <p className="mt-4 text-sm leading-7 text-slate-300">
+              <p className="mt-4 text-sm leading-7 text-steel-200">
                 {result.interpretation}
               </p>
             </div>
 
-            <div className="rounded-2xl bg-slate-950/70 p-5">
-              <h3 className="font-black text-white">
+            <div className="rounded-2xl bg-navy-950/70 p-5">
+              <h3 className="font-display font-black text-white">
                 Calculation details
               </h3>
 
               <dl className="mt-4 grid gap-4 text-sm">
                 <div>
-                  <dt className="font-bold text-slate-400">
+                  <dt className="font-bold text-steel-400">
                     Combined day total
                   </dt>
 
@@ -314,7 +314,7 @@ export function SeverityRateCalculator() {
                 </div>
 
                 <div>
-                  <dt className="font-bold text-slate-400">
+                  <dt className="font-bold text-steel-400">
                     Formula with entered values
                   </dt>
 
@@ -324,7 +324,7 @@ export function SeverityRateCalculator() {
                 </div>
 
                 <div>
-                  <dt className="font-bold text-slate-400">
+                  <dt className="font-bold text-steel-400">
                     Unrounded result
                   </dt>
 
@@ -334,7 +334,7 @@ export function SeverityRateCalculator() {
                 </div>
 
                 <div>
-                  <dt className="font-bold text-slate-400">
+                  <dt className="font-bold text-steel-400">
                     Standard base
                   </dt>
 
@@ -348,8 +348,8 @@ export function SeverityRateCalculator() {
               </dl>
             </div>
 
-            <div className="rounded-2xl border border-amber-300/20 bg-amber-300/10 p-5">
-              <p className="text-xs leading-6 text-amber-100">
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/10 p-5">
+              <p className="text-xs leading-6 text-orange-100">
                 {result.disclaimer}
               </p>
 
@@ -373,7 +373,7 @@ export function SeverityRateCalculator() {
             </div>
           </div>
         ) : (
-          <p className="mt-4 text-sm leading-7 text-slate-300">
+          <p className="mt-4 text-sm leading-7 text-steel-200">
             Enter days away, job-transfer or restriction days,
             and employee hours. The normalized severity rate and
             transparent equation will appear here.

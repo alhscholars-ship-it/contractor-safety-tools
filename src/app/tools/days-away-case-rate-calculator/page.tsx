@@ -11,57 +11,38 @@ const toolJsonLd = createToolJsonLd({
   description:
     "Calculate the OSHA Days Away from Work Injury and Illness case rate using days-away cases, employee hours, and the standardized 200,000-hour base.",
   url: "/tools/days-away-case-rate-calculator",
-  keywords: [
-    "days away case rate calculator",
-    "DACR calculator",
-    "DAFWII rate calculator",
-    "days away injury rate",
-  ],
+  keywords: ["days away case rate calculator", "DACR calculator", "DAFWII rate calculator", "days away injury rate"],
 });
 
 const breadcrumbJsonLd = createBreadcrumbJsonLd([
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "Safety Tools",
-    path: "/tools",
-  },
-  {
-    name: "Days Away Case Rate Calculator",
-    path: "/tools/days-away-case-rate-calculator",
-  },
+  { name: "Home", path: "/" },
+  { name: "Safety Tools", path: "/tools" },
+  { name: "Days Away Case Rate Calculator", path: "/tools/days-away-case-rate-calculator" },
 ]);
 
 const faqs = [
   {
-    question:
-      "What is the Days Away Case Rate formula?",
+    question: "What is the Days Away Case Rate formula?",
     answer:
       "Multiply the number of cases involving days away from work by 200,000, then divide by total employee hours worked during the same reporting period.",
   },
   {
-    question:
-      "Is the Days Away Case Rate the same as DAFWII?",
+    question: "Is the Days Away Case Rate the same as DAFWII?",
     answer:
       "OSHA guidance has described the Days Away from Work Injury and Illness case rate, or DAFWII, as the same measure referred to as the Days Away Case Rate or DACR.",
   },
   {
-    question:
-      "What cases belong in the numerator?",
+    question: "What cases belong in the numerator?",
     answer:
       "Use recordable cases involving days away from work. Do not use the number of calendar days lost, and do not add cases involving only restricted work or job transfer.",
   },
   {
-    question:
-      "How is the Days Away Rate different from DART?",
+    question: "How is the Days Away Rate different from DART?",
     answer:
       "The Days Away Case Rate uses only cases involving days away from work. DART also includes cases involving restricted work or transfer to another job.",
   },
   {
-    question:
-      "Does a low rate prove that a workplace is safe?",
+    question: "Does a low rate prove that a workplace is safe?",
     answer:
       "No. The rate is a lagging recordkeeping measure. It does not independently establish compliance, hazard control effectiveness, or overall workplace safety.",
   },
@@ -69,262 +50,186 @@ const faqs = [
 
 const faqJsonLd = createFaqJsonLd(faqs);
 
+const relatedTools = [
+  {
+    href: "/tools/dart-rate-calculator",
+    title: "DART Rate Calculator",
+    description: "Calculate the broader rate covering days away, restricted work, and job-transfer cases.",
+  },
+  {
+    href: "/tools/trir-calculator",
+    title: "TRIR Calculator",
+    description: "Calculate the total recordable incident rate using all OSHA-recordable cases.",
+  },
+  {
+    href: "/tools/severity-rate-calculator",
+    title: "Severity Rate Calculator",
+    description: "Normalize entered days away, restriction, or transfer against employee hours.",
+  },
+];
+
 export const metadata: Metadata = {
   title: "Days Away Case Rate Calculator",
   description:
     "Calculate DACR or DAFWII using days-away cases, employee hours, the OSHA 200,000-hour base, and a transparent calculation equation.",
   alternates: {
-    canonical:
-      "/tools/days-away-case-rate-calculator",
+    canonical: "/tools/days-away-case-rate-calculator",
   },
 };
 
 export default function DaysAwayCaseRateCalculatorPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="bg-paper">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
       />
-
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbJsonLd,
-          ),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <section className="border-b border-white/10">
-        <div className="mx-auto w-full max-w-6xl px-6 py-16">
-          <nav
-            aria-label="Breadcrumb"
-            className="text-sm text-slate-400"
-          >
-            <Link
-              href="/"
-              className="transition hover:text-white"
-            >
+      <section className="bg-navy-950 py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <nav aria-label="Breadcrumb" className="font-mono text-xs text-steel-400">
+            <Link href="/" className="transition hover:text-orange-500">
               Home
             </Link>
-
             <span className="px-2">/</span>
-
-            <Link
-              href="/tools"
-              className="transition hover:text-white"
-            >
+            <Link href="/tools" className="transition hover:text-orange-500">
               Safety Tools
             </Link>
-
             <span className="px-2">/</span>
-
-            <span className="text-slate-200">
-              Days Away Case Rate Calculator
-            </span>
+            <span className="text-steel-200">Days Away Case Rate Calculator</span>
           </nav>
 
-          <div className="mt-8 max-w-4xl">
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-emerald-300">
-              OSHA recordkeeping rate calculator
+          <div className="mt-6 max-w-3xl">
+            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
+              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
+              Safety performance calculator
             </p>
-
-            <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
               Days Away Case Rate Calculator
             </h1>
-
-            <p className="mt-6 text-lg leading-8 text-slate-300">
-              Calculate the standardized rate of
-              recordable cases involving days away from
-              work using the OSHA 200,000-hour incidence
-              rate base.
+            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
+              Calculate the standardized rate of recordable cases involving days away from work using the OSHA 200,000-hour incidence rate base.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-12">
-        <DaysAwayCaseRateCalculator />
+      <section className="border-b border-white/10 bg-navy-950 py-14">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <DaysAwayCaseRateCalculator />
+        </div>
       </section>
 
-      <section className="border-t border-white/10 bg-white/[0.02]">
-        <div className="mx-auto grid w-full max-w-6xl gap-6 px-6 py-16 lg:grid-cols-2">
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
-              Standard formula
-            </p>
-
-            <h2 className="mt-3 text-3xl font-black">
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto grid w-full max-w-6xl gap-5 px-6 lg:grid-cols-2">
+          <article className="rounded-xl border border-steel-200 bg-white p-7">
+            <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
+              Formula
+            </span>
+            <h2 className="mt-2.5 font-display text-2xl font-bold text-navy-950">
               How the Days Away Case Rate is calculated
             </h2>
-
-            <p className="mt-5 text-sm leading-7 text-slate-300">
-              Days Away Case Rate equals cases involving
-              days away from work multiplied by 200,000,
-              divided by total employee hours worked
-              during the same period.
+            <p className="mt-4 text-[14.5px] leading-7 text-slate-600">
+              Days Away Case Rate equals cases involving days away from work multiplied by 200,000, divided by total employee hours worked during the same period.
             </p>
-
-            <div className="mt-5 rounded-2xl bg-slate-950/70 p-5 font-mono text-sm leading-7 text-emerald-200">
-              (Days-away cases × 200,000) ÷
-              employee hours worked
-            </div>
-          </article>
-
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
-              Standardization
+            <p className="mt-4 rounded-[3px] bg-navy-950 p-4 font-mono text-[13px] leading-6 text-orange-300">
+              (Days-away cases × 200,000) ÷ employee hours worked
             </p>
-
-            <h2 className="mt-3 text-3xl font-black">
-              Why the formula uses 200,000 hours
-            </h2>
-
-            <p className="mt-5 text-sm leading-7 text-slate-300">
-              The 200,000-hour base represents the
-              approximate annual hours worked by 100
-              full-time-equivalent employees working
-              40 hours per week for 50 weeks.
-            </p>
-
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              Standardization supports comparison across
-              reporting periods or establishments with
-              different workforce-hour totals.
+            <p className="mt-4 text-[14.5px] leading-7 text-slate-600">
+              The 200,000-hour base represents the approximate annual hours worked by 100 full-time-equivalent employees working 40 hours per week for 50 weeks. Standardization supports comparison across reporting periods or establishments with different workforce-hour totals.
             </p>
           </article>
 
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
+          <article className="rounded-xl border border-steel-200 bg-white p-7">
+            <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
+              Recordkeeping
+            </span>
+            <h2 className="mt-2.5 font-display text-2xl font-bold text-navy-950">
               Use cases, not days lost
             </h2>
-
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              The numerator is the number of qualifying
-              recordable cases involving days away from
-              work. It is not the total number of
-              calendar days employees remained away.
-            </p>
-
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              Confirm the case classification using
-              verified OSHA 300 Log information before
-              calculating the rate.
-            </p>
+            <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+              <li>The numerator is the number of qualifying recordable cases involving days away from work.</li>
+              <li>It is not the total number of calendar days employees remained away.</li>
+              <li>Confirm the case classification using verified OSHA 300 Log information before calculating the rate.</li>
+            </ul>
           </article>
 
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
+          <article className="rounded-xl border border-steel-200 bg-white p-7">
+            <h2 className="font-display text-xl font-bold text-navy-950">
               Days Away Case Rate versus DART
             </h2>
-
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              Days Away Case Rate includes only cases
-              involving days away from work. DART uses a
-              broader numerator that also includes cases
-              involving restricted work or job transfer.
+            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
+              Days Away Case Rate includes only cases involving days away from work. DART uses a broader numerator that also includes cases involving restricted work or job transfer.
             </p>
-
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              Both measures use total employee hours and
-              the standardized 200,000-hour base.
+            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
+              Both measures use total employee hours and the standardized 200,000-hour base.
             </p>
           </article>
 
-          <article className="rounded-3xl border border-amber-300/20 bg-amber-300/10 p-7 lg:col-span-2">
-            <h2 className="text-2xl font-black text-amber-100">
+          <article className="rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
+            <h2 className="font-display text-xl font-bold text-orange-950">
               Important recordkeeping limitation
             </h2>
-
-            <p className="mt-4 text-sm leading-7 text-amber-100/90">
-              This calculator does not determine whether
-              an injury or illness is work-related,
-              recordable, or correctly classified. It
-              also does not establish OSHA compliance,
-              citation exposure, insurance liability, or
-              overall workplace safety.
+            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
+              This calculator does not determine whether an injury or illness is work-related, recordable, or correctly classified. It also does not establish OSHA compliance, citation exposure, insurance liability, or overall workplace safety.
             </p>
           </article>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16">
-        <h2 className="text-3xl font-black tracking-tight">
-          Days Away Case Rate FAQs
-        </h2>
-
-        <div className="mt-8 grid gap-5">
-          {faqs.map((faq) => (
-            <article
-              key={faq.question}
-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
-            >
-              <h3 className="text-lg font-black text-emerald-200">
-                {faq.question}
-              </h3>
-
-              <p className="mt-3 text-sm leading-7 text-slate-300">
-                {faq.answer}
-              </p>
-            </article>
-          ))}
-        </div>
-
-        <section className="mt-16">
-          <h2 className="text-3xl font-black tracking-tight">
-            Related safety rate calculators
+      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+            Days Away Case Rate Calculator FAQs
           </h2>
-
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {[
-              {
-                href: "/tools/dart-rate-calculator",
-                title: "DART Rate Calculator",
-                description:
-                  "Calculate the broader rate covering days away, restricted work, and job-transfer cases.",
-              },
-              {
-                href: "/tools/trir-calculator",
-                title: "TRIR Calculator",
-                description:
-                  "Calculate the total recordable incident rate using all OSHA-recordable cases.",
-              },
-              {
-                href: "/tools/severity-rate-calculator",
-                title: "Severity Rate Calculator",
-                description:
-                  "Normalize entered days away, restriction, or transfer against employee hours.",
-              },
-            ].map((tool) => (
-              <Link
-                key={tool.href}
-                href={tool.href}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-emerald-300/40 hover:bg-white/[0.07]"
+          <div className="mt-7 grid gap-4">
+            {faqs.map((faq) => (
+              <article
+                key={faq.question}
+                className="rounded-xl border border-steel-200 bg-white p-6"
               >
-                <h3 className="font-black text-white">
-                  {tool.title}
+                <h3 className="font-display text-lg font-bold text-navy-950">
+                  {faq.question}
                 </h3>
-
-                <p className="mt-3 text-sm leading-6 text-slate-400">
-                  {tool.description}
+                <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
+                  {faq.answer}
                 </p>
-              </Link>
+              </article>
             ))}
           </div>
-        </section>
 
-        <OfficialSafetySources toolSlug="days-away-case-rate-calculator" />
+          <div className="mt-14">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+              Related contractor safety tools
+            </h2>
+            <div className="mt-7 grid gap-4 md:grid-cols-3">
+              {relatedTools.map((tool) => (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
+                >
+                  <h3 className="font-bold text-navy-950">{tool.title}</h3>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
+                    {tool.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <OfficialSafetySources toolSlug="days-away-case-rate-calculator" />
+        </div>
       </section>
     </main>
   );
 }
+

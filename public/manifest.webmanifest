@@ -1,0 +1,16 @@
+{
+  "name": "Contractor Safety Tools",
+  "short_name": "Contractor Safety Tools",
+  "description": "Free contractor safety form generators, inspection checklists, reports, and jobsite documentation templates with focused official-source references.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c1a2e",
+  "theme_color": "#0c1a2e",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

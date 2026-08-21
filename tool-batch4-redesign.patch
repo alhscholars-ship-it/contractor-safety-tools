@@ -1,0 +1,1894 @@
+diff --git a/src/app/tools/daily-jobsite-safety-inspection-generator/page.tsx b/src/app/tools/daily-jobsite-safety-inspection-generator/page.tsx
+index 1ab7501..1d88026 100644
+--- a/src/app/tools/daily-jobsite-safety-inspection-generator/page.tsx
++++ b/src/app/tools/daily-jobsite-safety-inspection-generator/page.tsx
+@@ -2,32 +2,22 @@ import type { Metadata } from "next";
+ import Link from "next/link";
+ import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
+ import { DailyJobsiteSafetyInspectionGenerator } from "@/features/daily-jobsite-safety-inspection-generator";
++import { createToolJsonLd } from "@/lib/seo/json-ld";
+ import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
+ import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
+-import { createToolJsonLd } from "@/lib/seo/json-ld";
+-
+-const description =
+-  "Create a daily jobsite safety inspection checklist covering active trades, work areas, hazards, corrective actions, responsible persons, and follow-up dates.";
+ 
+ const toolJsonLd = createToolJsonLd({
+   name: "Daily Jobsite Safety Inspection Generator",
+-  description,
++  description:
++    "Create a daily jobsite safety inspection checklist covering active trades, work areas, hazards, corrective actions, responsible persons, and follow-up dates.",
+   url: "/tools/daily-jobsite-safety-inspection-generator",
+-  keywords: [
+-    "daily jobsite safety inspection checklist",
+-    "construction site inspection checklist",
+-    "jobsite safety inspection form",
+-    "daily construction safety checklist",
+-  ],
++  keywords: ["daily jobsite safety inspection checklist", "construction site inspection checklist", "jobsite safety inspection form", "daily construction safety checklist"],
+ });
+ 
+ const breadcrumbJsonLd = createBreadcrumbJsonLd([
+   { name: "Home", path: "/" },
+   { name: "Tools", path: "/tools" },
+-  {
+-    name: "Daily Jobsite Safety Inspection Generator",
+-    path: "/tools/daily-jobsite-safety-inspection-generator",
+-  },
++  { name: "Daily Jobsite Safety Inspection Generator", path: "/tools/daily-jobsite-safety-inspection-generator" },
+ ]);
+ 
+ const faqs = [
+@@ -55,9 +45,51 @@ const faqs = [
+ 
+ const faqJsonLd = createFaqJsonLd(faqs);
+ 
++const steps = [
++  {
++    title: "1. Review conditions",
++    description:
++      "Document the date, weather, active trades, work areas, and operations underway.",
++  },
++  {
++    title: "2. Record hazards",
++    description:
++      "Identify unsafe conditions, deficient controls, housekeeping issues, and other concerns.",
++  },
++  {
++    title: "3. Assign corrections",
++    description:
++      "Define corrective actions, responsible persons, and dates for verifying closure.",
++  },
++];
++
++const relatedTools = [
++  {
++    href: "/tools/ppe-checklist-generator",
++    title: "PPE Checklist Generator",
++    description: "Document task hazards, required PPE, and pre-use inspection items.",
++  },
++  {
++    href: "/tools/jha-generator",
++    title: "JHA Generator",
++    description: "Break work into task steps, hazards, controls, and PPE requirements.",
++  },
++  {
++    href: "/tools/safety-plan-generator",
++    title: "Safety Plan Generator",
++    description: "Create a project-level safety plan covering hazards and responsibilities.",
++  },
++  {
++    href: "/tools/near-miss-report-generator",
++    title: "Near Miss Report Generator",
++    description: "Document close calls, contributing factors, and corrective actions.",
++  },
++];
++
+ export const metadata: Metadata = {
+   title: "Daily Jobsite Safety Inspection Generator",
+-  description,
++  description:
++    "Create a daily jobsite safety inspection checklist covering active trades, work areas, hazards, corrective actions, responsible persons, and follow-up dates.",
+   alternates: {
+     canonical: "/tools/daily-jobsite-safety-inspection-generator",
+   },
+@@ -65,105 +97,88 @@ export const metadata: Metadata = {
+ 
+ export default function DailyJobsiteSafetyInspectionGeneratorPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(breadcrumbJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+       />
+ 
+-      <section className="mx-auto w-full max-w-6xl px-6 py-20">
+-        <Link
+-          href="/tools"
+-          className="text-sm font-semibold text-orange-500"
+-        >
+-          ← Back to tools
+-        </Link>
+-
+-        <div className="mt-8 max-w-3xl">
+-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Jobsite Inspections
+-          </p>
++      <section className="bg-navy-950 py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <Link
++            href="/tools"
++            className="font-mono text-xs font-semibold text-steel-400 transition hover:text-orange-500"
++          >
++            ← Back to tools
++          </Link>
+ 
+-          <h1 className="text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Daily Jobsite Safety Inspection Generator
+-          </h1>
+-
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            Create a structured daily construction safety inspection covering
+-            active trades, site conditions, inspection areas, observed hazards,
+-            corrective actions, responsible persons, and follow-up dates.
+-          </p>
++          <div className="mt-6 max-w-3xl">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
++              Jobsite Inspections
++            </p>
++            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
++              Daily Jobsite Safety Inspection Generator
++            </h1>
++            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
++              Create a structured daily construction safety inspection covering active trades, site conditions, inspection areas, observed hazards, corrective actions, responsible persons, and follow-up dates.
++            </p>
++          </div>
+         </div>
++      </section>
+ 
+-        <div className="mt-12">
++      <section className="border-b border-white/10 bg-navy-950 py-14">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <DailyJobsiteSafetyInspectionGenerator />
+         </div>
++      </section>
+ 
+-        <section className="mt-16 border-t border-white/10 pt-16">
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <div className="max-w-3xl">
+-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-              Inspection workflow
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-600" />
++              How it works
+             </p>
+-
+-            <h2 className="mt-4 text-3xl font-display font-black tracking-tight sm:text-4xl">
++            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+               How to document a daily jobsite safety inspection
+             </h2>
+-
+-            <p className="mt-5 text-base leading-8 text-steel-200">
+-              Record the project and inspection conditions, identify active
+-              trades and work areas, document hazards or deficiencies, assign
+-              corrective actions, and set clear ownership and follow-up dates.
++            <p className="mt-4 text-[15px] leading-7 text-slate-600">
++              Record the project and inspection conditions, identify active trades and work areas, document hazards or deficiencies, assign corrective actions, and set clear ownership and follow-up dates.
+             </p>
+           </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+-            {[
+-              {
+-                title: "1. Review conditions",
+-                description:
+-                  "Document the date, weather, active trades, work areas, and operations underway.",
+-              },
+-              {
+-                title: "2. Record hazards",
+-                description:
+-                  "Identify unsafe conditions, deficient controls, housekeeping issues, and other concerns.",
+-              },
+-              {
+-                title: "3. Assign corrections",
+-                description:
+-                  "Define corrective actions, responsible persons, and dates for verifying closure.",
+-              },
+-            ].map((step) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-3">
++            {steps.map((step) => (
+               <article
+                 key={step.title}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
++                className="rounded-xl border border-steel-200 bg-white p-6"
+               >
+-                <h3 className="text-lg font-display font-black">{step.title}</h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-400">
++                <h3 className="font-display text-lg font-bold text-navy-950">
++                  {step.title}
++                </h3>
++                <p className="mt-2.5 text-[13.5px] leading-relaxed text-slate-600">
+                   {step.description}
+                 </p>
+               </article>
+             ))}
+           </div>
+-        </section>
+ 
+-        <section className="mt-16 grid gap-8 lg:grid-cols-2">
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              Common daily inspection areas
+-            </h2>
++          <div className="mt-14 grid gap-5 lg:grid-cols-2">
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                Common daily inspection areas
++              </h2>
+ 
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+               <li>Access, egress, walkways, and emergency routes</li>
+               <li>Housekeeping, debris, and material storage</li>
+               <li>Temporary electrical power and extension cords</li>
+@@ -172,15 +187,15 @@ export default function DailyJobsiteSafetyInspectionGeneratorPage() {
+               <li>Tools, machinery, vehicles, and mobile equipment</li>
+               <li>Excavations, trenches, and underground work</li>
+               <li>Fire prevention and emergency equipment</li>
+-            </ul>
+-          </article>
++              </ul>
++            </div>
+ 
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              What the inspection record should capture
+-            </h2>
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                What the inspection record should capture
++              </h2>
+ 
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+               <li>Company, project, location, date, and inspector</li>
+               <li>Weather and changing site conditions</li>
+               <li>Active trades, crews, and affected work areas</li>
+@@ -188,93 +203,72 @@ export default function DailyJobsiteSafetyInspectionGeneratorPage() {
+               <li>Immediate and longer-term corrective actions</li>
+               <li>Responsible persons and completion deadlines</li>
+               <li>Communication and follow-up documentation</li>
+-            </ul>
+-          </article>
+-        </section>
+-
+-        <section className="mt-16 rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7">
+-          <h2 className="text-2xl font-display font-black text-orange-100">
+-            Important inspection limitation
+-          </h2>
++              </ul>
++            </div>
++          </div>
+ 
+-          <p className="mt-4 text-sm leading-7 text-white/90">
+-            This generator is an informational documentation aid only. It does
+-            not certify that a jobsite is safe or compliant, identify every
+-            possible hazard, replace competent-person or required specialized
+-            inspections, or substitute for applicable regulations,
+-            manufacturer instructions, employer programs, project
+-            requirements, or qualified safety review.
+-          </p>
+-        </section>
++          <div className="mt-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
++            <h2 className="font-display text-xl font-bold text-orange-950">
++              Important inspection limitation
++            </h2>
++            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
++              This generator is an informational documentation aid only. It does not certify that a jobsite is safe or compliant, identify every possible hazard, replace competent-person or required specialized inspections, or substitute for applicable regulations, manufacturer instructions, employer programs, project requirements, or qualified safety review.
++            </p>
++          </div>
++        </div>
++      </section>
+ 
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Related contractor safety tools
+-          </h2>
++      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <div className="max-w-3xl">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Related contractor safety tools
++            </h2>
++            <p className="mt-3 text-[15px] leading-7 text-slate-600">
++              Use these related generators to support hazard analysis, PPE checks, and follow-up documentation.
++            </p>
++          </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+-            {[
+-              {
+-                href: "/tools/ppe-checklist-generator",
+-                title: "PPE Checklist Generator",
+-                description:
+-                  "Document task hazards, required PPE, and pre-use inspection items.",
+-              },
+-              {
+-                href: "/tools/jha-generator",
+-                title: "JHA Generator",
+-                description:
+-                  "Break work into task steps, hazards, controls, and PPE requirements.",
+-              },
+-              {
+-                href: "/tools/safety-plan-generator",
+-                title: "Safety Plan Generator",
+-                description:
+-                  "Create a project-level safety plan covering hazards and responsibilities.",
+-              },
+-              {
+-                href: "/tools/near-miss-report-generator",
+-                title: "Near Miss Report Generator",
+-                description:
+-                  "Document close calls, contributing factors, and corrective actions.",
+-              },
+-            ].map((tool) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
++            {relatedTools.map((tool) => (
+               <Link
+                 key={tool.href}
+                 href={tool.href}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
++                className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
+               >
+-                <h3 className="font-display font-black">{tool.title}</h3>
+-                <p className="mt-3 text-sm leading-6 text-steel-400">
++                <h3 className="font-bold text-navy-950">{tool.title}</h3>
++                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
+                   {tool.description}
+                 </p>
+               </Link>
+             ))}
+           </div>
+-        </section>
+ 
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Daily Jobsite Safety Inspection FAQs
+-          </h2>
+-
+-          <div className="mt-8 space-y-5">
+-            {faqs.map((faq) => (
+-              <article
+-                key={faq.question}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+-              >
+-                <h3 className="text-lg font-display font-black">{faq.question}</h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-200">
+-                  {faq.answer}
+-                </p>
+-              </article>
+-            ))}
++          <div className="mt-14">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Daily Jobsite Safety Inspection FAQs
++            </h2>
++            <div className="mt-7 space-y-4">
++              {faqs.map((faq) => (
++                <article
++                  key={faq.question}
++                  className="rounded-xl border border-steel-200 bg-white p-6"
++                >
++                  <h3 className="font-display text-lg font-bold text-navy-950">
++                    {faq.question}
++                  </h3>
++                  <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
++                    {faq.answer}
++                  </p>
++                </article>
++              ))}
++            </div>
+           </div>
+-        </section>
+ 
+-        <OfficialSafetySources toolSlug="daily-jobsite-safety-inspection-generator" />
++          <OfficialSafetySources toolSlug="daily-jobsite-safety-inspection-generator" />
++        </div>
+       </section>
+     </main>
+   );
+ }
++
+diff --git a/src/app/tools/fire-extinguisher-inspection-generator/page.tsx b/src/app/tools/fire-extinguisher-inspection-generator/page.tsx
+index 1eafdcc..97bb95f 100644
+--- a/src/app/tools/fire-extinguisher-inspection-generator/page.tsx
++++ b/src/app/tools/fire-extinguisher-inspection-generator/page.tsx
+@@ -2,32 +2,22 @@ import type { Metadata } from "next";
+ import Link from "next/link";
+ import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
+ import { FireExtinguisherInspectionGenerator } from "@/features/fire-extinguisher-inspection-generator";
++import { createToolJsonLd } from "@/lib/seo/json-ld";
+ import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
+ import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
+-import { createToolJsonLd } from "@/lib/seo/json-ld";
+-
+-const description =
+-  "Create a fire extinguisher inspection checklist covering identification, location, pressure gauge, safety pin, hose, cylinder condition, findings, and corrective actions.";
+ 
+ const toolJsonLd = createToolJsonLd({
+   name: "Fire Extinguisher Inspection Checklist Generator",
+-  description,
++  description:
++    "Create a fire extinguisher inspection checklist covering identification, location, pressure gauge, safety pin, hose, cylinder condition, findings, and corrective actions.",
+   url: "/tools/fire-extinguisher-inspection-generator",
+-  keywords: [
+-    "fire extinguisher inspection checklist",
+-    "monthly fire extinguisher inspection form",
+-    "fire extinguisher checklist generator",
+-    "portable fire extinguisher inspection",
+-  ],
++  keywords: ["fire extinguisher inspection checklist", "monthly fire extinguisher inspection form", "fire extinguisher checklist generator", "portable fire extinguisher inspection"],
+ });
+ 
+ const breadcrumbJsonLd = createBreadcrumbJsonLd([
+   { name: "Home", path: "/" },
+   { name: "Tools", path: "/tools" },
+-  {
+-    name: "Fire Extinguisher Inspection Checklist Generator",
+-    path: "/tools/fire-extinguisher-inspection-generator",
+-  },
++  { name: "Fire Extinguisher Inspection Checklist Generator", path: "/tools/fire-extinguisher-inspection-generator" },
+ ]);
+ 
+ const faqs = [
+@@ -55,9 +45,51 @@ const faqs = [
+ 
+ const faqJsonLd = createFaqJsonLd(faqs);
+ 
++const steps = [
++  {
++    title: "1. Identify equipment",
++    description:
++      "Record the extinguisher asset number, type, location, inspection date, and inspector.",
++  },
++  {
++    title: "2. Examine condition",
++    description:
++      "Review accessibility, pressure indication, safety pin, seal, hose, nozzle, cylinder, and labels.",
++  },
++  {
++    title: "3. Document follow-up",
++    description:
++      "Record findings, corrective actions, responsible persons, and the next verification date.",
++  },
++];
++
++const relatedTools = [
++  {
++    href: "/tools/daily-jobsite-safety-inspection-generator",
++    title: "Daily Jobsite Safety Inspection",
++    description: "Document work areas, hazards, corrective actions, and follow-up ownership.",
++  },
++  {
++    href: "/tools/ppe-checklist-generator",
++    title: "PPE Checklist Generator",
++    description: "Document task hazards, required PPE, and pre-use inspection items.",
++  },
++  {
++    href: "/tools/safety-plan-generator",
++    title: "Safety Plan Generator",
++    description: "Create a project-level safety plan covering hazards and responsibilities.",
++  },
++  {
++    href: "/tools/near-miss-report-generator",
++    title: "Near Miss Report Generator",
++    description: "Document close calls, contributing factors, and corrective actions.",
++  },
++];
++
+ export const metadata: Metadata = {
+   title: "Fire Extinguisher Inspection Checklist Generator",
+-  description,
++  description:
++    "Create a fire extinguisher inspection checklist covering identification, location, pressure gauge, safety pin, hose, cylinder condition, findings, and corrective actions.",
+   alternates: {
+     canonical: "/tools/fire-extinguisher-inspection-generator",
+   },
+@@ -65,107 +97,88 @@ export const metadata: Metadata = {
+ 
+ export default function FireExtinguisherInspectionGeneratorPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(breadcrumbJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+       />
+ 
+-      <section className="mx-auto w-full max-w-6xl px-6 py-20">
+-        <Link
+-          href="/tools"
+-          className="text-sm font-semibold text-orange-500"
+-        >
+-          ← Back to tools
+-        </Link>
+-
+-        <div className="mt-8 max-w-3xl">
+-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Fire Protection Inspections
+-          </p>
++      <section className="bg-navy-950 py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <Link
++            href="/tools"
++            className="font-mono text-xs font-semibold text-steel-400 transition hover:text-orange-500"
++          >
++            ← Back to tools
++          </Link>
+ 
+-          <h1 className="text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Fire Extinguisher Inspection Checklist Generator
+-          </h1>
+-
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            Create a structured portable fire extinguisher inspection record
+-            covering equipment identification, location, accessibility,
+-            pressure, safety components, physical condition, findings,
+-            corrective actions, and follow-up responsibility.
+-          </p>
++          <div className="mt-6 max-w-3xl">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
++              Fire Protection Inspections
++            </p>
++            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
++              Fire Extinguisher Inspection Checklist Generator
++            </h1>
++            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
++              Create a structured portable fire extinguisher inspection record covering equipment identification, location, accessibility, pressure, safety components, physical condition, findings, corrective actions, and follow-up responsibility.
++            </p>
++          </div>
+         </div>
++      </section>
+ 
+-        <div className="mt-12">
++      <section className="border-b border-white/10 bg-navy-950 py-14">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <FireExtinguisherInspectionGenerator />
+         </div>
++      </section>
+ 
+-        <section className="mt-16 border-t border-white/10 pt-16">
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <div className="max-w-3xl">
+-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-              Inspection workflow
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-600" />
++              How it works
+             </p>
+-
+-            <h2 className="mt-4 text-3xl font-display font-black tracking-tight sm:text-4xl">
++            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+               How to document a fire extinguisher inspection
+             </h2>
+-
+-            <p className="mt-5 text-base leading-8 text-steel-200">
+-              Identify the extinguisher and its location, examine visible
+-              condition and accessibility, document deficiencies, assign
+-              corrective actions, and retain the completed inspection record
+-              according to the applicable fire protection program.
++            <p className="mt-4 text-[15px] leading-7 text-slate-600">
++              Identify the extinguisher and its location, examine visible condition and accessibility, document deficiencies, assign corrective actions, and retain the completed inspection record according to the applicable fire protection program.
+             </p>
+           </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+-            {[
+-              {
+-                title: "1. Identify equipment",
+-                description:
+-                  "Record the extinguisher asset number, type, location, inspection date, and inspector.",
+-              },
+-              {
+-                title: "2. Examine condition",
+-                description:
+-                  "Review accessibility, pressure indication, safety pin, seal, hose, nozzle, cylinder, and labels.",
+-              },
+-              {
+-                title: "3. Document follow-up",
+-                description:
+-                  "Record findings, corrective actions, responsible persons, and the next verification date.",
+-              },
+-            ].map((step) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-3">
++            {steps.map((step) => (
+               <article
+                 key={step.title}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
++                className="rounded-xl border border-steel-200 bg-white p-6"
+               >
+-                <h3 className="text-lg font-display font-black">{step.title}</h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-400">
++                <h3 className="font-display text-lg font-bold text-navy-950">
++                  {step.title}
++                </h3>
++                <p className="mt-2.5 text-[13.5px] leading-relaxed text-slate-600">
+                   {step.description}
+                 </p>
+               </article>
+             ))}
+           </div>
+-        </section>
+ 
+-        <section className="mt-16 grid gap-8 lg:grid-cols-2">
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              Common visual inspection points
+-            </h2>
++          <div className="mt-14 grid gap-5 lg:grid-cols-2">
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                Common visual inspection points
++              </h2>
+ 
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+               <li>Correct extinguisher location and asset identification</li>
+               <li>Clear access, visibility, and secure mounting</li>
+               <li>Pressure gauge or operating indicator condition</li>
+@@ -174,15 +187,15 @@ export default function FireExtinguisherInspectionGeneratorPage() {
+               <li>Cylinder corrosion, leakage, dents, or other damage</li>
+               <li>Readable operating instructions and inspection tag</li>
+               <li>Evidence that required maintenance remains current</li>
+-            </ul>
+-          </article>
++              </ul>
++            </div>
+ 
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              When corrective action may be needed
+-            </h2>
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                When corrective action may be needed
++              </h2>
+ 
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+               <li>The extinguisher is missing, blocked, or improperly mounted</li>
+               <li>The pressure indicator is outside its operable range</li>
+               <li>The safety pin, tamper seal, hose, or nozzle is damaged</li>
+@@ -190,94 +203,72 @@ export default function FireExtinguisherInspectionGeneratorPage() {
+               <li>Labels or operating instructions are unreadable</li>
+               <li>Inspection, maintenance, recharge, or testing is overdue</li>
+               <li>The extinguisher may not match the protected hazard</li>
+-            </ul>
+-          </article>
+-        </section>
+-
+-        <section className="mt-16 rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7">
+-          <h2 className="text-2xl font-display font-black text-orange-100">
+-            Important fire protection limitation
+-          </h2>
++              </ul>
++            </div>
++          </div>
+ 
+-          <p className="mt-4 text-sm leading-7 text-white/90">
+-            This generator is an informational documentation aid only. It does
+-            not certify fire-code or workplace compliance, determine the
+-            correct extinguisher type or placement, replace required
+-            maintenance, recharge, hydrostatic testing, or qualified
+-            inspection, or supersede OSHA requirements, adopted fire codes,
+-            NFPA standards, manufacturer instructions, employer procedures, or
+-            authority-having-jurisdiction requirements.
+-          </p>
+-        </section>
++          <div className="mt-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
++            <h2 className="font-display text-xl font-bold text-orange-950">
++              Important fire protection limitation
++            </h2>
++            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
++              This generator is an informational documentation aid only. It does not certify fire-code or workplace compliance, determine the correct extinguisher type or placement, replace required maintenance, recharge, hydrostatic testing, or qualified inspection, or supersede OSHA requirements, adopted fire codes, NFPA standards, manufacturer instructions, employer procedures, or authority-having-jurisdiction requirements.
++            </p>
++          </div>
++        </div>
++      </section>
+ 
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Related contractor safety tools
+-          </h2>
++      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <div className="max-w-3xl">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Related contractor safety tools
++            </h2>
++            <p className="mt-3 text-[15px] leading-7 text-slate-600">
++              Connect fire protection checks with jobsite inspections, PPE, and incident documentation.
++            </p>
++          </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+-            {[
+-              {
+-                href: "/tools/daily-jobsite-safety-inspection-generator",
+-                title: "Daily Jobsite Safety Inspection",
+-                description:
+-                  "Document work areas, hazards, corrective actions, and follow-up ownership.",
+-              },
+-              {
+-                href: "/tools/ppe-checklist-generator",
+-                title: "PPE Checklist Generator",
+-                description:
+-                  "Document task hazards, required PPE, and pre-use inspection items.",
+-              },
+-              {
+-                href: "/tools/safety-plan-generator",
+-                title: "Safety Plan Generator",
+-                description:
+-                  "Create a project-level safety plan covering hazards and responsibilities.",
+-              },
+-              {
+-                href: "/tools/near-miss-report-generator",
+-                title: "Near Miss Report Generator",
+-                description:
+-                  "Document close calls, contributing factors, and corrective actions.",
+-              },
+-            ].map((tool) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
++            {relatedTools.map((tool) => (
+               <Link
+                 key={tool.href}
+                 href={tool.href}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
++                className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
+               >
+-                <h3 className="font-display font-black">{tool.title}</h3>
+-                <p className="mt-3 text-sm leading-6 text-steel-400">
++                <h3 className="font-bold text-navy-950">{tool.title}</h3>
++                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
+                   {tool.description}
+                 </p>
+               </Link>
+             ))}
+           </div>
+-        </section>
+ 
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Fire Extinguisher Inspection FAQs
+-          </h2>
+-
+-          <div className="mt-8 space-y-5">
+-            {faqs.map((faq) => (
+-              <article
+-                key={faq.question}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+-              >
+-                <h3 className="text-lg font-display font-black">{faq.question}</h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-200">
+-                  {faq.answer}
+-                </p>
+-              </article>
+-            ))}
++          <div className="mt-14">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Fire Extinguisher Inspection FAQs
++            </h2>
++            <div className="mt-7 space-y-4">
++              {faqs.map((faq) => (
++                <article
++                  key={faq.question}
++                  className="rounded-xl border border-steel-200 bg-white p-6"
++                >
++                  <h3 className="font-display text-lg font-bold text-navy-950">
++                    {faq.question}
++                  </h3>
++                  <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
++                    {faq.answer}
++                  </p>
++                </article>
++              ))}
++            </div>
+           </div>
+-        </section>
+ 
+-        <OfficialSafetySources toolSlug="fire-extinguisher-inspection-generator" />
++          <OfficialSafetySources toolSlug="fire-extinguisher-inspection-generator" />
++        </div>
+       </section>
+     </main>
+   );
+ }
++
+diff --git a/src/app/tools/lockout-tagout-checklist-generator/page.tsx b/src/app/tools/lockout-tagout-checklist-generator/page.tsx
+index de10487..44a3316 100644
+--- a/src/app/tools/lockout-tagout-checklist-generator/page.tsx
++++ b/src/app/tools/lockout-tagout-checklist-generator/page.tsx
+@@ -2,32 +2,22 @@ import type { Metadata } from "next";
+ import Link from "next/link";
+ import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
+ import { LockoutTagoutChecklistGenerator } from "@/features/lockout-tagout-checklist-generator/lockout-tagout-checklist-generator";
++import { createToolJsonLd } from "@/lib/seo/json-ld";
+ import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
+ import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
+-import { createToolJsonLd } from "@/lib/seo/json-ld";
+-
+-const description =
+-  "Create an equipment-specific lockout/tagout checklist with hazardous energy sources, isolation points, shutdown steps, zero-energy verification, and restoration procedures.";
+ 
+ const toolJsonLd = createToolJsonLd({
+   name: "Lockout Tagout Checklist Generator",
+-  description,
++  description:
++    "Create an equipment-specific lockout/tagout checklist with hazardous energy sources, isolation points, shutdown steps, zero-energy verification, and restoration procedures.",
+   url: "/tools/lockout-tagout-checklist-generator",
+-  keywords: [
+-    "lockout tagout checklist generator",
+-    "LOTO checklist template",
+-    "energy isolation checklist",
+-    "construction lockout tagout form",
+-  ],
++  keywords: ["lockout tagout checklist generator", "LOTO checklist template", "energy isolation checklist", "construction lockout tagout form"],
+ });
+ 
+ const breadcrumbJsonLd = createBreadcrumbJsonLd([
+   { name: "Home", path: "/" },
+   { name: "Tools", path: "/tools" },
+-  {
+-    name: "Lockout Tagout Checklist Generator",
+-    path: "/tools/lockout-tagout-checklist-generator",
+-  },
++  { name: "Lockout Tagout Checklist Generator", path: "/tools/lockout-tagout-checklist-generator" },
+ ]);
+ 
+ const faqs = [
+@@ -55,9 +45,51 @@ const faqs = [
+ 
+ const faqJsonLd = createFaqJsonLd(faqs);
+ 
++const steps = [
++  {
++    title: "1. Identify energy",
++    description:
++      "List electrical, hydraulic, pneumatic, mechanical, thermal, gravitational, and stored energy hazards.",
++  },
++  {
++    title: "2. Define isolation",
++    description:
++      "Document disconnects, valves, breakers, blocks, restraints, and required lockout devices.",
++  },
++  {
++    title: "3. Verify and restore",
++    description:
++      "Record zero-energy verification and the controlled sequence for returning equipment to service.",
++  },
++];
++
++const relatedTools = [
++  {
++    href: "/tools/jha-generator",
++    title: "JHA Generator",
++    description: "Document work steps, hazardous energy exposures, controls, and required PPE.",
++  },
++  {
++    href: "/tools/safety-plan-generator",
++    title: "Safety Plan Generator",
++    description: "Add hazardous energy control expectations to a project safety plan.",
++  },
++  {
++    href: "/tools/ppe-checklist-generator",
++    title: "PPE Checklist Generator",
++    description: "Create task-specific PPE and pre-use equipment inspection checklists.",
++  },
++  {
++    href: "/tools/toolbox-talk-generator",
++    title: "Toolbox Talk Generator",
++    description: "Prepare a safety discussion covering energy isolation and worker responsibilities.",
++  },
++];
++
+ export const metadata: Metadata = {
+   title: "Lockout Tagout Checklist Generator",
+-  description,
++  description:
++    "Create an equipment-specific lockout/tagout checklist with hazardous energy sources, isolation points, shutdown steps, zero-energy verification, and restoration procedures.",
+   alternates: {
+     canonical: "/tools/lockout-tagout-checklist-generator",
+   },
+@@ -65,103 +97,88 @@ export const metadata: Metadata = {
+ 
+ export default function LockoutTagoutChecklistGeneratorPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(breadcrumbJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+       />
+       <script
+         type="application/ld+json"
+         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+       />
+ 
+-      <section className="mx-auto w-full max-w-6xl px-6 py-20">
+-        <Link href="/tools" className="text-sm font-semibold text-orange-500">
+-          ← Back to tools
+-        </Link>
+-
+-        <div className="mt-8 max-w-3xl">
+-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-            Energy Control
+-          </p>
++      <section className="bg-navy-950 py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <Link
++            href="/tools"
++            className="font-mono text-xs font-semibold text-steel-400 transition hover:text-orange-500"
++          >
++            ← Back to tools
++          </Link>
+ 
+-          <h1 className="text-4xl font-display font-black tracking-tight sm:text-6xl">
+-            Lockout Tagout Checklist Generator
+-          </h1>
+-
+-          <p className="mt-6 text-lg leading-8 text-steel-200">
+-            Build an equipment-specific LOTO checklist covering hazardous
+-            energy, isolation points, affected employees, shutdown sequencing,
+-            zero-energy verification, and safe return to service.
+-          </p>
++          <div className="mt-6 max-w-3xl">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
++              Energy Control
++            </p>
++            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
++              Lockout Tagout Checklist Generator
++            </h1>
++            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
++              Build an equipment-specific LOTO checklist covering hazardous energy, isolation points, affected employees, shutdown sequencing, zero-energy verification, and safe return to service.
++            </p>
++          </div>
+         </div>
++      </section>
+ 
+-        <div className="mt-12">
++      <section className="border-b border-white/10 bg-navy-950 py-14">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <LockoutTagoutChecklistGenerator />
+         </div>
++      </section>
+ 
+-        <section className="mt-16 border-t border-white/10 pt-16">
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
+           <div className="max-w-3xl">
+-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-500">
+-              Checklist workflow
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-600" />
++              How it works
+             </p>
+-
+-            <h2 className="mt-4 text-3xl font-display font-black tracking-tight sm:text-4xl">
++            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
+               How to create a lockout/tagout checklist
+             </h2>
+-
+-            <p className="mt-5 text-base leading-8 text-steel-200">
+-              Identify the equipment and personnel, document every hazardous
+-              energy source and isolation point, then enter the shutdown,
+-              verification, and restoration sequence. The tool formats the
+-              information into a downloadable checklist draft.
++            <p className="mt-4 text-[15px] leading-7 text-slate-600">
++              Identify the equipment and personnel, document every hazardous energy source and isolation point, then enter the shutdown, verification, and restoration sequence. The tool formats the information into a downloadable checklist draft.
+             </p>
+           </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+-            {[
+-              {
+-                title: "1. Identify energy",
+-                description:
+-                  "List electrical, hydraulic, pneumatic, mechanical, thermal, gravitational, and stored energy hazards.",
+-              },
+-              {
+-                title: "2. Define isolation",
+-                description:
+-                  "Document disconnects, valves, breakers, blocks, restraints, and required lockout devices.",
+-              },
+-              {
+-                title: "3. Verify and restore",
+-                description:
+-                  "Record zero-energy verification and the controlled sequence for returning equipment to service.",
+-              },
+-            ].map((step) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-3">
++            {steps.map((step) => (
+               <article
+                 key={step.title}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
++                className="rounded-xl border border-steel-200 bg-white p-6"
+               >
+-                <h3 className="text-lg font-display font-black">{step.title}</h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-400">
++                <h3 className="font-display text-lg font-bold text-navy-950">
++                  {step.title}
++                </h3>
++                <p className="mt-2.5 text-[13.5px] leading-relaxed text-slate-600">
+                   {step.description}
+                 </p>
+               </article>
+             ))}
+           </div>
+-        </section>
+ 
+-        <section className="mt-16 grid gap-8 lg:grid-cols-2">
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              What should a LOTO checklist include?
+-            </h2>
++          <div className="mt-14 grid gap-5 lg:grid-cols-2">
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                What should a LOTO checklist include?
++              </h2>
+ 
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+               <li>Equipment name and exact location</li>
+               <li>Authorized employee and supervising person</li>
+               <li>Affected employees and work groups</li>
+@@ -170,15 +187,15 @@ export default function LockoutTagoutChecklistGeneratorPage() {
+               <li>Shutdown and isolation sequence</li>
+               <li>Zero-energy verification steps</li>
+               <li>Restoration and restart sequence</li>
+-            </ul>
+-          </article>
++              </ul>
++            </div>
+ 
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
+-              Common hazardous energy sources
+-            </h2>
++            <div className="rounded-xl border border-steel-200 bg-white p-7">
++              <h2 className="font-display text-xl font-bold text-navy-950">
++                Common hazardous energy sources
++              </h2>
+ 
+-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-steel-200">
++              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
+               <li>Electrical circuits and control power</li>
+               <li>Hydraulic and pneumatic pressure</li>
+               <li>Rotating or moving mechanical parts</li>
+@@ -186,93 +203,72 @@ export default function LockoutTagoutChecklistGeneratorPage() {
+               <li>Gravity and suspended components</li>
+               <li>Thermal, steam, chemical, or pressurized systems</li>
+               <li>Capacitors and other stored electrical energy</li>
+-            </ul>
+-          </article>
+-        </section>
+-
+-        <section className="mt-16 rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7">
+-          <h2 className="text-2xl font-display font-black text-orange-100">
+-            Important safety limitation
+-          </h2>
++              </ul>
++            </div>
++          </div>
+ 
+-          <p className="mt-4 text-sm leading-7 text-white/90">
+-            This generator is an informational documentation aid only. It does
+-            not create or validate a compliant equipment-specific energy
+-            control procedure, determine employee authorization, verify energy
+-            isolation, or replace employer training, manufacturer instructions,
+-            qualified review, or applicable federal, state, local, and
+-            project-specific requirements.
+-          </p>
+-        </section>
++          <div className="mt-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
++            <h2 className="font-display text-xl font-bold text-orange-950">
++              Important safety limitation
++            </h2>
++            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
++              This generator is an informational documentation aid only. It does not create or validate a compliant equipment-specific energy control procedure, determine employee authorization, verify energy isolation, or replace employer training, manufacturer instructions, qualified review, or applicable federal, state, local, and project-specific requirements.
++            </p>
++          </div>
++        </div>
++      </section>
+ 
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Related contractor safety tools
+-          </h2>
++      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <div className="max-w-3xl">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Related contractor safety tools
++            </h2>
++            <p className="mt-3 text-[15px] leading-7 text-slate-600">
++              Connect energy control with hazard analysis, PPE checks, and crew communication.
++            </p>
++          </div>
+ 
+-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+-            {[
+-              {
+-                href: "/tools/jha-generator",
+-                title: "JHA Generator",
+-                description:
+-                  "Document work steps, hazardous energy exposures, controls, and required PPE.",
+-              },
+-              {
+-                href: "/tools/safety-plan-generator",
+-                title: "Safety Plan Generator",
+-                description:
+-                  "Add hazardous energy control expectations to a project safety plan.",
+-              },
+-              {
+-                href: "/tools/ppe-checklist-generator",
+-                title: "PPE Checklist Generator",
+-                description:
+-                  "Create task-specific PPE and pre-use equipment inspection checklists.",
+-              },
+-              {
+-                href: "/tools/toolbox-talk-generator",
+-                title: "Toolbox Talk Generator",
+-                description:
+-                  "Prepare a safety discussion covering energy isolation and worker responsibilities.",
+-              },
+-            ].map((tool) => (
++          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
++            {relatedTools.map((tool) => (
+               <Link
+                 key={tool.href}
+                 href={tool.href}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
++                className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
+               >
+-                <h3 className="font-display font-black">{tool.title}</h3>
+-                <p className="mt-3 text-sm leading-6 text-steel-400">
++                <h3 className="font-bold text-navy-950">{tool.title}</h3>
++                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
+                   {tool.description}
+                 </p>
+               </Link>
+             ))}
+           </div>
+-        </section>
+ 
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Lockout Tagout Checklist FAQs
+-          </h2>
+-
+-          <div className="mt-8 space-y-5">
+-            {faqs.map((faq) => (
+-              <article
+-                key={faq.question}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+-              >
+-                <h3 className="text-lg font-display font-black">{faq.question}</h3>
+-                <p className="mt-3 text-sm leading-7 text-steel-200">
+-                  {faq.answer}
+-                </p>
+-              </article>
+-            ))}
++          <div className="mt-14">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Lockout Tagout Checklist FAQs
++            </h2>
++            <div className="mt-7 space-y-4">
++              {faqs.map((faq) => (
++                <article
++                  key={faq.question}
++                  className="rounded-xl border border-steel-200 bg-white p-6"
++                >
++                  <h3 className="font-display text-lg font-bold text-navy-950">
++                    {faq.question}
++                  </h3>
++                  <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
++                    {faq.answer}
++                  </p>
++                </article>
++              ))}
++            </div>
+           </div>
+-        </section>
+ 
+-        <OfficialSafetySources toolSlug="lockout-tagout-checklist-generator" />
++          <OfficialSafetySources toolSlug="lockout-tagout-checklist-generator" />
++        </div>
+       </section>
+     </main>
+   );
+ }
++
+diff --git a/src/app/tools/osha-inspection-checklist-generator/page.tsx b/src/app/tools/osha-inspection-checklist-generator/page.tsx
+index ee0c1e5..4b84f4f 100644
+--- a/src/app/tools/osha-inspection-checklist-generator/page.tsx
++++ b/src/app/tools/osha-inspection-checklist-generator/page.tsx
+@@ -22,36 +22,24 @@ const toolJsonLd = createToolJsonLd({
+ });
+ 
+ const breadcrumbJsonLd = createBreadcrumbJsonLd([
+-  {
+-    name: "Home",
+-    path: "/",
+-  },
+-  {
+-    name: "Safety Tools",
+-    path: "/tools",
+-  },
+-  {
+-    name: "OSHA Inspection Checklist Generator",
+-    path: "/tools/osha-inspection-checklist-generator",
+-  },
++  { name: "Home", path: "/" },
++  { name: "Safety Tools", path: "/tools" },
++  { name: "OSHA Inspection Checklist Generator", path: "/tools/osha-inspection-checklist-generator" },
+ ]);
+ 
+ const faqs = [
+   {
+-    question:
+-      "What does this OSHA inspection checklist generator create?",
++    question: "What does this OSHA inspection checklist generator create?",
+     answer:
+       "It creates a structured jobsite inspection checklist draft with project information, inspection areas, safety review items, corrective action tracking, and documentation notes.",
+   },
+   {
+-    question:
+-      "Does this checklist guarantee OSHA compliance?",
++    question: "Does this checklist guarantee OSHA compliance?",
+     answer:
+       "No. It is a documentation aid only and does not replace OSHA requirements, employer responsibilities, state plans, project rules, manufacturer instructions, or qualified safety guidance.",
+   },
+   {
+-    question:
+-      "Who can use this inspection checklist?",
++    question: "Who can use this inspection checklist?",
+     answer:
+       "Contractors, supervisors, safety coordinators, and project teams can use it as a starting point for organizing workplace safety inspections.",
+   },
+@@ -70,100 +58,81 @@ export const metadata: Metadata = {
+ 
+ export default function OshaInspectionChecklistPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
+-
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(toolJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+       />
+-
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(breadcrumbJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+       />
+-
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(faqJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+       />
+ 
+-      <section className="border-b border-white/10">
+-        <div className="mx-auto max-w-6xl px-6 py-16">
+-
+-          <nav className="text-sm text-steel-400">
+-            <Link href="/">Home</Link>
++      <section className="bg-navy-950 py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <nav aria-label="Breadcrumb" className="font-mono text-xs text-steel-400">
++            <Link href="/" className="transition hover:text-orange-500">
++              Home
++            </Link>
+             <span className="px-2">/</span>
+-            <Link href="/tools">Safety Tools</Link>
++            <Link href="/tools" className="transition hover:text-orange-500">
++              Safety Tools
++            </Link>
+             <span className="px-2">/</span>
+-            <span className="text-slate-200">
+-              OSHA Inspection Checklist Generator
+-            </span>
++            <span className="text-steel-200">OSHA Inspection Checklist Generator</span>
+           </nav>
+ 
+-
+-          <div className="mt-8 max-w-4xl">
+-
+-            <p className="text-sm font-display font-black uppercase tracking-[0.2em] text-orange-500">
++          <div className="mt-6 max-w-3xl">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
+               Construction safety documentation tool
+             </p>
+-
+-            <h1 className="mt-4 text-4xl font-display font-black tracking-tight sm:text-6xl">
++            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
+               OSHA Inspection Checklist Generator
+             </h1>
+-
+-            <p className="mt-6 text-lg leading-8 text-steel-200">
++            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
+               Create a structured construction safety inspection checklist
+-              for jobsite reviews, hazard observations, corrective actions,
+-              and documentation tracking.
++              for jobsite reviews, hazard observations, corrective
++              actions, and documentation tracking.
+             </p>
+-
+           </div>
+-
+         </div>
+       </section>
+ 
+-
+-      <section className="mx-auto max-w-6xl px-6 py-12">
+-        <OshaInspectionChecklistGenerator />
++      <section className="border-b border-white/10 bg-navy-950 py-14">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <OshaInspectionChecklistGenerator />
++        </div>
+       </section>
+ 
++      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++            OSHA Inspection Checklist FAQs
++          </h2>
++          <div className="mt-7 grid gap-4">
++            {faqs.map((faq) => (
++              <article
++                key={faq.question}
++                className="rounded-xl border border-steel-200 bg-white p-6"
++              >
++                <h3 className="font-display text-lg font-bold text-navy-950">
++                  {faq.question}
++                </h3>
++                <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
++                  {faq.answer}
++                </p>
++              </article>
++            ))}
++          </div>
+ 
+-      <section className="mx-auto max-w-6xl px-6 py-12">
+-
+-        <h2 className="text-3xl font-display font-black">
+-          OSHA Inspection Checklist FAQs
+-        </h2>
+-
+-        <div className="mt-8 grid gap-5">
+-
+-          {faqs.map((faq) => (
+-            <article
+-              key={faq.question}
+-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+-            >
+-              <h3 className="font-display font-black text-orange-500">
+-                {faq.question}
+-              </h3>
+-
+-              <p className="mt-3 text-sm leading-7 text-steel-200">
+-                {faq.answer}
+-              </p>
+-            </article>
+-          ))}
+-
++          <OfficialSafetySources toolSlug="osha-inspection-checklist-generator" />
+         </div>
+-
+-
+-        <OfficialSafetySources toolSlug="osha-inspection-checklist-generator" />
+-
+       </section>
+-
+     </main>
+   );
+ }
+diff --git a/src/app/tools/safety-training-matrix-generator/page.tsx b/src/app/tools/safety-training-matrix-generator/page.tsx
+index 3781913..212e160 100644
+--- a/src/app/tools/safety-training-matrix-generator/page.tsx
++++ b/src/app/tools/safety-training-matrix-generator/page.tsx
+@@ -20,54 +20,39 @@ const toolJsonLd = createToolJsonLd({
+ });
+ 
+ const breadcrumbJsonLd = createBreadcrumbJsonLd([
+-  {
+-    name: "Home",
+-    path: "/",
+-  },
+-  {
+-    name: "Safety Tools",
+-    path: "/tools",
+-  },
+-  {
+-    name: "Safety Training Matrix Generator",
+-    path: "/tools/safety-training-matrix-generator",
+-  },
++  { name: "Home", path: "/" },
++  { name: "Safety Tools", path: "/tools" },
++  { name: "Safety Training Matrix Generator", path: "/tools/safety-training-matrix-generator" },
+ ]);
+ 
+ const faqs = [
+   {
+-    question:
+-      "What is a safety training matrix?",
++    question: "What is a safety training matrix?",
+     answer:
+       "A safety training matrix connects worker groups or roles with relevant tasks, hazards, training topics, timing triggers, trainer qualifications, verification methods, and responsible record owners.",
+   },
+   {
+-    question:
+-      "Does this generator identify every OSHA training requirement?",
++    question: "Does this generator identify every OSHA training requirement?",
+     answer:
+       "No. Training duties are distributed across many standards and may also depend on State Plan requirements, assigned tasks, hazards, equipment, substances, manufacturer instructions, contracts, and site conditions.",
+   },
+   {
+-    question:
+-      "Should every safety topic be renewed annually?",
++    question: "Should every safety topic be renewed annually?",
+     answer:
+       "No universal annual interval applies to every topic. Enter the initial, periodic, event-driven, or performance-based timing supported by the applicable requirement and workplace circumstances.",
+   },
+   {
+-    question:
+-      "Does an OSHA 10-hour or 30-hour card replace task-specific training?",
++    question: "Does an OSHA 10-hour or 30-hour card replace task-specific training?",
+     answer:
+       "No. OSHA Outreach courses provide general hazard-awareness education and do not satisfy employer training duties contained in specific OSHA standards.",
+   },
+   {
+-    question:
+-      "How should training effectiveness be verified?",
++    question: "How should training effectiveness be verified?",
+     answer:
+       "Use a suitable method such as knowledge questions, practical demonstration, observation, discussion, or documented performance evaluation based on the task, hazard, standard, and employee responsibilities.",
+   },
+   {
+-    question:
+-      "When should the matrix be reviewed?",
++    question: "When should the matrix be reviewed?",
+     answer:
+       "Review it when roles, tasks, facilities, equipment, materials, processes, controls, hazards, procedures, requirements, or demonstrated worker knowledge and skill change.",
+   },
+@@ -75,263 +60,209 @@ const faqs = [
+ 
+ const faqJsonLd = createFaqJsonLd(faqs);
+ 
++const relatedTools = [
++  {
++    href: "/tools/jha-generator",
++    title: "JHA Generator",
++    description: "Document task steps, hazards, controls, and required PPE before assigning training.",
++  },
++  {
++    href: "/tools/toolbox-talk-generator",
++    title: "Toolbox Talk Generator",
++    description: "Prepare a focused jobsite safety discussion for identified hazards and controls.",
++  },
++  {
++    href: "/tools/safety-plan-generator",
++    title: "Safety Plan Generator",
++    description: "Create a broader safety-plan outline covering project hazards and responsibilities.",
++  },
++];
++
+ export const metadata: Metadata = {
+   title: "Safety Training Matrix Generator",
+   description:
+     "Create a contractor safety training matrix for worker roles, hazards, tasks, timing triggers, verification methods, and training records.",
+   alternates: {
+-    canonical:
+-      "/tools/safety-training-matrix-generator",
++    canonical: "/tools/safety-training-matrix-generator",
+   },
+ };
+ 
+ export default function SafetyTrainingMatrixGeneratorPage() {
+   return (
+-    <main className="min-h-screen bg-navy-950 text-white">
++    <main className="bg-paper">
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(toolJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
+       />
+-
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(
+-            breadcrumbJsonLd,
+-          ),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+       />
+-
+       <script
+         type="application/ld+json"
+-        dangerouslySetInnerHTML={{
+-          __html: JSON.stringify(faqJsonLd),
+-        }}
++        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+       />
+ 
+-      <section className="border-b border-white/10">
+-        <div className="mx-auto w-full max-w-6xl px-6 py-16">
+-          <nav
+-            aria-label="Breadcrumb"
+-            className="text-sm text-steel-400"
+-          >
+-            <Link
+-              href="/"
+-              className="transition hover:text-white"
+-            >
++      <section className="bg-navy-950 py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <nav aria-label="Breadcrumb" className="font-mono text-xs text-steel-400">
++            <Link href="/" className="transition hover:text-orange-500">
+               Home
+             </Link>
+-
+             <span className="px-2">/</span>
+-
+-            <Link
+-              href="/tools"
+-              className="transition hover:text-white"
+-            >
++            <Link href="/tools" className="transition hover:text-orange-500">
+               Safety Tools
+             </Link>
+-
+             <span className="px-2">/</span>
+-
+-            <span className="text-slate-200">
+-              Safety Training Matrix Generator
+-            </span>
++            <span className="text-steel-200">Safety Training Matrix Generator</span>
+           </nav>
+ 
+-          <div className="mt-8 max-w-4xl">
+-            <p className="text-sm font-display font-black uppercase tracking-[0.2em] text-orange-500">
+-              Role and hazard-based training
+-              planner
++          <div className="mt-6 max-w-3xl">
++            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
++              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
++              Role and hazard-based training planner
+             </p>
+-
+-            <h1 className="mt-4 text-4xl font-display font-black tracking-tight sm:text-6xl">
++            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
+               Safety Training Matrix Generator
+             </h1>
+-
+-            <p className="mt-6 text-lg leading-8 text-steel-200">
+-              Build a structured training matrix
+-              connecting worker groups with
+-              relevant tasks, hazards, timing
+-              triggers, trainer qualifications,
+-              verification methods, and record
+-              ownership.
++            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
++              Build a structured training matrix connecting worker groups
++              with relevant tasks, hazards, timing triggers, trainer
++              qualifications, verification methods, and record ownership.
+             </p>
+           </div>
+         </div>
+       </section>
+ 
+-      <section className="mx-auto w-full max-w-6xl px-6 py-12">
+-        <SafetyTrainingMatrixGenerator />
++      <section className="border-b border-white/10 bg-navy-950 py-14">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <SafetyTrainingMatrixGenerator />
++        </div>
+       </section>
+ 
+-      <section className="border-t border-white/10 bg-white/[0.02]">
+-        <div className="mx-auto grid w-full max-w-6xl gap-6 px-6 py-16 lg:grid-cols-2">
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
++      <section className="py-16 sm:py-20">
++        <div className="mx-auto grid w-full max-w-6xl gap-5 px-6 lg:grid-cols-2">
++          <article className="rounded-xl border border-steel-200 bg-white p-7">
++            <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
+               Role-based planning
+-            </p>
+-
+-            <h2 className="mt-3 text-3xl font-display font-black">
++            </span>
++            <h2 className="mt-2.5 font-display text-xl font-bold text-navy-950">
+               Connect training to real work
+             </h2>
+-
+-            <p className="mt-5 text-sm leading-7 text-steel-200">
+-              Connect each assignment to the
+-              worker group, role, task, equipment,
+-              substance, or hazard that creates
+-              the training need.
++            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++              Connect each assignment to the worker group, role, task,
++              equipment, substance, or hazard that creates the training
++              need.
+             </p>
+           </article>
+ 
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-500">
++          <article className="rounded-xl border border-steel-200 bg-white p-7">
++            <span className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.09em] text-orange-600">
+               Timing control
+-            </p>
+-
+-            <h2 className="mt-3 text-3xl font-display font-black">
++            </span>
++            <h2 className="mt-2.5 font-display text-xl font-bold text-navy-950">
+               Do not invent renewal intervals
+             </h2>
+-
+-            <p className="mt-5 text-sm leading-7 text-steel-200">
+-              Requirements may address initial
+-              assignment, periodic retraining,
+-              changed conditions, observed
+-              deficiencies, or specific triggering
+-              events. Verify the timing basis for
++            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++              Requirements may address initial assignment, periodic
++              retraining, changed conditions, observed deficiencies, or
++              specific triggering events. Verify the timing basis for
+               every matrix row.
+             </p>
+           </article>
+ 
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
++          <article className="rounded-xl border border-steel-200 bg-white p-7">
++            <h2 className="font-display text-xl font-bold text-navy-950">
+               Verify knowledge and practical skill
+             </h2>
+-
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
+-              Attendance alone may not demonstrate
+-              understanding or ability. Select a
+-              verification method appropriate to
+-              the hazard and task.
++            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++              Attendance alone may not demonstrate understanding or
++              ability. Select a verification method appropriate to the
++              hazard and task.
+             </p>
+           </article>
+ 
+-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
+-            <h2 className="text-2xl font-display font-black">
++          <article className="rounded-xl border border-steel-200 bg-white p-7">
++            <h2 className="font-display text-xl font-bold text-navy-950">
+               Control training records
+             </h2>
+-
+-            <p className="mt-4 text-sm leading-7 text-steel-200">
+-              Assign record ownership and identify
+-              fields for completion evidence,
+-              trainer information, evaluation
+-              results, corrective follow-up, and
+-              applicable retention requirements.
++            <p className="mt-3 text-[14.5px] leading-7 text-slate-600">
++              Assign record ownership and identify fields for completion
++              evidence, trainer information, evaluation results,
++              corrective follow-up, and applicable retention requirements.
+             </p>
+           </article>
+ 
+-          <article className="rounded-3xl border border-sky-300/20 bg-sky-300/10 p-7 lg:col-span-2">
+-            <h2 className="text-2xl font-display font-black text-sky-100">
+-              Outreach cards are not OSHA
+-              certifications
++          <article className="rounded-xl border border-navy-800 bg-navy-900 p-7 lg:col-span-2">
++            <h2 className="font-display text-xl font-bold text-white">
++              Outreach cards are not OSHA certifications
+             </h2>
+-
+-            <p className="mt-4 text-sm leading-7 text-sky-100/90">
+-              OSHA 10-hour and 30-hour Outreach
+-              courses provide general
+-              hazard-awareness education. They do
+-              not replace employer-provided
+-              training required by specific OSHA
++            <p className="mt-3 text-[14.5px] leading-7 text-steel-200">
++              OSHA 10-hour and 30-hour Outreach courses provide general
++              hazard-awareness education. They do not replace
++              employer-provided training required by specific OSHA
+               standards.
+             </p>
+           </article>
+ 
+-          <article className="rounded-3xl border border-orange-500/20 bg-orange-500/10 p-7 lg:col-span-2">
+-            <h2 className="text-2xl font-display font-black text-orange-100">
++          <article className="rounded-xl border border-orange-500/30 bg-orange-500/10 p-7 lg:col-span-2">
++            <h2 className="font-display text-xl font-bold text-orange-950">
+               Important compliance limitation
+             </h2>
+-
+-            <p className="mt-4 text-sm leading-7 text-orange-100/90">
+-              This generator cannot determine
+-              which standards apply, whether a
+-              trainer is qualified, whether an
+-              employee is competent, whether
+-              training was effective, or whether
+-              an employer complies with federal,
+-              State Plan, contractual, or
++            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
++              This generator cannot determine which standards apply,
++              whether a trainer is qualified, whether an employee is
++              competent, whether training was effective, or whether an
++              employer complies with federal, State Plan, contractual, or
+               site-specific requirements.
+             </p>
+           </article>
+         </div>
+       </section>
+ 
+-      <section className="mx-auto w-full max-w-6xl px-6 py-16">
+-        <h2 className="text-3xl font-display font-black tracking-tight">
+-          Safety Training Matrix FAQs
+-        </h2>
+-
+-        <div className="mt-8 grid gap-5">
+-          {faqs.map((faq) => (
+-            <article
+-              key={faq.question}
+-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+-            >
+-              <h3 className="text-lg font-display font-black text-orange-500">
+-                {faq.question}
+-              </h3>
+-
+-              <p className="mt-3 text-sm leading-7 text-steel-200">
+-                {faq.answer}
+-              </p>
+-            </article>
+-          ))}
+-        </div>
+-
+-        <section className="mt-16">
+-          <h2 className="text-3xl font-display font-black tracking-tight">
+-            Related contractor safety tools
++      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
++        <div className="mx-auto w-full max-w-6xl px-6">
++          <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++            Safety Training Matrix FAQs
+           </h2>
+-
+-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+-            {[
+-              {
+-                href: "/tools/jha-generator",
+-                title: "JHA Generator",
+-                description:
+-                  "Document task steps, hazards, controls, and required PPE before assigning training.",
+-              },
+-              {
+-                href: "/tools/toolbox-talk-generator",
+-                title: "Toolbox Talk Generator",
+-                description:
+-                  "Prepare a focused jobsite safety discussion for identified hazards and controls.",
+-              },
+-              {
+-                href: "/tools/safety-plan-generator",
+-                title: "Safety Plan Generator",
+-                description:
+-                  "Create a broader safety-plan outline covering project hazards and responsibilities.",
+-              },
+-            ].map((tool) => (
+-              <Link
+-                key={tool.href}
+-                href={tool.href}
+-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-orange-500/40 hover:bg-white/[0.07]"
++          <div className="mt-7 grid gap-4">
++            {faqs.map((faq) => (
++              <article
++                key={faq.question}
++                className="rounded-xl border border-steel-200 bg-white p-6"
+               >
+-                <h3 className="font-display font-black text-white">
+-                  {tool.title}
++                <h3 className="font-display text-lg font-bold text-navy-950">
++                  {faq.question}
+                 </h3>
+-
+-                <p className="mt-3 text-sm leading-6 text-steel-400">
+-                  {tool.description}
++                <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
++                  {faq.answer}
+                 </p>
+-              </Link>
++              </article>
+             ))}
+           </div>
+-        </section>
+ 
+-        <OfficialSafetySources toolSlug="safety-training-matrix-generator" />
++          <div className="mt-14">
++            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
++              Related contractor safety tools
++            </h2>
++            <div className="mt-7 grid gap-4 md:grid-cols-3">
++              {relatedTools.map((tool) => (
++                <Link
++                  key={tool.href}
++                  href={tool.href}
++                  className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
++                >
++                  <h3 className="font-bold text-navy-950">{tool.title}</h3>
++                  <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
++                    {tool.description}
++                  </p>
++                </Link>
++              ))}
++            </div>
++          </div>
++
++          <OfficialSafetySources toolSlug="safety-training-matrix-generator" />
++        </div>
+       </section>
+     </main>
+   );

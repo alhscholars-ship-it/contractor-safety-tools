@@ -2,32 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { LockoutTagoutChecklistGenerator } from "@/features/lockout-tagout-checklist-generator/lockout-tagout-checklist-generator";
+import { createToolJsonLd } from "@/lib/seo/json-ld";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 import { createFaqJsonLd } from "@/lib/seo/faq-json-ld";
-import { createToolJsonLd } from "@/lib/seo/json-ld";
-
-const description =
-  "Create an equipment-specific lockout/tagout checklist with hazardous energy sources, isolation points, shutdown steps, zero-energy verification, and restoration procedures.";
 
 const toolJsonLd = createToolJsonLd({
   name: "Lockout Tagout Checklist Generator",
-  description,
+  description:
+    "Create an equipment-specific lockout/tagout checklist with hazardous energy sources, isolation points, shutdown steps, zero-energy verification, and restoration procedures.",
   url: "/tools/lockout-tagout-checklist-generator",
-  keywords: [
-    "lockout tagout checklist generator",
-    "LOTO checklist template",
-    "energy isolation checklist",
-    "construction lockout tagout form",
-  ],
+  keywords: ["lockout tagout checklist generator", "LOTO checklist template", "energy isolation checklist", "construction lockout tagout form"],
 });
 
 const breadcrumbJsonLd = createBreadcrumbJsonLd([
   { name: "Home", path: "/" },
   { name: "Tools", path: "/tools" },
-  {
-    name: "Lockout Tagout Checklist Generator",
-    path: "/tools/lockout-tagout-checklist-generator",
-  },
+  { name: "Lockout Tagout Checklist Generator", path: "/tools/lockout-tagout-checklist-generator" },
 ]);
 
 const faqs = [
@@ -55,9 +45,51 @@ const faqs = [
 
 const faqJsonLd = createFaqJsonLd(faqs);
 
+const steps = [
+  {
+    title: "1. Identify energy",
+    description:
+      "List electrical, hydraulic, pneumatic, mechanical, thermal, gravitational, and stored energy hazards.",
+  },
+  {
+    title: "2. Define isolation",
+    description:
+      "Document disconnects, valves, breakers, blocks, restraints, and required lockout devices.",
+  },
+  {
+    title: "3. Verify and restore",
+    description:
+      "Record zero-energy verification and the controlled sequence for returning equipment to service.",
+  },
+];
+
+const relatedTools = [
+  {
+    href: "/tools/jha-generator",
+    title: "JHA Generator",
+    description: "Document work steps, hazardous energy exposures, controls, and required PPE.",
+  },
+  {
+    href: "/tools/safety-plan-generator",
+    title: "Safety Plan Generator",
+    description: "Add hazardous energy control expectations to a project safety plan.",
+  },
+  {
+    href: "/tools/ppe-checklist-generator",
+    title: "PPE Checklist Generator",
+    description: "Create task-specific PPE and pre-use equipment inspection checklists.",
+  },
+  {
+    href: "/tools/toolbox-talk-generator",
+    title: "Toolbox Talk Generator",
+    description: "Prepare a safety discussion covering energy isolation and worker responsibilities.",
+  },
+];
+
 export const metadata: Metadata = {
   title: "Lockout Tagout Checklist Generator",
-  description,
+  description:
+    "Create an equipment-specific lockout/tagout checklist with hazardous energy sources, isolation points, shutdown steps, zero-energy verification, and restoration procedures.",
   alternates: {
     canonical: "/tools/lockout-tagout-checklist-generator",
   },
@@ -65,103 +97,88 @@ export const metadata: Metadata = {
 
 export default function LockoutTagoutChecklistGeneratorPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="bg-paper">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-20">
-        <Link href="/tools" className="text-sm font-semibold text-emerald-300">
-          ← Back to tools
-        </Link>
+      <section className="bg-navy-950 py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <Link
+            href="/tools"
+            className="font-mono text-xs font-semibold text-steel-400 transition hover:text-orange-500"
+          >
+            ← Back to tools
+          </Link>
 
-        <div className="mt-8 max-w-3xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
-            Energy Control
-          </p>
-
-          <h1 className="text-4xl font-black tracking-tight sm:text-6xl">
-            Lockout Tagout Checklist Generator
-          </h1>
-
-          <p className="mt-6 text-lg leading-8 text-slate-300">
-            Build an equipment-specific LOTO checklist covering hazardous
-            energy, isolation points, affected employees, shutdown sequencing,
-            zero-energy verification, and safe return to service.
-          </p>
+          <div className="mt-6 max-w-3xl">
+            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-500">
+              <span className="inline-block h-[2px] w-3.5 bg-orange-500" />
+              Energy Control
+            </p>
+            <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl">
+              Lockout Tagout Checklist Generator
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-steel-200 sm:text-lg">
+              Build an equipment-specific LOTO checklist covering hazardous energy, isolation points, affected employees, shutdown sequencing, zero-energy verification, and safe return to service.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="mt-12">
+      <section className="border-b border-white/10 bg-navy-950 py-14">
+        <div className="mx-auto w-full max-w-6xl px-6">
           <LockoutTagoutChecklistGenerator />
         </div>
+      </section>
 
-        <section className="mt-16 border-t border-white/10 pt-16">
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
-              Checklist workflow
+            <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-orange-600">
+              <span className="inline-block h-[2px] w-3.5 bg-orange-600" />
+              How it works
             </p>
-
-            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-navy-950 sm:text-4xl">
               How to create a lockout/tagout checklist
             </h2>
-
-            <p className="mt-5 text-base leading-8 text-slate-300">
-              Identify the equipment and personnel, document every hazardous
-              energy source and isolation point, then enter the shutdown,
-              verification, and restoration sequence. The tool formats the
-              information into a downloadable checklist draft.
+            <p className="mt-4 text-[15px] leading-7 text-slate-600">
+              Identify the equipment and personnel, document every hazardous energy source and isolation point, then enter the shutdown, verification, and restoration sequence. The tool formats the information into a downloadable checklist draft.
             </p>
           </div>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {[
-              {
-                title: "1. Identify energy",
-                description:
-                  "List electrical, hydraulic, pneumatic, mechanical, thermal, gravitational, and stored energy hazards.",
-              },
-              {
-                title: "2. Define isolation",
-                description:
-                  "Document disconnects, valves, breakers, blocks, restraints, and required lockout devices.",
-              },
-              {
-                title: "3. Verify and restore",
-                description:
-                  "Record zero-energy verification and the controlled sequence for returning equipment to service.",
-              },
-            ].map((step) => (
+          <div className="mt-7 grid gap-4 md:grid-cols-3">
+            {steps.map((step) => (
               <article
                 key={step.title}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
+                className="rounded-xl border border-steel-200 bg-white p-6"
               >
-                <h3 className="text-lg font-black">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">
+                <h3 className="font-display text-lg font-bold text-navy-950">
+                  {step.title}
+                </h3>
+                <p className="mt-2.5 text-[13.5px] leading-relaxed text-slate-600">
                   {step.description}
                 </p>
               </article>
             ))}
           </div>
-        </section>
 
-        <section className="mt-16 grid gap-8 lg:grid-cols-2">
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
-              What should a LOTO checklist include?
-            </h2>
+          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+            <div className="rounded-xl border border-steel-200 bg-white p-7">
+              <h2 className="font-display text-xl font-bold text-navy-950">
+                What should a LOTO checklist include?
+              </h2>
 
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
+              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
               <li>Equipment name and exact location</li>
               <li>Authorized employee and supervising person</li>
               <li>Affected employees and work groups</li>
@@ -170,15 +187,15 @@ export default function LockoutTagoutChecklistGeneratorPage() {
               <li>Shutdown and isolation sequence</li>
               <li>Zero-energy verification steps</li>
               <li>Restoration and restart sequence</li>
-            </ul>
-          </article>
+              </ul>
+            </div>
 
-          <article className="rounded-3xl border border-white/10 bg-white/[0.04] p-7">
-            <h2 className="text-2xl font-black">
-              Common hazardous energy sources
-            </h2>
+            <div className="rounded-xl border border-steel-200 bg-white p-7">
+              <h2 className="font-display text-xl font-bold text-navy-950">
+                Common hazardous energy sources
+              </h2>
 
-            <ul className="mt-5 list-disc space-y-3 pl-5 text-sm leading-7 text-slate-300">
+              <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[14.5px] leading-7 text-slate-600">
               <li>Electrical circuits and control power</li>
               <li>Hydraulic and pneumatic pressure</li>
               <li>Rotating or moving mechanical parts</li>
@@ -186,93 +203,72 @@ export default function LockoutTagoutChecklistGeneratorPage() {
               <li>Gravity and suspended components</li>
               <li>Thermal, steam, chemical, or pressurized systems</li>
               <li>Capacitors and other stored electrical energy</li>
-            </ul>
-          </article>
-        </section>
+              </ul>
+            </div>
+          </div>
 
-        <section className="mt-16 rounded-3xl border border-amber-300/20 bg-amber-300/10 p-7">
-          <h2 className="text-2xl font-black text-amber-100">
-            Important safety limitation
-          </h2>
+          <div className="mt-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-7">
+            <h2 className="font-display text-xl font-bold text-orange-950">
+              Important safety limitation
+            </h2>
+            <p className="mt-3 text-[14.5px] leading-7 text-orange-950/80">
+              This generator is an informational documentation aid only. It does not create or validate a compliant equipment-specific energy control procedure, determine employee authorization, verify energy isolation, or replace employer training, manufacturer instructions, qualified review, or applicable federal, state, local, and project-specific requirements.
+            </p>
+          </div>
+        </div>
+      </section>
 
-          <p className="mt-4 text-sm leading-7 text-amber-50/90">
-            This generator is an informational documentation aid only. It does
-            not create or validate a compliant equipment-specific energy
-            control procedure, determine employee authorization, verify energy
-            isolation, or replace employer training, manufacturer instructions,
-            qualified review, or applicable federal, state, local, and
-            project-specific requirements.
-          </p>
-        </section>
+      <section className="border-t border-steel-200 bg-white py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="max-w-3xl">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+              Related contractor safety tools
+            </h2>
+            <p className="mt-3 text-[15px] leading-7 text-slate-600">
+              Connect energy control with hazard analysis, PPE checks, and crew communication.
+            </p>
+          </div>
 
-        <section className="mt-16">
-          <h2 className="text-3xl font-black tracking-tight">
-            Related contractor safety tools
-          </h2>
-
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                href: "/tools/jha-generator",
-                title: "JHA Generator",
-                description:
-                  "Document work steps, hazardous energy exposures, controls, and required PPE.",
-              },
-              {
-                href: "/tools/safety-plan-generator",
-                title: "Safety Plan Generator",
-                description:
-                  "Add hazardous energy control expectations to a project safety plan.",
-              },
-              {
-                href: "/tools/ppe-checklist-generator",
-                title: "PPE Checklist Generator",
-                description:
-                  "Create task-specific PPE and pre-use equipment inspection checklists.",
-              },
-              {
-                href: "/tools/toolbox-talk-generator",
-                title: "Toolbox Talk Generator",
-                description:
-                  "Prepare a safety discussion covering energy isolation and worker responsibilities.",
-              },
-            ].map((tool) => (
+          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {relatedTools.map((tool) => (
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-emerald-300/40 hover:bg-white/[0.07]"
+                className="rounded-xl border border-steel-200 bg-white p-6 transition hover:border-orange-500/50 hover:bg-orange-100/40"
               >
-                <h3 className="font-black">{tool.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-400">
+                <h3 className="font-bold text-navy-950">{tool.title}</h3>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-600">
                   {tool.description}
                 </p>
               </Link>
             ))}
           </div>
-        </section>
 
-        <section className="mt-16">
-          <h2 className="text-3xl font-black tracking-tight">
-            Lockout Tagout Checklist FAQs
-          </h2>
-
-          <div className="mt-8 space-y-5">
-            {faqs.map((faq) => (
-              <article
-                key={faq.question}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
-              >
-                <h3 className="text-lg font-black">{faq.question}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">
-                  {faq.answer}
-                </p>
-              </article>
-            ))}
+          <div className="mt-14">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-950">
+              Lockout Tagout Checklist FAQs
+            </h2>
+            <div className="mt-7 space-y-4">
+              {faqs.map((faq) => (
+                <article
+                  key={faq.question}
+                  className="rounded-xl border border-steel-200 bg-white p-6"
+                >
+                  <h3 className="font-display text-lg font-bold text-navy-950">
+                    {faq.question}
+                  </h3>
+                  <p className="mt-2.5 text-[14.5px] leading-7 text-slate-600">
+                    {faq.answer}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
-        </section>
 
-        <OfficialSafetySources toolSlug="lockout-tagout-checklist-generator" />
+          <OfficialSafetySources toolSlug="lockout-tagout-checklist-generator" />
+        </div>
       </section>
     </main>
   );
 }
+
