@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  metadataBase: new URL("https://contractorsafetytools.com"),
+  metadataBase: new URL("https://safetysitepro.com"),
   keywords: [...siteConfig.keywords],
   openGraph: {
     type: "website",
