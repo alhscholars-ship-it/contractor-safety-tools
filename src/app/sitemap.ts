@@ -3,7 +3,7 @@ import { tools } from "../data/tools";
 
 export const dynamic = "force-static";
 
-const baseUrl = "https://contractorsafetytools.com";
+const baseUrl = "https://safetysitepro.com";
 
 const staticRoutes = [
   "/",
