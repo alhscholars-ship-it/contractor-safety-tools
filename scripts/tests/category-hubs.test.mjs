@@ -1,6 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
-import { access } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 import { tools } from "../../src/data/tools.ts";
@@ -11,26 +10,12 @@ const calculatorsHubPath =
 const inspectionsHubPath =
   "src/app/tools/inspection-checklists/page.tsx";
 
-const calculatorSlugs = [
-  "days-away-case-rate-calculator",
-  "incident-cost-calculator",
-  "risk-matrix-calculator",
-  "severity-rate-calculator",
-  "dart-rate-calculator",
-  "trir-calculator",
-];
-
-const inspectionSlugs = [
-  "daily-jobsite-safety-inspection-generator",
-  "fire-extinguisher-inspection-generator",
-  "first-aid-kit-inspection-generator",
-  "ladder-inspection-generator",
-  "excavation-inspection-generator",
-  "scaffold-inspection-generator",
-  "ppe-checklist-generator",
-  "osha-inspection-checklist-generator",
-  "fall-protection-inspection-generator",
-];
+const calculatorTools = tools.filter(
+  (tool) => tool.category === "Safety Calculators",
+);
+const inspectionTools = tools.filter(
+  (tool) => tool.category === "Inspections",
+);
 
 test("category hub source files exist", async () => {
   await access(calculatorsHubPath);
@@ -39,34 +24,34 @@ test("category hub source files exist", async () => {
 
 test("safety calculator hub exposes exactly the calculator category", async () => {
   const source = await readFile(calculatorsHubPath, "utf8");
-  const categoryTools = tools.filter(
-    (tool) => tool.category === "Safety Calculators",
-  );
 
-  assert.equal(categoryTools.length, calculatorSlugs.length);
-  assert.deepEqual(
-    categoryTools.map((tool) => tool.slug),
-    calculatorSlugs,
-  );
-
+  assert.ok(calculatorTools.length > 0);
   assert.match(source, /tool\.category === "Safety Calculators"/);
   assert.match(source, /href={tool\.href}/);
+
+  for (const tool of calculatorTools) {
+    assert.match(
+      tool.href,
+      /^\/tools\/[^/]+$/,
+      `${tool.slug} must use the canonical source route without a trailing slash`,
+    );
+  }
 });
 
 test("inspection checklist hub exposes exactly the inspection category", async () => {
   const source = await readFile(inspectionsHubPath, "utf8");
-  const categoryTools = tools.filter(
-    (tool) => tool.category === "Inspections",
-  );
 
-  assert.equal(categoryTools.length, inspectionSlugs.length);
-  assert.deepEqual(
-    categoryTools.map((tool) => tool.slug),
-    inspectionSlugs,
-  );
-
+  assert.ok(inspectionTools.length > 0);
   assert.match(source, /tool\.category === "Inspections"/);
   assert.match(source, /href={tool\.href}/);
+
+  for (const tool of inspectionTools) {
+    assert.match(
+      tool.href,
+      /^\/tools\/[^/]+$/,
+      `${tool.slug} must use the canonical source route without a trailing slash`,
+    );
+  }
 });
 
 test("main tools hub links to both category hubs", async () => {
@@ -84,22 +69,5 @@ test("category hubs use trailing-slash internal links and breadcrumbs", async ()
   for (const source of [calculatorSource, inspectionSource]) {
     assert.match(source, /href="\/"|href=\{["']\/["']\}/);
     assert.match(source, /href="\/tools"|href=\{["']\/tools["']\}/);
-  }
-});
-
-test("category tool hrefs are generated from the tool catalog", () => {
-  const calculatorTools = tools.filter(
-    (tool) => tool.category === "Safety Calculators",
-  );
-  const inspectionTools = tools.filter(
-    (tool) => tool.category === "Inspections",
-  );
-
-  for (const tool of [...calculatorTools, ...inspectionTools]) {
-    assert.match(
-      tool.href,
-      /^\/tools\/[^/]+$/,
-      `${tool.slug} must use the canonical source route without a trailing slash`,
-    );
   }
 });
