@@ -8,6 +8,6 @@ RewriteEngine On
 
 # Canonical host: HTTPS apex domain.
 # Hostinger handles HTTP -> HTTPS after SSL is enabled.
-RewriteCond %{HTTP_HOST} ^www\.contractorsafetytools\.com$ [NC]
-RewriteRule ^ https://contractorsafetytools.com%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.safetysitepro\.com$ [NC]
+RewriteRule ^ https://safetysitepro.com%{REQUEST_URI} [R=301,L]
 </IfModule>
