@@ -308,19 +308,10 @@ export const tools: ToolDefinition[] = [
     keywords: [
       "OSHA inspection checklist generator",
       "OSHA construction inspection checklist",
-
-
-
-
-
-
-
-
       "jobsite safety inspection form",
       "construction safety checklist template",
     ],
   },
-
   {
     slug: "fall-protection-inspection-generator",
     name: "Fall Protection Inspection Checklist Generator",
