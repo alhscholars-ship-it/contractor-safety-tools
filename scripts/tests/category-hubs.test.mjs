@@ -71,3 +71,13 @@ test("category hubs use trailing-slash internal links and breadcrumbs", async ()
     assert.match(source, /href="\/tools"|href=\{["']\/tools["']\}/);
   }
 });
+
+test("category tool hrefs are generated from the tool catalog", () => {
+  for (const tool of [...calculatorTools, ...inspectionTools]) {
+    assert.match(
+      tool.href,
+      /^\/tools\/[^/]+$/,
+      `${tool.slug} must use the canonical source route without a trailing slash`,
+    );
+  }
+});
