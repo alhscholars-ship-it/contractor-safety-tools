@@ -27,7 +27,6 @@ const interfacePath =
 const indexPath =
   "src/features/dart-rate-calculator/index.ts";
 
-
 test("publishes the DART calculator in the canonical catalog", () => {
   const tool = tools.find(
     (candidate) =>
@@ -153,7 +152,7 @@ test(
   "includes the DART route in the static sitemap",
   () => {
     const expectedUrl =
-      "https://contractorsafetytools.com/tools/dart-rate-calculator/";
+      "https://safetysitepro.com/tools/dart-rate-calculator/";
 
     assert.equal(
       sitemap().filter(
