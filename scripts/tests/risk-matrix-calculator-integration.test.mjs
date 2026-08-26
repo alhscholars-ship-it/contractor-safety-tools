@@ -27,7 +27,6 @@ const interfacePath =
 const indexPath =
   "src/features/risk-matrix-calculator/index.ts";
 
-
 test("publishes the risk matrix calculator in the canonical catalog", () => {
   const tool = tools.find(
     (candidate) =>
@@ -166,7 +165,7 @@ test(
   "includes the risk matrix route in the static sitemap",
   () => {
     const expectedUrl =
-      "https://contractorsafetytools.com/tools/risk-matrix-calculator/";
+      "https://safetysitepro.com/tools/risk-matrix-calculator/";
 
     assert.equal(
       sitemap().filter(
