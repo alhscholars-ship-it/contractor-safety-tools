@@ -72,12 +72,12 @@ test(
 
     assert.equal(
       siteConfig.domain,
-      "contractorsafetytools.com",
+      "safetysitepro.com",
     );
 
     assert.equal(
       siteConfig.url,
-      "https://contractorsafetytools.com",
+      "https://safetysitepro.com",
     );
   },
 );
@@ -99,7 +99,7 @@ test(
 
       const normalizedSource =
         source.replace(
-          /\\s+/g,
+          /\s+/g,
           " ",
         );
 
@@ -173,7 +173,12 @@ test(
 
     assert.match(
       home,
-      /\{siteConfig\.name\}/,
+      /import \{ siteConfig \} from "@\/config\/site";/,
+    );
+
+    assert.match(
+      home,
+      /absolute: siteConfig\.name/,
     );
   },
 );
