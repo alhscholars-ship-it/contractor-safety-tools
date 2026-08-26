@@ -30,7 +30,6 @@ const indexPath =
 const enginePath =
   "src/features/incident-cost-calculator/calculate-incident-cost.ts";
 
-
 test("publishes the incident cost calculator in the canonical catalog", () => {
   const tool = tools.find(
     (candidate) =>
@@ -198,7 +197,7 @@ test(
   "includes the incident cost route in the static sitemap",
   () => {
     const expectedUrl =
-      "https://contractorsafetytools.com/tools/incident-cost-calculator/";
+      "https://safetysitepro.com/tools/incident-cost-calculator/";
 
     assert.equal(
       sitemap().filter(
