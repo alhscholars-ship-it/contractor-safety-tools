@@ -75,6 +75,16 @@ const contentTypes = new Map([
   [".woff2", "font/woff2"],
 ]);
 
+const securityHeaders = {
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "Permissions-Policy":
+    "camera=(), microphone=(), geolocation=(), payment=()",
+  "Strict-Transport-Security":
+    "max-age=31536000; includeSubDomains",
+};
+
 function isFile(filePath) {
   try {
     return statSync(filePath).isFile();
@@ -135,8 +145,7 @@ function sendFile(request, response, filePath, statusCode) {
   response.writeHead(statusCode, {
     "Content-Length": size,
     "Content-Type": contentType,
-    "Referrer-Policy": "strict-origin-when-cross-origin",
-    "X-Content-Type-Options": "nosniff",
+    ...securityHeaders,
   });
 
   if (request.method === "HEAD") {
@@ -150,6 +159,7 @@ function sendFile(request, response, filePath, statusCode) {
     if (!response.headersSent) {
       response.writeHead(500, {
         "Content-Type": "text/plain; charset=utf-8",
+        ...securityHeaders,
       });
     }
 
@@ -167,6 +177,7 @@ const server = createServer((request, response) => {
     response.writeHead(405, {
       Allow: "GET, HEAD",
       "Content-Type": "text/plain; charset=utf-8",
+      ...securityHeaders,
     });
     response.end("Method Not Allowed");
     return;
@@ -193,6 +204,7 @@ const server = createServer((request, response) => {
 
   response.writeHead(404, {
     "Content-Type": "text/plain; charset=utf-8",
+    ...securityHeaders,
   });
   response.end("Not Found");
 });
