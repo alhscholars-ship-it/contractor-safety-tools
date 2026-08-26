@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FallProtectionInspectionGenerator } from "@/features/fall-protection-inspection-generator";
+import { OfficialSafetySources } from "@/components/seo/official-safety-sources";
 import { createBreadcrumbJsonLd } from "@/lib/seo/breadcrumb-json-ld";
 import { createToolJsonLd } from "@/lib/seo/json-ld";
 
@@ -80,6 +81,8 @@ export default function FallProtectionInspectionPage() {
           <FallProtectionInspectionGenerator />
         </div>
       </section>
+
+      <OfficialSafetySources toolSlug="fall-protection-inspection-generator" />
     </main>
   );
 }
