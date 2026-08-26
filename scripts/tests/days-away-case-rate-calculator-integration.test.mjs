@@ -30,7 +30,6 @@ const indexPath =
 const enginePath =
   "src/features/days-away-case-rate-calculator/calculate-days-away-case-rate.ts";
 
-
 test("publishes the Days Away Case Rate calculator in the canonical catalog", () => {
   const tool = tools.find(
     (candidate) =>
@@ -199,7 +198,7 @@ test(
   "includes the Days Away Rate route in the static sitemap",
   () => {
     const expectedUrl =
-      "https://contractorsafetytools.com/tools/days-away-case-rate-calculator/";
+      "https://safetysitepro.com/tools/days-away-case-rate-calculator/";
 
     assert.equal(
       sitemap().filter(
