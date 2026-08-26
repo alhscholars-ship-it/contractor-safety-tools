@@ -285,7 +285,6 @@ export const officialSafetySourcesByTool = {
         "Federal requirements for providing, using, maintaining, and properly fitting PPE.",
     },
   ],
-
   "osha-inspection-checklist-generator": [
     {
       title: "OSHA Construction Safety and Health",
@@ -300,7 +299,20 @@ export const officialSafetySourcesByTool = {
         "Official OSHA guidance for managing workplace safety programs, hazard identification, prevention, and control.",
     },
   ],
-
+  "fall-protection-inspection-generator": [
+    {
+      title: "OSHA 29 CFR 1926.501 — Duty to Have Fall Protection",
+      url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.501",
+      description:
+        "Federal construction requirements identifying where employers must provide fall protection for employees exposed to fall hazards.",
+    },
+    {
+      title: "OSHA 29 CFR 1926.502 — Fall Protection Systems Criteria and Practices",
+      url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.502",
+      description:
+        "Federal criteria for guardrails, safety nets, personal fall arrest systems, positioning devices, warning lines, and related fall protection systems.",
+    },
+  ],
 } as const satisfies Record<
   string,
   readonly OfficialSafetySource[]
