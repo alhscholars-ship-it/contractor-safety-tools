@@ -48,7 +48,7 @@ test("avoids overbroad OSHA alignment and compliance marketing claims", async ()
 
   assert.match(
     combined,
-    /Contractor safety forms and jobsite documentation tools/,
+    /Generate contractor-ready safety plans, toolbox talks,\s+inspection checklists, and incident reports/,
     "The homepage must use accurate product positioning.",
   );
 });
@@ -91,7 +91,7 @@ test("publishes an actionable public feedback channel", async () => {
   assert.equal(
     (
       contact.match(
-        /rel="noreferrer noopener"/g,
+        /rel="(?:noreferrer noopener|noopener noreferrer)"/g,
       ) ?? []
     ).length,
     2,
