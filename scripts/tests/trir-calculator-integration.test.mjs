@@ -12,24 +12,14 @@ const sitemap =
     ? sitemapModule.default
     : sitemapModule.default?.default;
 
-assert.equal(
-  typeof sitemap,
-  "function",
-  "Expected sitemap default export to resolve to a function",
-);
+assert.equal(typeof sitemap, "function", "Expected sitemap default export to resolve to a function");
 
-const pagePath =
-  "src/app/tools/trir-calculator/page.tsx";
-const interfacePath =
-  "src/features/trir-calculator/trir-calculator.tsx";
-const indexPath =
-  "src/features/trir-calculator/index.ts";
+const pagePath = "src/app/tools/trir-calculator/page.tsx";
+const interfacePath = "src/features/trir-calculator/trir-calculator.tsx";
+const indexPath = "src/features/trir-calculator/index.ts";
 
 test("publishes the TRIR calculator in the canonical catalog", () => {
-  const tool = tools.find(
-    (candidate) => candidate.slug === "trir-calculator",
-  );
-
+  const tool = tools.find((candidate) => candidate.slug === "trir-calculator");
   assert.ok(tool);
   assert.equal(tool.name, "TRIR Calculator");
   assert.equal(tool.category, "Safety Calculators");
@@ -38,61 +28,28 @@ test("publishes the TRIR calculator in the canonical catalog", () => {
 });
 
 test("provides two official OSHA references for TRIR", () => {
-  const sources =
-    officialSafetySourcesByTool["trir-calculator"];
-
+  const sources = officialSafetySourcesByTool["trir-calculator"];
   assert.equal(sources.length, 2);
-
-  assert.deepEqual(
-    sources.map((source) => source.url),
-    [
-      "https://www.osha.gov/recordkeeping",
-      "https://www.osha.gov/laws-regs/standardinterpretations/2016-08-23",
-    ],
-  );
+  assert.deepEqual(sources.map((source) => source.url), [
+    "https://www.osha.gov/recordkeeping",
+    "https://www.osha.gov/laws-regs/standardinterpretations/2016-08-23",
+  ]);
 });
 
 test("publishes a complete SEO and trust-oriented TRIR page", async () => {
   const source = await readFile(pagePath, "utf8");
+  const normalizedSource = source.replace(/\s+/g, " ");
 
-  assert.match(
-    source,
-    /title: "TRIR Calculator"/,
-  );
-
-  assert.match(
-    source,
-    /canonical: "\/tools\/trir-calculator"/,
-  );
-
-  assert.match(
-    source,
-    /createToolJsonLd/,
-  );
-
-  assert.match(
-    source,
-    /createBreadcrumbJsonLd/,
-  );
-
-  assert.match(
-    source,
-    /createFaqJsonLd/,
-  );
-
-  assert.match(
-    source,
-    /<TrirCalculator \/>/,
-  );
-
-  assert.match(
-    source,
-    /<OfficialSafetySources toolSlug="trir-calculator" \/>/,
-  );
-
-  assert.match(
-    source,
-    /does not decide whether an injury or\s+illness is recordable/,
+  assert.match(source, /title: "TRIR Calculator"/);
+  assert.match(source, /canonical: "\/tools\/trir-calculator"/);
+  assert.match(source, /createToolJsonLd/);
+  assert.match(source, /createBreadcrumbJsonLd/);
+  assert.match(source, /createFaqJsonLd/);
+  assert.match(source, /<TrirCalculator\s*\/>/);
+  assert.match(source, /<OfficialSafetySources\s+toolSlug="trir-calculator"\s*\/>/);
+  assert.ok(
+    normalizedSource.includes("does not decide whether an injury or illness is recordable"),
+    "The TRIR page must explain that it does not make recordability determinations.",
   );
 });
 
@@ -102,60 +59,21 @@ test("provides an accessible deterministic calculator interface", async () => {
     readFile(indexPath, "utf8"),
   ]);
 
-  assert.match(
-    interfaceSource,
-    /calculateTrir\(\{/,
-  );
-
-  assert.match(
-    interfaceSource,
-    /aria-live="polite"/,
-  );
-
-  assert.match(
-    interfaceSource,
-    /role="alert"/,
-  );
-
-  assert.match(
-    interfaceSource,
-    /htmlFor="trir-recordable-cases"/,
-  );
-
-  assert.match(
-    interfaceSource,
-    /htmlFor="trir-employee-hours"/,
-  );
-
-  assert.match(
-    interfaceSource,
-    /ExportTextButton/,
-  );
-
-  assert.match(
-    interfaceSource,
-    /ExportPdfButton/,
-  );
-
-  assert.match(
-    indexSource,
-    /export \{ TrirCalculator \} from "\.\/trir-calculator";/,
-  );
+  assert.match(interfaceSource, /calculateTrir\(\{/);
+  assert.match(interfaceSource, /aria-live="polite"/);
+  assert.match(interfaceSource, /role="alert"/);
+  assert.match(interfaceSource, /htmlFor="trir-recordable-cases"/);
+  assert.match(interfaceSource, /htmlFor="trir-employee-hours"/);
+  assert.match(interfaceSource, /ExportTextButton/);
+  assert.match(interfaceSource, /ExportPdfButton/);
+  assert.match(indexSource, /export \{ TrirCalculator \} from "\.\/trir-calculator";/);
 });
 
-test(
-  "includes the TRIR route in the static sitemap",
-  () => {
-    const expectedUrl =
-      "https://safetysitepro.com/tools/trir-calculator/";
-
-    assert.equal(
-      sitemap().filter(
-        (entry) =>
-          entry.url === expectedUrl,
-      ).length,
-      1,
-      `The sitemap must include ${expectedUrl} exactly once.`,
-    );
-  },
-);
+test("includes the TRIR route in the static sitemap", () => {
+  const expectedUrl = "https://safetysitepro.com/tools/trir-calculator/";
+  assert.equal(
+    sitemap().filter((entry) => entry.url === expectedUrl).length,
+    1,
+    `The sitemap must include ${expectedUrl} exactly once.`,
+  );
+});
