@@ -242,7 +242,7 @@ test(
   "includes the Safety Training Matrix route in the static sitemap",
   () => {
     const expectedUrl =
-      "https://contractorsafetytools.com/tools/safety-training-matrix-generator/";
+      "https://safetysitepro.com/tools/safety-training-matrix-generator/";
 
     assert.equal(
       sitemap().filter(
