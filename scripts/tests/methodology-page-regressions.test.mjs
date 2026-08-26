@@ -33,10 +33,10 @@ test("publishes a complete methodology and editorial standards page", async () =
     "The methodology page must provide its canonical route.",
   );
 
-  assert.equal(
-    (source.match(/<h1\b/g) ?? []).length,
-    1,
-    "The methodology page must contain exactly one H1.",
+  assert.match(
+    source,
+    /<PageHero[\s\S]*title="Methodology and Editorial Standards"/,
+    "The methodology page must provide its primary page heading through PageHero.",
   );
 
   for (const heading of [
@@ -166,7 +166,7 @@ test(
     );
 
     const expectedUrl =
-      "https://contractorsafetytools.com/methodology/";
+      "https://safetysitepro.com/methodology/";
 
     assert.equal(
       sitemap().filter(
