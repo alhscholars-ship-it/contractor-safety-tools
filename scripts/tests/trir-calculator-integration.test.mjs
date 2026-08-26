@@ -147,7 +147,7 @@ test(
   "includes the TRIR route in the static sitemap",
   () => {
     const expectedUrl =
-      "https://contractorsafetytools.com/tools/trir-calculator/";
+      "https://safetysitepro.com/tools/trir-calculator/";
 
     assert.equal(
       sitemap().filter(
