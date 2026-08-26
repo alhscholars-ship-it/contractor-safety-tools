@@ -35,12 +35,12 @@ test(
 
     assert.match(
       source,
-      /RewriteCond %\{HTTP_HOST\} \^www\\\.contractorsafetytools\\\.com\$ \[NC\]/,
+      /RewriteCond %\{HTTP_HOST\} \^www\\\.safetysitepro\\\.com\$ \[NC\]/,
     );
 
     assert.match(
       source,
-      /RewriteRule \^ https:\/\/contractorsafetytools\.com%\{REQUEST_URI\} \[R=301,L\]/,
+      /RewriteRule \^ https:\/\/safetysitepro\.com%\{REQUEST_URI\} \[R=301,L\]/,
     );
   },
 );
