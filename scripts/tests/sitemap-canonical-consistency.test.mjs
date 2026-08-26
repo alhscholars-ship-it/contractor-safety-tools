@@ -5,7 +5,7 @@ import test from "node:test";
 import * as sitemapModule from "../../src/app/sitemap.ts";
 import { tools } from "../../src/data/tools.ts";
 
-const origin = "https://contractorsafetytools.com";
+const origin = "https://safetysitepro.com";
 
 const sitemap =
   typeof sitemapModule.default === "function"
@@ -56,7 +56,7 @@ test(
 
     assert.equal(
       actualUrls.length,
-      31,
+      33,
     );
 
     assert.equal(
@@ -77,7 +77,7 @@ test(
     for (const entry of sitemap()) {
       assert.match(
         entry.url,
-        /^https:\/\/contractorsafetytools\.com\/(?:.*\/)?$/,
+        /^https:\/\/safetysitepro\.com\/(?:.*\/)?$/,
       );
 
       assert.equal(
