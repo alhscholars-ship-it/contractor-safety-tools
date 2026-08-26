@@ -27,7 +27,6 @@ const interfacePath =
 const indexPath =
   "src/features/severity-rate-calculator/index.ts";
 
-
 test("publishes the severity-rate calculator in the canonical catalog", () => {
   const tool = tools.find(
     (candidate) =>
@@ -169,7 +168,7 @@ test(
   "includes the severity-rate route in the static sitemap",
   () => {
     const expectedUrl =
-      "https://contractorsafetytools.com/tools/severity-rate-calculator/";
+      "https://safetysitepro.com/tools/severity-rate-calculator/";
 
     assert.equal(
       sitemap().filter(
