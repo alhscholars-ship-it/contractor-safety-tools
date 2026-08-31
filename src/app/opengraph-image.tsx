@@ -1,10 +1,11 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 
-export const runtime = "edge";
 export const alt = siteConfig.name;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = "force-static";
+export const runtime = "nodejs";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -85,6 +86,6 @@ export default function OpengraphImage() {
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }
