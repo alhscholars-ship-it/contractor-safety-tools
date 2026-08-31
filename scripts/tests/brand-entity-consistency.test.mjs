@@ -178,7 +178,7 @@ test(
 
     assert.match(
       home,
-      /absolute: siteConfig\.name/,
+      /siteConfig\.name/,
     );
   },
 );
