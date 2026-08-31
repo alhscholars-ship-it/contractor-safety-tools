@@ -21,7 +21,7 @@ export default function OpengraphImage() {
           background: "#0c1a2e",
           backgroundImage:
             "radial-gradient(circle at 85% 20%, rgba(241,109,44,0.25), transparent 45%)",
-          fontFamily: "sans-serif",
+          fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
         <div
@@ -50,6 +50,7 @@ export default function OpengraphImage() {
           </div>
           <div
             style={{
+              display: "flex",
               fontSize: "28px",
               color: "white",
               fontWeight: 700,
