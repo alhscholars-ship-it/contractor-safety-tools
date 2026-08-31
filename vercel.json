@@ -1,4 +1,17 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://safetysitepro.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.safetysitepro.com"
+        }
+      ]
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
